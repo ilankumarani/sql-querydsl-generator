@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+        ddl-auto: create-drop
+
+jpa:
+  entities:
+    base-package: com.ilan.entity, org.ilan.entity
+  repositories:
+    base-package: com.ilan.repository, org.ilan.repository
+
+sql:
+  queryDsl:
+    generate:
+      directory: generated-test-sources
+    package:
+      directory: com.querydsl.sql
