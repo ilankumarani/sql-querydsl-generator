@@ -1,3 +1,4 @@
+import io.ilan.GenerateSqlDslApplication;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -5,10 +6,15 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AbstractQueryDslMojo extends AbstractMojo {
+public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
 
+    @Parameter
+    private String[] arguments;
     /**
      *
      */
@@ -48,8 +54,62 @@ public class AbstractQueryDslMojo extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException {
         if (skip) {
-            getLog().info("skipped");
+            getLog().info("skipped sql-queryDsl-generation");
             return;
         }
+
+
+        if (outputDirectory == null) {
+            outputDirectory = getDefaultOutputDirectory();
+        }
+
+
+// Define the main class to run
+        String mainClass = "com.example.MainClass";
+// Define JVM arguments
+        String jvmArgs = "-Xmx512m -Dproperty-value";
+        
+        String appArgs = "A  B";
+// Define application arguments String appArgs = "arg1 arg2";
+// Create the command list
+        List<String> command = new ArrayList<>();
+        command.add("java");
+// Add JVM arguments
+        if (!jvmArgs.isEmpty()) {
+            for (String arg : jvmArgs.split("\\s+")) {
+                command.add(arg);
+            }
+        }
+// Add the main class
+        command.add(mainClass);
+// Add application arguments
+        if (!appArgs.isEmpty()) {
+            for (String arg : appArgs.split("\\s+")) {
+                command.add(arg);
+            }
+
+        }
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        processBuilder.inheritIO();
+
+        try {
+            GenerateSqlDslApplication.main(arguments);
+            Process process = processBuilder.start();
+            process.waitFor();
+            Integer exitCode = process.exitValue();
+            getLog().info("*** SQL QueryDsl generate successfully ***");
+        } catch (Exception e) {
+            getLog().info("Exception executing Main method :: " + e.toString());
+            throw new RuntimeException(e);
+        }
     }
+
+
+    protected abstract File getOutputClassDirectory();
+
+    /**
+     * @return
+     */
+    public abstract File getDefaultOutputDirectory();
+
 }
