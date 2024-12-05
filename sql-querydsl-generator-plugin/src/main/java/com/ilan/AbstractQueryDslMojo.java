@@ -1,4 +1,6 @@
-import io.ilan.GenerateSqlDslApplication;
+package com.ilan;
+
+//import io.ilan.GenerateSqlDslApplication;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -6,7 +8,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         processBuilder.inheritIO();
 
         try {
-            GenerateSqlDslApplication.main(arguments);
+            //GenerateSqlDslApplication.main(arguments);
             Process process = processBuilder.start();
             process.waitFor();
             Integer exitCode = process.exitValue();
