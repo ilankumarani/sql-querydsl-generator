@@ -1,6 +1,7 @@
 package com.ilan;
 
-import io.ilan.GenerateSqlDslApplication;
+//import io.ilan.GenerateSqlDslApplication;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -52,13 +53,13 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             outputDirectory = getDefaultOutputDirectory();
         }
 
-        // Define the main class to run
-        String mainClass = GenerateSqlDslApplication.class.getCanonicalName();
+
         // Define JVM arguments
         String jvmArgs = "-Xmx512m -Dproperty-value";
 
-        String appArgs = "A  B";
-        // Define application arguments String appArgs = "arg1 arg2";
+        getLog().info("Statement 1");
+        // Define application arguments
+        String appArgs = "arg1 arg2";
         // Create the command list
         List<String> command = new ArrayList<>();
         command.add("java");
@@ -68,14 +69,18 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
                 command.add(arg);
             }
         }
+        getLog().info("Statement 2");
         // Add the main class
-        command.add(mainClass);
+        // Define the main class to run
+        /*String mainClass = GenerateSqlDslApplication.class.getCanonicalName();
+        command.add(mainClass);*/
         // Add application arguments
         if (!appArgs.isEmpty()) {
             for (String arg : appArgs.split("\\s+")) {
                 command.add(arg);
             }
         }
+        getLog().info("Statement 3");
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.inheritIO();
 
@@ -86,7 +91,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             Integer exitCode = process.exitValue();
             getLog().info("*** SQL QueryDsl generate successfully ***");
         } catch (Exception e) {
-            getLog().info("Exception executing Main method :: " + e.toString());
+            getLog().error("Exception executing Main method :: " + e.toString());
             throw new RuntimeException(e);
         }
     }
