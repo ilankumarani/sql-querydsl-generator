@@ -1,6 +1,6 @@
 package com.ilan;
 
-//import io.ilan.GenerateSqlDslApplication;
+import io.ilan.GenerateSqlDslApplication;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -37,18 +37,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
     @Parameter
     private File outputDirectory;
 
-    /**
-     * Allows running the compiler in a separate process.
-     * If false it uses the built in compiler, while if true it will use an executable.
-     * <p>
-     * to set source and target use
-     * <pre>
-     *  maven.processor.source
-     *  maven.processor.target
-     * </pre>
-     *
-     * @since 3.3
-     */
+
     @Parameter(defaultValue = "false", property = "fork")
     protected boolean fork;
 
@@ -59,36 +48,33 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             return;
         }
 
-
         if (outputDirectory == null) {
             outputDirectory = getDefaultOutputDirectory();
         }
 
-
-// Define the main class to run
-        String mainClass = "com.example.MainClass";
-// Define JVM arguments
+        // Define the main class to run
+        String mainClass = GenerateSqlDslApplication.class.getCanonicalName();
+        // Define JVM arguments
         String jvmArgs = "-Xmx512m -Dproperty-value";
-        
+
         String appArgs = "A  B";
-// Define application arguments String appArgs = "arg1 arg2";
-// Create the command list
+        // Define application arguments String appArgs = "arg1 arg2";
+        // Create the command list
         List<String> command = new ArrayList<>();
         command.add("java");
-// Add JVM arguments
+        // Add JVM arguments
         if (!jvmArgs.isEmpty()) {
             for (String arg : jvmArgs.split("\\s+")) {
                 command.add(arg);
             }
         }
-// Add the main class
+        // Add the main class
         command.add(mainClass);
-// Add application arguments
+        // Add application arguments
         if (!appArgs.isEmpty()) {
             for (String arg : appArgs.split("\\s+")) {
                 command.add(arg);
             }
-
         }
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.inheritIO();

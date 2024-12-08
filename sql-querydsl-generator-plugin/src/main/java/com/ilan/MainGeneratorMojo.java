@@ -7,7 +7,7 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 
 import java.io.File;
 
-@Mojo(name = "process", threadSafe = true, requiresDependencyResolution = ResolutionScope.COMPILE, defaultPhase = LifecyclePhase.GENERATE_SOURCES)
+@Mojo(name = "sql-querydsl", threadSafe = true, requiresDependencyResolution = ResolutionScope.COMPILE, defaultPhase = LifecyclePhase.GENERATE_SOURCES)
 public class MainGeneratorMojo extends AbstractQueryDslMojo {
 
     @Parameter(defaultValue = "${project.build.directory}/generated-sources/sql", required = true)

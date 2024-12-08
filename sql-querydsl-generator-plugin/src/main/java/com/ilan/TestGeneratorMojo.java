@@ -7,7 +7,7 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 
 import java.io.File;
 
-@Mojo(name = "process-test", threadSafe = true, requiresDependencyResolution = ResolutionScope.TEST, defaultPhase = LifecyclePhase.GENERATE_TEST_SOURCES)
+@Mojo(name = "sql-querydsl-test", threadSafe = true, requiresDependencyResolution = ResolutionScope.TEST, defaultPhase = LifecyclePhase.GENERATE_TEST_SOURCES)
 public class TestGeneratorMojo extends AbstractQueryDslMojo {
 
     @Parameter(defaultValue = "${project.build.directory}/generated-test-sources/sql-test", required = true)
