@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "BLOG_DETAILS", schema = "BLOG_SCHEMA")
+@Table(name = "${com.ilan.entity.blogTableName:BLOG_DETAILS}", schema = "BLOG_SCHEMA")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

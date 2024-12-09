@@ -77,8 +77,18 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>run</id>
                         <goals>
                             <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>${mainClass}</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
                         </goals>
                         <configuration>
                             <mainClass>${mainClass}</mainClass>
