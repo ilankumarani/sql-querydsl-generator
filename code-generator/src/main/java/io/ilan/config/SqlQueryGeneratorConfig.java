@@ -29,12 +29,15 @@ public class SqlQueryGeneratorConfig {
     @Value("${sql.queryDsl.package.directory:}")
     private String packageDirectory;
 
+
+
     @Bean
     public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource) {
         return args -> {
             java.sql.Connection conn = dataSource.getConnection();
             MetadataExporterConfigImpl metadataExporterConfig = getMetadataExporterConfig();
-            MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
+            //MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
+            CustomMetadataExporter exporter = new CustomMetadataExporter(metadataExporterConfig);
             exporter.export(conn.getMetaData());
         };
     }
