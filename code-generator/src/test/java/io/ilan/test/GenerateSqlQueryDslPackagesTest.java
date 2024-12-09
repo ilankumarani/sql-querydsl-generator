@@ -18,20 +18,9 @@ import org.springframework.test.context.ActiveProfiles;
 @DisplayName("Multiple packages-scan for entities")
 public class GenerateSqlQueryDslPackagesTest {
 
-    //private final BlogRepository blogRepository;
-
     @DisplayName("Generate SQL QueryDsl")
     @Test
     public void test() {
-        /*Blog saved = blogRepository.save(Blog.builder()
-                        .id(1L)
-                .category("Climate")
-                .content("SNOW")
-                .title("Too Much SNOW")
-                .build());
 
-        Optional<Blog> optionalFetch = blogRepository.findById(1L);
-        assertTrue(optionalFetch.isPresent());
-        assertEquals(saved, optionalFetch.get());*/
     }
 }

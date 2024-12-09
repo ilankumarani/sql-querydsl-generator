@@ -1,6 +1,5 @@
 package com.ilan;
 
-//import io.ilan.GenerateSqlDslApplication;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
@@ -72,8 +71,8 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         getLog().info("Statement 2");
         // Add the main class
         // Define the main class to run
-        /*String mainClass = GenerateSqlDslApplication.class.getCanonicalName();
-        command.add(mainClass);*/
+        String mainClass = io.ilan.GenerateSqlDslApplication.class.getCanonicalName();
+        command.add(mainClass);
         // Add application arguments
         if (!appArgs.isEmpty()) {
             for (String arg : appArgs.split("\\s+")) {
@@ -92,6 +91,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             getLog().info("*** SQL QueryDsl generate successfully ***");
         } catch (Exception e) {
             getLog().error("Exception executing Main method :: " + e.toString());
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

@@ -45,6 +45,7 @@
             <groupId>com.ilan</groupId>
             <artifactId>code-generator</artifactId>
             <version>${project.version}</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 
