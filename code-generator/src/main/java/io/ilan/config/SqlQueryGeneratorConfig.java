@@ -65,13 +65,15 @@ public class SqlQueryGeneratorConfig {
         String profiles[] = environment.getActiveProfiles();
         Arrays.stream(profiles)
                 .forEach(profile -> {
+                    Path path = null;
                     if (profile.equalsIgnoreCase("package") || profile.equalsIgnoreCase("packages")) {
-                        metadataExporterConfig.setTargetFolder(new File(getTargetPath().toUri()));
+                        path = getTargetPath();
+                        metadataExporterConfig.setTargetFolder(new File(path.toUri()));
                     } else {
-                        log.info("Target OutputDirectory :: {}", targetOutputDirectory);
-                        Path path = Paths.get(targetOutputDirectory);
-                        metadataExporterConfig.setTargetFolder(new File(path.toString()));
+                        path = Paths.get(targetOutputDirectory);
+                        metadataExporterConfig.setTargetFolder(new File(path.toUri()));
                     }
+                    log.info("Target OutputDirectory to be generated :: {}", path.toUri().toString());
                 });
         return metadataExporterConfig;
     }
