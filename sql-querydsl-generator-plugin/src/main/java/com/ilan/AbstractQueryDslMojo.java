@@ -9,13 +9,13 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.List;
 
 public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
 
     @Parameter
-    private String[] arguments;
+    private List<String> arguments;
     /**
      *
      */
@@ -50,48 +50,18 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
         if (outputDirectory == null) {
             outputDirectory = getDefaultOutputDirectory();
+            getLog().info("Output directory path :: " + outputDirectory.getPath().toString());
         }
 
-
-        /*// Define JVM arguments
-        String jvmArgs = "-Xmx512m -Dproperty-value";
-
-        getLog().info("Statement 1");
-        // Define application arguments
-        String appArgs = "arg1 arg2";
-        // Create the command list
-        List<String> command = new ArrayList<>();
-        command.add("java");
-        // Add JVM arguments
-        if (!jvmArgs.isEmpty()) {
-            for (String arg : jvmArgs.split("\\s+")) {
-                command.add(arg);
-            }
-        }
-        getLog().info("Statement 2");
-        // Add the main class
-        // Define the main class to run
-        String mainClass = io.ilan.GenerateSqlDslApplication.class.getCanonicalName();
-        command.add(mainClass);
-        // Add application arguments
-        if (!appArgs.isEmpty()) {
-            for (String arg : appArgs.split("\\s+")) {
-                command.add(arg);
-            }
-        }
-        getLog().info("Statement 3");
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.inheritIO();*/
 
         try {
-            Arrays.stream(arguments).forEach(argument->{
-                getLog().info(">>>"+argument.toString());
+            arguments.forEach(argument -> {
+                getLog().info("Program argument :: " + argument.toString());
             });
+            arguments.add("--target.outputDirectory=".concat(outputDirectory.getPath().toString()));
+            String args[] = arguments.stream().toArray(String[]::new);
+            GenerateSqlDslApplication.main(args);
 
-            GenerateSqlDslApplication.main(arguments);
-            /*Process process = processBuilder.start();
-            process.waitFor();
-            Integer exitCode = process.exitValue();*/
             getLog().info("*** SQL QueryDsl generate successfully ***");
         } catch (Exception e) {
             getLog().error("Exception executing Main method :: " + e.toString());
