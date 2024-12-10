@@ -77,8 +77,7 @@ public class SqlQueryGeneratorConfig {
     }
 
     /**
-     * Getting root directory of the Project
-     *
+     * Get target path generated-test-source, this method is just for test case
      * @return
      */
     public Path getTargetPath() {
@@ -90,13 +89,12 @@ public class SqlQueryGeneratorConfig {
             throw new RuntimeException(e);
         }
         Path absolutePath = resourcePath.toAbsolutePath();
-        String pathWithOutTarget = absolutePath.toString();
+        String targetPath = absolutePath.toString();
 
-        if (pathWithOutTarget.contains("target")) {
-            pathWithOutTarget = pathWithOutTarget.substring(0, pathWithOutTarget.indexOf("target") + 6);
+        if (targetPath.contains("target")) {
+            targetPath = targetPath.substring(0, targetPath.indexOf("target") + 6);
         }
-
-        Path srcMain = Paths.get(pathWithOutTarget.toString());
+        Path srcMain = Paths.get(targetPath.toString());
         return srcMain.resolve("generated-test-sources");
     }
 }
