@@ -1,6 +1,7 @@
 package com.ilan;
 
 
+import io.ilan.GenerateSqlDslApplication;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -8,8 +9,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
@@ -53,7 +53,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         }
 
 
-        // Define JVM arguments
+        /*// Define JVM arguments
         String jvmArgs = "-Xmx512m -Dproperty-value";
 
         getLog().info("Statement 1");
@@ -81,13 +81,17 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         }
         getLog().info("Statement 3");
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.inheritIO();
+        processBuilder.inheritIO();*/
 
         try {
-            //GenerateSqlDslApplication.main(arguments);
-            Process process = processBuilder.start();
+            Arrays.stream(arguments).forEach(argument->{
+                getLog().info(">>>"+argument.toString());
+            });
+
+            GenerateSqlDslApplication.main(arguments);
+            /*Process process = processBuilder.start();
             process.waitFor();
-            Integer exitCode = process.exitValue();
+            Integer exitCode = process.exitValue();*/
             getLog().info("*** SQL QueryDsl generate successfully ***");
         } catch (Exception e) {
             getLog().error("Exception executing Main method :: " + e.toString());

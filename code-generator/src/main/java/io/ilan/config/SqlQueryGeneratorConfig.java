@@ -1,9 +1,9 @@
 package io.ilan.config;
 
-import com.querydsl.sql.codegen.MetaDataExporter;
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+import io.ilan.GenerateSqlDslApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -12,15 +12,16 @@ import org.springframework.context.annotation.DependsOn;
 
 import javax.sql.DataSource;
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @DependsOn("dbConfig")
 @Configuration
-@Slf4j
 public class SqlQueryGeneratorConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(SqlQueryGeneratorConfig.class);
 
     @Value("${sql.queryDsl.generate.directory:}")
     private String generateRootDirectory;
@@ -62,10 +63,14 @@ public class SqlQueryGeneratorConfig {
      * Getting root directory of the Project
      * @return
      */
-    @SneakyThrows
-    public Path getSrcMainPath() {
+    public Path getSrcMainPath(){
         URL resourceUrl = this.getClass().getResource("");
-        Path resourcePath = Paths.get(resourceUrl.toURI());
+        Path resourcePath = null;
+        try {
+            resourcePath = Paths.get(resourceUrl.toURI());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         Path absolutePath = resourcePath.toAbsolutePath();
         String pathWithOutTarget = absolutePath.toString();
 
