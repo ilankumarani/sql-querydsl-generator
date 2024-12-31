@@ -18,18 +18,21 @@ import org.eclipse.aether.resolution.ArtifactRequest;
 import org.eclipse.aether.resolution.ArtifactResolutionException;
 import org.eclipse.aether.resolution.ArtifactResult;
 
+import javax.tools.JavaCompiler;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import static java.lang.String.format;
-import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
 public abstract class AbstractQueryDslMojo extends AbstractMojo {
-
-    private static final String SOURCE_CLASSIFIER = "sources";
 
     @Parameter
     private List<String> arguments;
@@ -94,7 +97,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             getLog().info("Output directory path :: " + outputDirectory.getPath().toString());
         }
 
-        project.getDependencies();
+        //processProjectArtifacts();
 
 
         try {
@@ -103,6 +106,18 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             });
             arguments.add("--target.outputDirectory=".concat(outputDirectory.getPath().toString()));
             String args[] = arguments.stream().toArray(String[]::new);
+
+            List<String> files = this.project.getCompileSourceRoots();
+            files.forEach(sourceRoot -> {
+                File sourceDirectory = new File(sourceRoot);
+
+                try {
+                    processSourceDirectory(sourceDirectory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
             GenerateSqlDslApplication.main(args);
 
             getLog().info("*** SQL QueryDsl generate successfully ***");
@@ -113,29 +128,69 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         }
     }
 
-    private void processSourceArtifacts(Consumer<Artifact> closure) {
+    private void processSourceDirectory(File sourceDir) throws IOException {
+        if (sourceDir.isDirectory()) {
+            File[] files = sourceDir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile() && file.getName().endsWith(".java")) {
+                        getLog().info("Found source file: " + file.getName()); // Further processing of the file
+                        compileAndAddToClasspath(file);
+                    }
+                }
+            }
+        }
+    }
 
+    private void compileAndAddToClasspath(File javaFile) throws IOException {
+
+        try (FileReader fileReader = new FileReader(javaFile)) {
+            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+            if (compiler == null) {
+                getLog().error("No Java compiler found. Make sure you are using JDK, not a JRE");
+                return;
+            }
+
+            StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
+            Iterable<? extends javax.tools.JavaFileObject> compileUtils = fileManager.getJavaFileObjects(javaFile);
+            Boolean compilationSuccess = compiler.getTask(null, fileManager, null, null, null, compileUtils).call();
+            fileManager.close();
+
+            if (compilationSuccess){
+                getLog().info("Compilation successful for Java file" + javaFile.getName());
+
+                String className = javaFile.getName().replace(".java", "");
+                File parentDir = javaFile.getParentFile();
+                URLClassLoader classLoader = new URLClassLoader(new URL[]{parentDir.toURI().toURL()}, Thread.currentThread().getContextClassLoader());
+
+                Thread.currentThread().setContextClassLoader(classLoader);
+
+                getLog().info("Class Loaded to classPath: "+ className);
+            }
+            else{
+                getLog().error("Compilation failed for Java file" + javaFile.getName());
+            }
+            /*int compilationResult = compiler.run(null, null, null, javaFile.getPath());
+            if (compilationResult == 0) {
+
+            }else{
+                getLog().error("Compilation failed for Java file" + javaFile.getName());
+            }*/
+        }
+    }
+
+    /*private void processProjectArtifacts() {
         final java.util.Set<Artifact> depArtifacts = this.project.getDependencyArtifacts();
         if (depArtifacts != null) {
 
             for (Artifact dep : depArtifacts) {
 
-                if (dep.hasClassifier() && SOURCE_CLASSIFIER.equals(dep.getClassifier())) {
+                try {
+                    resolveSourceArtifact(dep);
+                } catch (ArtifactResolutionException ex) {
+                    getLog().warn(format("Hey Ilan artifact [%s] not found!", dep.toString()));
+                    getLog().debug(ex);
 
-                    if (appendSourceArtifacts) {
-                        closure.accept(dep);
-                    }
-                    //getLog().debug("Append source artifact to classpath: " + dep.getGroupId() + ":" + dep.getArtifactId());
-                    //this.sourceArtifacts.add(dep.getFile());
-                } else {
-                    try {
-                        resolveSourceArtifact(dep).ifPresent(closure::accept);
-
-                    } catch (ArtifactResolutionException ex) {
-                        getLog().warn(format(" sources for artifact [%s] not found!", dep.toString()));
-                        getLog().debug(ex);
-
-                    }
                 }
             }
         }
@@ -143,16 +198,12 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
     private Optional<Artifact> resolveSourceArtifact(Artifact dep) throws ArtifactResolutionException {
 
-        if (!matchArtifact(dep)) {
-            return empty();
-        }
-
         final ArtifactTypeRegistry typeReg = repoSession.getArtifactTypeRegistry();
 
         final DefaultArtifact artifact =
                 new DefaultArtifact(dep.getGroupId(),
                         dep.getArtifactId(),
-                        SOURCE_CLASSIFIER,
+                        null,
                         null,
                         dep.getVersion(),
                         typeReg.get(dep.getType()));
@@ -167,7 +218,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
         return ofNullable(RepositoryUtils.toArtifact(result.getArtifact()));
     }
-
+*/
 
     protected abstract File getOutputClassDirectory();
 

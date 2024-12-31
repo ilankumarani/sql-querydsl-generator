@@ -27,6 +27,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <maven-install-plugin.phase>clean</maven-install-plugin.phase>
         <naming-strategy-resolver.version>0.1.0</naming-strategy-resolver.version>
         <mapstruct-processor>1.6.2</mapstruct-processor>
         <openfeign.querydsl.version>6.9</openfeign.querydsl.version>
@@ -47,6 +48,29 @@
 
     <build>
         <plugins>
+
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>umple</id>
+                        <phase>${maven-install-plugin.phase}</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>com.ilan</groupId>
+                            <artifactId>sql-querydsl-generator</artifactId>
+                            <version>1.29.0.4181</version>
+                            <packaging>jar</packaging>
+                            <file>${project.basedir}/code-generator/lib/umple.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

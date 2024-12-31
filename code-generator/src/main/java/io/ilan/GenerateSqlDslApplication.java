@@ -1,6 +1,5 @@
 package io.ilan;
 
-import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
