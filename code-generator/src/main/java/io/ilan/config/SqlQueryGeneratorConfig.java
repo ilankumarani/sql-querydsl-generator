@@ -1,5 +1,6 @@
 package io.ilan.config;
 
+import com.querydsl.sql.codegen.MetaDataExporter;
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
 import io.ilan.GenerateSqlDslApplication;
 import org.slf4j.Logger;
@@ -40,11 +41,8 @@ public class SqlQueryGeneratorConfig {
         return args -> {
             java.sql.Connection conn = dataSource.getConnection();
             MetadataExporterConfigImpl metadataExporterConfig = getMetadataExporterConfig();
-            /*
-                Disabled the actual MetaDataExporter because it creates the sqlQuery for Informatic_schema on h2-database
-             */
-            // MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
-            CustomMetadataExporter exporter = new CustomMetadataExporter(metadataExporterConfig);
+
+            MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
             exporter.export(conn.getMetaData());
         };
     }
