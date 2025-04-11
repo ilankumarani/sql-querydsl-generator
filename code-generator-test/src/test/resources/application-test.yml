@@ -8,9 +8,8 @@ jpa:
   entities:
     base-package: com.ilan.entity
 
-sql:
-  queryDsl:
-    output:
-      directory: generated-test-sources
-    package:
-      directory: com.querydsl.sql
+query:
+  dsl:
+    sql:
+      package:
+        directory: beta.querydsl.sql

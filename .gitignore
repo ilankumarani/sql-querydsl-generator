@@ -34,3 +34,5 @@ build/
 
 
 ***/ilam/query/dsl
+***/alpha/querydsl/sql
+***/beta/querydsl/sql

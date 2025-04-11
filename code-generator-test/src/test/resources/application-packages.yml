@@ -10,9 +10,9 @@ jpa:
   repositories:
     base-package: com.ilan.repository, org.ilan.repository
 
-sql:
-  queryDsl:
-    output:
-      directory: generated-test-sources
-    package:
-      directory: com.querydsl.sql
+
+query:
+  dsl:
+    sql:
+      package:
+        directory: alpha.querydsl.sql
