@@ -49,30 +49,6 @@
 
     <build>
         <plugins>
-
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>${maven-install-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>umple</id>
-                        <phase>${maven-install-plugin.phase}</phase>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <configuration>
-                            <groupId>com.ilan</groupId>
-                            <artifactId>sql-querydsl-generator</artifactId>
-                            <version>1.29.0.4181</version>
-                            <packaging>jar</packaging>
-                            <file>${project.basedir}/code-generator/lib/umple.jar</file>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -85,6 +61,20 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -137,6 +127,25 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>ossrh</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <licenses>
@@ -161,9 +170,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ilankumarani/naming-strategy-resolver.git</connection>
-        <developerConnection>scm:git:git@github.com:ilankumarani/naming-strategy-resolver.git</developerConnection>
-        <url>https://github.com/ilankumarani/naming-strategy-resolver</url>
+        <connection>scm:git:git://github.com/ilankumarani/sql-querydsl-generator.git</connection>
+        <developerConnection>scm:git:git@github.com:ilankumarani/sql-querydsl-generator.git</developerConnection>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator</url>
         <tag>main</tag>
     </scm>
 
@@ -177,5 +186,6 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
 
 </project>
