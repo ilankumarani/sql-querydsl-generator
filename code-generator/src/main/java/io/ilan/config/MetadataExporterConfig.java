@@ -6,11 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -62,7 +60,6 @@ public class MetadataExporterConfig {
      * @return
      */
     public Path getTargetPath() {
-
         Path resourcePath = null;
         try {
             URL resourceUrl = resourceLoader.getResource("").getURL();
