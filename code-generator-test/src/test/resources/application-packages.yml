@@ -12,7 +12,7 @@ jpa:
 
 sql:
   queryDsl:
-    generate:
+    output:
       directory: generated-test-sources
     package:
       directory: com.querydsl.sql
