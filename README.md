@@ -1,4 +1,4 @@
-#### Output directory code has to generated
+### Output directory code has to generated
 
 > **_NOTE:_**  Default directory is **target** folder
 
@@ -11,7 +11,7 @@ query:
 ```
 
 
-#### Package directory code has to generated
+### Package directory code has to generated
 
 > **_NOTE:_**  Default package is **zolo.query.dsl**
 ```yaml
