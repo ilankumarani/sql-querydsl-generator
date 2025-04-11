@@ -2,7 +2,6 @@ package io.ilan.config;
 
 import com.querydsl.sql.codegen.MetaDataExporter;
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
-import io.ilan.GenerateSqlDslApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
@@ -21,17 +19,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-@DependsOn("dbConfig")
 @Configuration
 public class SqlQueryGeneratorConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SqlQueryGeneratorConfig.class);
 
-    @Value("${target.outputDirectory:}")
-    private String targetOutputDirectory;
+    @Value("${query.dsl.sql.output.directory:#{null}")
+    private String outputDirectory;
 
-    @Value("${target.package.directory:query.dsl}")
-    private String targetPackageDirectory;
+    @Value("${query.dsl.sql.package.directory:query.dsl}")
+    private String packageDirectory;
 
     @Autowired
     private Environment environment;
@@ -42,7 +39,7 @@ public class SqlQueryGeneratorConfig {
             java.sql.Connection conn = dataSource.getConnection();
             MetadataExporterConfigImpl metadataExporterConfig = getMetadataExporterConfig();
 
-            MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
+            CustomMetadataExporter exporter = new CustomMetadataExporter(metadataExporterConfig);
             exporter.export(conn.getMetaData());
         };
     }
@@ -54,7 +51,7 @@ public class SqlQueryGeneratorConfig {
      */
     private MetadataExporterConfigImpl getMetadataExporterConfig() {
         MetadataExporterConfigImpl metadataExporterConfig = new MetadataExporterConfigImpl();
-        metadataExporterConfig.setPackageName(targetPackageDirectory);
+        metadataExporterConfig.setPackageName(packageDirectory);
         metadataExporterConfig.setNamePrefix("S");
         metadataExporterConfig.setExportAll(Boolean.FALSE);
         metadataExporterConfig.setExportTables(Boolean.TRUE);
@@ -68,7 +65,7 @@ public class SqlQueryGeneratorConfig {
                         path = getTargetPath();
                         metadataExporterConfig.setTargetFolder(new File(path.toUri()));
                     } else {
-                        path = Paths.get(targetOutputDirectory);
+                        path = Paths.get(outputDirectory);
                         metadataExporterConfig.setTargetFolder(new File(path.toUri()));
                     }
                     log.info("Target OutputDirectory to be generated :: {}", path.toUri().toString());
