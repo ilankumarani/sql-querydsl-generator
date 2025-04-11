@@ -21,7 +21,7 @@ public class MetadataExporterConfig {
     @Value("${query.dsl.sql.output.directory:#{null}}")
     private String targetOutputDirectory;
 
-    @Value("${query.dsl.sql.package.directory:ilan.query.dsl}")
+    @Value("${query.dsl.sql.package.directory:ilam.query.dsl}")
     private String packageDirectory;
 
 
