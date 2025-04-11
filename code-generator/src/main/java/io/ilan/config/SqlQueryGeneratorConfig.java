@@ -83,6 +83,6 @@ public class SqlQueryGeneratorConfig {
             targetPath = targetPath.substring(0, targetPath.indexOf("target") + 6);
         }
         Path srcMain = Paths.get(targetPath.toString());
-        return srcMain.resolve("generated-test-sources");
+        return srcMain.resolve("generated-sources");
     }
 }
