@@ -1,4 +1,4 @@
-package io.ilan.config;
+package com.ilan.config;
 
 
 import org.slf4j.Logger;

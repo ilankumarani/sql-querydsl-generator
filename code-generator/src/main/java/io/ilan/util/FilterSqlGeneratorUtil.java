@@ -1,4 +1,4 @@
-package io.ilan.config;
+package io.ilan.util;
 
 import jakarta.annotation.Nullable;
 

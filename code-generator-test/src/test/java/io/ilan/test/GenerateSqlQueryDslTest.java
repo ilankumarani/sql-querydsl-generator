@@ -1,7 +1,7 @@
 package io.ilan.test;
 
-import io.ilan.GenerateSqlDslApplication;
-import io.ilan.config.DbConfig;
+import com.ilan.GenerateSqlDslApplication;
+import com.ilan.config.DbConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

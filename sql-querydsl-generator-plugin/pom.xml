@@ -44,7 +44,7 @@
 
         <dependency>
             <groupId>com.ilan</groupId>
-            <artifactId>code-generator</artifactId>
+            <artifactId>code-generator-test</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

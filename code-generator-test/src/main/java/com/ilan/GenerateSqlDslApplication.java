@@ -1,4 +1,4 @@
-package io.ilan;
+package com.ilan;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +15,5 @@ public class GenerateSqlDslApplication {
         SpringApplication app = new SpringApplication(GenerateSqlDslApplication.class);
         app.setBannerMode(Banner.Mode.LOG);
         app.run(args);
-        log.info("########## COMPLETED ##########");
     }
 }

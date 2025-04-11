@@ -1,4 +1,4 @@
-package io.ilan.config;
+package io.ilan.util;
 
 import com.querydsl.codegen.BeanSerializer;
 import com.querydsl.codegen.CodegenModule;

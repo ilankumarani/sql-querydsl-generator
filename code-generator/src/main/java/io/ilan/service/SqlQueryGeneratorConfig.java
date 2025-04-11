@@ -1,6 +1,7 @@
-package io.ilan.config;
+package io.ilan.service;
 
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
+import io.ilan.util.CustomMetadataExporter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -55,7 +56,7 @@ public class SqlQueryGeneratorConfig {
         if (Objects.nonNull(targetOutputDirectory)) {
             path = Paths.get(targetOutputDirectory);
         } else {
-            path = getTargetPath();
+            path = Paths.get(System.getProperty("user.dir"));//getTargetPath();
         }
         metadataExporterConfig.setTargetFolder(new File(path.toUri()));
         log.info("Target OutputDirectory to be generated :: {}", path.toUri().toString());

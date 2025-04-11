@@ -18,6 +18,7 @@
 
     <modules>
         <module>code-generator</module>
+        <module>code-generator-test</module>
         <module>sql-querydsl-generator-plugin</module>
     </modules>
 
