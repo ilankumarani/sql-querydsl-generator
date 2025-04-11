@@ -33,6 +33,6 @@ build/
 .vscode/
 
 
-***/ilam/query/dsl
-***/alpha/querydsl/sql
-***/beta/querydsl/sql
+!***/ilam/query/dsl
+!***/alpha/querydsl/sql
+!***/beta/querydsl/sql

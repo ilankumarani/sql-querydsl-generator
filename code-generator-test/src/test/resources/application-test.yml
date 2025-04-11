@@ -12,4 +12,6 @@ query:
   dsl:
     sql:
       package:
-        directory: beta.querydsl.sql
+        directory: alpha.querydsl.sql
+      output:
+        directory:

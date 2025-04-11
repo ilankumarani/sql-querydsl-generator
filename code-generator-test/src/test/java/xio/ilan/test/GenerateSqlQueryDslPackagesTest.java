@@ -1,4 +1,5 @@
-package io.ilan.test;
+package xio.ilan.test;
+
 
 import com.ilan.GenerateSqlDslApplication;
 import com.ilan.config.DbConfig;
@@ -8,12 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE, classes = {GenerateSqlDslApplication.class})
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
+        classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
-@ActiveProfiles("test")
-@DisplayName("Single package-scan for entities")
-public class GenerateSqlQueryDslTest {
-
+@ActiveProfiles("packages")
+@DisplayName("Multiple packages-scan for entities")
+public class GenerateSqlQueryDslPackagesTest {
 
     @DisplayName("Generate SQL QueryDsl")
     @Test

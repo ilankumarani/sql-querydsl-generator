@@ -15,4 +15,4 @@ query:
   dsl:
     sql:
       package:
-        directory: alpha.querydsl.sql
+        directory: beta.querydsl.sql

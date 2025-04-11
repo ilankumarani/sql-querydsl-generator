@@ -3,8 +3,11 @@ package io.ilan.config;
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -21,9 +24,11 @@ public class MetadataExporterConfig {
     @Value("${query.dsl.sql.output.directory:#{null}}")
     private String targetOutputDirectory;
 
-    @Value("${query.dsl.sql.package.directory:ilam.query.dsl}")
+    @Value("${query.dsl.sql.package.directory:zolo.query.dsl}")
     private String packageDirectory;
 
+    @Autowired
+    ResourceLoader resourceLoader;
 
     /**
      * MetaData builder for Sql query
@@ -38,11 +43,12 @@ public class MetadataExporterConfig {
         metadataExporterConfig.setExportTables(Boolean.TRUE);
         metadataExporterConfig.setSchemaToPackage(Boolean.TRUE);
 
+
         Path path = null;
         if (Objects.nonNull(targetOutputDirectory)) {
             path = Paths.get(targetOutputDirectory);
         } else {
-            path = Paths.get(System.getProperty("user.dir"));//getTargetPath();
+            path = getTargetPath();
         }
         metadataExporterConfig.setTargetFolder(new File(path.toUri()));
         log.info("Target OutputDirectory to be generated :: {}", path.toUri().toString());
@@ -56,12 +62,13 @@ public class MetadataExporterConfig {
      * @return
      */
     public Path getTargetPath() {
-        URL resourceUrl = this.getClass().getResource("");
+
         Path resourcePath = null;
         try {
+            URL resourceUrl = resourceLoader.getResource("").getURL();
             resourcePath = Paths.get(resourceUrl.toURI());
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException("Hey Ilan getting error while getting resource URL");
         }
         Path absolutePath = resourcePath.toAbsolutePath();
         String targetPath = absolutePath.toString();
