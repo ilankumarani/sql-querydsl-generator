@@ -3,4 +3,5 @@ query:
     sql:
       package:
         directory: ownerSchema.querydsl.sql
-      schemas: OWNER_SCHEMA
+      schemas:
+        - OWNER_SCHEMA
