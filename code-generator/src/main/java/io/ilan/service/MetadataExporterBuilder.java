@@ -1,7 +1,7 @@
-package io.ilan.config;
+package io.ilan.service;
 
+import io.ilan.config.MetaDataConfigProperties;
 import io.ilan.customExport.CustomMetadataExporterConfig;
-import io.ilan.service.TargetPathBuilder;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
