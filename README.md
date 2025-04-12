@@ -57,7 +57,7 @@ public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporter
 ```
 
 
-### To my Knowledge to re-gain
+### self index to my Knowledge to re-gain
 1) CustomMetadataExporter to be copied from MetadataExporter
 
 2) Import Jakarta validation library
