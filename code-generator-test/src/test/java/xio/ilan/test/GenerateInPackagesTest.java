@@ -13,7 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
         classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("packages")
-@DisplayName("Multiple packages-scan for entities")
+@DisplayName("Generate in package beta.querydsl.sql")
 public class GenerateInPackagesTest {
 
     @DisplayName("Generate SQL QueryDsl")
