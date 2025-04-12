@@ -61,7 +61,7 @@ import java.util.logging.Logger;
 
 public class CustomMetadataExporter {
 
-    private static final Logger logger = Logger.getLogger(MetaDataExporter.class.getName());
+    private static final Logger logger = Logger.getLogger(CustomMetadataExporter.class.getName());
 
     private final SQLTemplatesRegistry sqlTemplatesRegistry = new SQLTemplatesRegistry();
 
