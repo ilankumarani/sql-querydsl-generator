@@ -58,16 +58,19 @@ public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporter
 
 
 
-### self index to my Knowledge to re-gain
+___
+
+## self index to my Knowledge to re-gain
 <details>
   <summary>Click me</summary>
-1) CustomMetadataExporter to be copied from MetadataExporter
 
-2) Import Jakarta validation library
+#### 1. CustomMetadataExporter to be copied from MetadataExporter
+
+#### 2. Import Jakarta validation library
 ```java
    import jakarta.annotation.Nullable;
 ```
-3) Constructor changes in CustomMetadataExporter
+#### 3. Constructor changes in CustomMetadataExporter
 ```java
 private final CustomMetadataExporterConfig config;
 
@@ -75,7 +78,7 @@ public CustomMetadataExporter(CustomMetadataExporterConfig config) {
     this.config = config;
 }
 ```
-4) Changes in below method
+#### 4. Changes in below method
 ```java
 private void handleTable(DatabaseMetaData md, ResultSet tables) throws SQLException {
     var catalog = tables.getString("TABLE_CAT");
