@@ -24,7 +24,6 @@ public final class FilterSqlGeneratorUtil {
             defaultValue = tableNames.contains(tableName.toLowerCase());
         }
 
-        System.out.println(defaultValue);
         return defaultValue;
     }
 
