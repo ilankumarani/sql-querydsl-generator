@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.ilan</groupId>
+        <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -44,7 +44,7 @@
 
 
         <dependency>
-            <groupId>com.ilan</groupId>
+            <groupId>io.github.ilankumarani</groupId>
             <artifactId>code-generator-test</artifactId>
             <version>${project.version}</version>
         </dependency>
