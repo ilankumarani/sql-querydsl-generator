@@ -1,0 +1,8 @@
+query:
+  dsl:
+    sql:
+      package:
+        directory: tables.querydsl.sql
+      tables:
+        - Domains
+        - OWNER_DETAILS

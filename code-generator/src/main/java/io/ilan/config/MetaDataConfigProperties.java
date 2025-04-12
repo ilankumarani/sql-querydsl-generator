@@ -20,5 +20,6 @@ public class MetaDataConfigProperties {
     private String packageDirectory;
 
     private List<String> schemas;
+
     private List<String> tables;
 }

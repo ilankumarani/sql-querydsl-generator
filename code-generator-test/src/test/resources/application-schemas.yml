@@ -1,0 +1,8 @@
+query:
+  dsl:
+    sql:
+      package:
+        directory: schemas.querydsl.sql
+      schemas:
+        - OWNER_SCHEMA
+        - BLOG_SCHEMA

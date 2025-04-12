@@ -20,7 +20,7 @@ public class MetadataExporterBuilder {
 
     private final TargetPathBuilder targetPathBuilder;
 
-    private final  MetaDataConfigProperties metaDataConfigProperties;
+    private final MetaDataConfigProperties metaDataConfigProperties;
 
     /**
      * MetaData builder for Sql query
@@ -35,23 +35,35 @@ public class MetadataExporterBuilder {
         metadataExporterConfig.setExportTables(Boolean.TRUE);
         metadataExporterConfig.setSchemaToPackage(Boolean.TRUE);
 
+        setSchemasIncludes(metadataExporterConfig);
+        setTablesIncludes(metadataExporterConfig);
+
+        Path path = getGenratedPath();
+        log.debug("Target OutputDirectory to be generated :: {}", path.toUri());
+        metadataExporterConfig.setTargetFolder(new File(path.toUri()));
+        return metadataExporterConfig;
+    }
+
+    private void setSchemasIncludes(CustomMetadataExporterConfig metadataExporterConfig) {
         if (Objects.nonNull(metaDataConfigProperties.getSchemas())) {
             metadataExporterConfig.setSchemasIncluded(metaDataConfigProperties.getSchemas());
         }
+    }
 
+    private void setTablesIncludes(CustomMetadataExporterConfig metadataExporterConfig) {
         if (Objects.nonNull(metaDataConfigProperties.getTables())) {
             metadataExporterConfig.setTablesIncluded(metaDataConfigProperties.getTables());
         }
+    }
 
+    private Path getGenratedPath() {
         Path path = null;
         if (Objects.nonNull(metaDataConfigProperties.getTargetOutputDirectory())) {
             path = Paths.get(metaDataConfigProperties.getTargetOutputDirectory());
         } else {
             path = targetPathBuilder.getTargetPath();
         }
-        metadataExporterConfig.setTargetFolder(new File(path.toUri()));
-        return metadataExporterConfig;
+        return path;
     }
-
 
 }

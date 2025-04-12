@@ -22,3 +22,27 @@ query:
         directory: alpha.querydsl.sql
 ```
 
+### Schema to be generated
+
+> **_NOTE:_**  Default will be generated to all the **schemas**
+```yaml
+query:
+  dsl:
+    sql:
+      schemas:
+        - OWNER_SCHEMA
+        - BLOG_SCHEMA
+```
+
+### Tables to be generated
+
+> **_NOTE:_**  Default will be generated to all the **Tables**
+```yaml
+query:
+  dsl:
+    sql:
+      tables:
+        - Domains
+        - OWNER_DETAILS
+```
+

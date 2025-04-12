@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -25,6 +26,8 @@ public class SqlExporterService {
         CustomMetadataExporterConfig var = metadataExporterConfig.getMetadataExporterConfig();
         CustomMetadataExporter exporter = new CustomMetadataExporter(var);
         exporter.export(connection.getMetaData());
-        log.info("########### GENERATION COMPLETED on Folder {} ###########", var.getTargetFolder().getPath() + pathSplitter + String.join(pathSplitter, var.getPackageName().split("\\.")));
+        log.info("########### GENERATION COMPLETED ###########");
+        String path = var.getTargetFolder().getPath() + pathSplitter + String.join(pathSplitter, var.getPackageName().split("\\."));
+        log.info("Target OutputDirectory to be generated :: {}", Paths.get(path).toUri() );
     }
 }
