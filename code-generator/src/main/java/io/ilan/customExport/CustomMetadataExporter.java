@@ -466,8 +466,8 @@ public class CustomMetadataExporter {
         var schemaName = normalize(tables.getString("TABLE_SCHEM"));
         var tableName = normalize(tables.getString("TABLE_NAME"));
 
-        if (FilterSqlGeneratorUtil.codeGenerateFor(FilterSqlGeneratorUtil.patternAsList(config.getSchemasIncluded()),
-                FilterSqlGeneratorUtil.patternAsList(config.getTablesIncluded()), schemaName, tableName)) {
+        if (FilterSqlGeneratorUtil.codeGenerateFor(FilterSqlGeneratorUtil.valuesToLowerCase(config.getSchemasIncluded()),
+                FilterSqlGeneratorUtil.valuesToLowerCase(config.getTablesIncluded()), schemaName, tableName)) {
             var normalizedSchemaName = namingStrategy.normalizeSchemaName(schemaName);
             var normalizedTableName = namingStrategy.normalizeTableName(tableName);
 

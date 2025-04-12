@@ -1,8 +1,5 @@
 package io.ilan.util;
 
-import jakarta.annotation.Nullable;
-
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +32,7 @@ public final class FilterSqlGeneratorUtil {
         return defaultValue;
     }
 
-    public static List<String> patternAsList(List<String> input) {
+    public static List<String> valuesToLowerCase(List<String> input) {
         if (Objects.nonNull(input) && !input.isEmpty()) {
             return input.stream()
                     .map(String::trim)
