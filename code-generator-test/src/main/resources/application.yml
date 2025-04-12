@@ -56,3 +56,6 @@ spring:
 
 
 
+jpa:
+    entities:
+        base-package: com.ilan.entity

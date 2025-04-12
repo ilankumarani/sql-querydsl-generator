@@ -55,3 +55,34 @@ public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporter
         };
 }
 ```
+
+
+### To my Knowledge to re-gain
+1) CustomMetadataExporter to be copied from MetadataExporter
+
+2) Constructor changes in CustomMetadataExporter
+```java
+private final CustomMetadataExporterConfig config;
+
+public CustomMetadataExporter(CustomMetadataExporterConfig config) {
+    this.config = config;
+}
+```
+3) Changes in below method
+```java
+private void handleTable(DatabaseMetaData md, ResultSet tables) throws SQLException {
+    var catalog = tables.getString("TABLE_CAT");
+    var schema = tables.getString("TABLE_SCHEM");
+    var schemaName = normalize(tables.getString("TABLE_SCHEM"));
+    var tableName = normalize(tables.getString("TABLE_NAME"));
+
+    if (FilterSqlGeneratorUtil.codeGenerateFor(FilterSqlGeneratorUtil.valuesToLowerCase(config.getSchemasIncluded()),
+            FilterSqlGeneratorUtil.valuesToLowerCase(config.getTablesIncluded()), schemaName, tableName)) {
+                /*
+                        existing logic of this method to be copied over here
+                 */
+    }
+    
+            
+}
+```
