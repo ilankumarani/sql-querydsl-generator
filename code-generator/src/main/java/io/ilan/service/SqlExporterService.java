@@ -26,6 +26,6 @@ public class SqlExporterService {
         exporter.export(connection.getMetaData());
         log.info("########### GENERATION COMPLETED ###########");
         String path = var.getTargetFolder().getPath() + pathSplitter + String.join(pathSplitter, var.getPackageName().split("\\."));
-        log.info("Target OutputDirectory to be generated :: {}", Paths.get(path).toUri() );
+        log.info("Generated in directory :: {}", Paths.get(path).toUri() );
     }
 }
