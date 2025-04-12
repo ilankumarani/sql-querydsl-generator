@@ -1,0 +1,7 @@
+query:
+  dsl:
+    sql:
+      output:
+        directory: ALPHA
+
+

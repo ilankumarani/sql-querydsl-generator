@@ -8,11 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE, classes = {GenerateSqlDslApplication.class})
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
+        classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
-@ActiveProfiles("test")
+@ActiveProfiles("schema")
 @DisplayName("Single package-scan for entities")
-public class GenerateSqlQueryDslTest {
+public class GenerateForSchemaTest {
 
 
     @DisplayName("Generate SQL QueryDsl")

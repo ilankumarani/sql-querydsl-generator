@@ -1,22 +1,5 @@
-spring:
-  jpa:
-    defer-datasource-initialization: false
-    hibernate:
-        ddl-auto: create-drop
-
-jpa:
-  entities:
-    base-package: com.ilan.entity, org.ilan.entity
-  repositories:
-    base-package: com.ilan.repository, org.ilan.repository
-
-
 query:
   dsl:
     sql:
       package:
         directory: beta.querydsl.sql
-      schemas:
-        - OWNER_SCHEMA
-      tables:
-        - OWNER_DETAILS

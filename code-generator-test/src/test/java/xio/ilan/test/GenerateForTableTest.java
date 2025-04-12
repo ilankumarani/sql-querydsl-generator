@@ -1,6 +1,5 @@
 package xio.ilan.test;
 
-
 import com.ilan.GenerateSqlDslApplication;
 import com.ilan.config.DbConfig;
 import org.junit.jupiter.api.DisplayName;
@@ -12,9 +11,10 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
-@ActiveProfiles("packages")
-@DisplayName("Multiple packages-scan for entities")
-public class GenerateSqlQueryDslPackagesTest {
+@ActiveProfiles("table")
+@DisplayName("Single package-scan for entities")
+public class GenerateForTableTest {
+
 
     @DisplayName("Generate SQL QueryDsl")
     @Test

@@ -58,3 +58,8 @@ spring:
 
 
 
+jpa:
+    entities:
+        base-package: com.ilan.entity, org.ilan.entity
+    repositories:
+        base-package: com.ilan.repository, org.ilan.repository

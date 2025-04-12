@@ -1,0 +1,7 @@
+query:
+  dsl:
+    sql:
+      package:
+        directory: domains.querydsl.sql
+      tables:
+        - Domains

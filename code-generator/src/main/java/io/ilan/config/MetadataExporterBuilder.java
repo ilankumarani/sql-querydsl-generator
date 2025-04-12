@@ -50,8 +50,6 @@ public class MetadataExporterBuilder {
             path = targetPathBuilder.getTargetPath();
         }
         metadataExporterConfig.setTargetFolder(new File(path.toUri()));
-        log.info("Target OutputDirectory to be generated :: {}", path.toUri().toString());
-
         return metadataExporterConfig;
     }
 
