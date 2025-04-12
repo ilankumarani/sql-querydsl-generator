@@ -22,7 +22,7 @@ query:
         directory: alpha.querydsl.sql
 ```
 
-### Schema to be generated
+### Schemas to be generated
 
 > **_NOTE:_**  Default will be generated to all the **schemas**
 ```yaml
