@@ -57,7 +57,10 @@ public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporter
 ```
 
 
+
 ### self index to my Knowledge to re-gain
+<details>
+  <summary>Click me</summary>
 1) CustomMetadataExporter to be copied from MetadataExporter
 
 2) Import Jakarta validation library
@@ -88,3 +91,4 @@ private void handleTable(DatabaseMetaData md, ResultSet tables) throws SQLExcept
     }
 }
 ```
+</details>
