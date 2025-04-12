@@ -22,8 +22,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.List;
 
-import static java.lang.String.format;
-
 public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
     @Parameter
