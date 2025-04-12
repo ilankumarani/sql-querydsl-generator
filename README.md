@@ -60,7 +60,7 @@ public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporter
 
 ___
 
-## self index to my Knowledge to re-gain
+## Self index to re-gain my Knowledge
 <details>
   <summary>Click me</summary>
 
