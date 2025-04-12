@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
         classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("table")
-@DisplayName("Single package-scan for entities")
+@DisplayName("Generate for Domains table")
 public class GenerateForTableTest {
 
 

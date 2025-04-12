@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
         classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("schema")
-@DisplayName("Single package-scan for entities")
+@DisplayName("Generate for OWNER_SCHEMA")
 public class GenerateForSchemaTest {
 
 

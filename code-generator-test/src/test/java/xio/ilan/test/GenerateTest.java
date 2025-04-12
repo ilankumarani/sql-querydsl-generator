@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {GenerateSqlDslApplication.class})
 @Import({DbConfig.class})
-@DisplayName("Multiple packages-scan for entities")
+@DisplayName("Generate for all Schema")
 public class GenerateTest {
 
     @DisplayName("Generate SQL QueryDsl")
