@@ -23,7 +23,6 @@ import com.querydsl.sql.SchemaAndTable;
 import com.querydsl.sql.codegen.DefaultNamingStrategy;
 import com.querydsl.sql.codegen.KeyDataFactory;
 import com.querydsl.sql.codegen.MetaDataExporter;
-import com.querydsl.sql.codegen.MetadataExporterConfig;
 import com.querydsl.sql.codegen.NamingStrategy;
 import com.querydsl.sql.codegen.SQLCodegenModule;
 import com.querydsl.sql.codegen.support.CustomType;

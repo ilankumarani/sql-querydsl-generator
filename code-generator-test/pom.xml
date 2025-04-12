@@ -30,11 +30,11 @@
             </exclusions>-->
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>io.github.ilankumarani</groupId>
             <artifactId>naming-strategy-resolver</artifactId>
             <version>${naming-strategy-resolver.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.h2database</groupId>

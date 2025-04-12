@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "${com.ilan.entity.blogTableName:BLOG_DETAILS}", schema = "BLOG_SCHEMA")
+@Table(name = "BLOG_DETAILS", schema = "BLOG_SCHEMA")
 public class Blog {
 
     @Id

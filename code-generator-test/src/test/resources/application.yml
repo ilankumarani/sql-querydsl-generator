@@ -44,11 +44,10 @@ spring:
                 show-sql: true # To print Sql query in Log
                 hbm2ddl:
                     auto: create-drop
-                physical_naming_strategy: org.ilan.namingStrategy.CustomPhysicalNamingStrategy
+#                physical_naming_strategy: org.ilan.namingStrategy.CustomPhysicalNamingStrategy
         hibernate:
             ddl-auto: create-drop
-            naming:
-                physical-strategy: org.ilan.namingStrategy.CustomPhysicalNamingStrategy
+#            naming.physical-strategy: org.ilan.namingStrategy.CustomPhysicalNamingStrategy
 
     h2:
         console:
