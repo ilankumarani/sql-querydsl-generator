@@ -13,5 +13,4 @@ public class CustomMetadataExporterConfigImpl extends MetadataExporterConfigImpl
     private List<String> catalogsIncluded;
     private List<String> tablesIncluded;
 
-
 }
