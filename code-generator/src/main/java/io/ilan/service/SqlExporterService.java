@@ -16,8 +16,7 @@ import java.sql.SQLException;
 public class SqlExporterService {
 
     private static final Logger log = LoggerFactory.getLogger(SqlExporterService.class);
-    public static final String pathSpliter = "\\";
-
+    public static final String pathSplitter = "\\";
     @Autowired
     private MetadataExporterBuilder metadataExporterConfig;
 
@@ -25,6 +24,6 @@ public class SqlExporterService {
         CustomMetadataExporterConfig var = metadataExporterConfig.getMetadataExporterConfig();
         CustomMetadataExporter exporter = new CustomMetadataExporter(var);
         exporter.export(connection.getMetaData());
-        log.info("########### GENERATION COMPLETED on Folder {} ###########", var.getTargetFolder().getPath() + pathSpliter + String.join(pathSpliter, var.getPackageName().split("\\.")));
+        log.info("########### GENERATION COMPLETED on Folder {} ###########", var.getTargetFolder().getPath() + pathSplitter + String.join(pathSplitter, var.getPackageName().split("\\.")));
     }
 }
