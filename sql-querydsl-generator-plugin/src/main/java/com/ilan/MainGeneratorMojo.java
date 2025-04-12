@@ -22,13 +22,11 @@ public class MainGeneratorMojo extends AbstractQueryDslMojo {
 
     @Override
     public File getDefaultOutputDirectory() {
-
         return defaultOutputDirectory;
     }
 
     @Override
     protected File getOutputClassDirectory() {
-
         return outputClassDirectory;
     }
 }

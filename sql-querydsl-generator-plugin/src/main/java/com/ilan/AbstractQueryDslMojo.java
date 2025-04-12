@@ -1,7 +1,6 @@
 package com.ilan;
 
 
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -146,7 +145,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
             Boolean compilationSuccess = compiler.getTask(null, fileManager, null, null, null, compileUtils).call();
             fileManager.close();
 
-            if (compilationSuccess){
+            if (compilationSuccess) {
                 getLog().info("Compilation successful for Java file" + javaFile.getName());
 
                 String className = javaFile.getName().replace(".java", "");
@@ -155,9 +154,8 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
                 Thread.currentThread().setContextClassLoader(classLoader);
 
-                getLog().info("Class Loaded to classPath: "+ className);
-            }
-            else{
+                getLog().info("Class Loaded to classPath: " + className);
+            } else {
                 getLog().error("Compilation failed for Java file" + javaFile.getName());
             }
             /*int compilationResult = compiler.run(null, null, null, javaFile.getPath());
