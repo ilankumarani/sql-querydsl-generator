@@ -5,6 +5,7 @@ import jakarta.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class FilterSqlGeneratorUtil {
@@ -30,12 +31,13 @@ public final class FilterSqlGeneratorUtil {
             defaultValue = tableNames.contains(tableName.toLowerCase());
         }
 
+        System.out.println(defaultValue);
         return defaultValue;
     }
 
-    public static List<String> patternAsList(@Nullable String input) {
-        if (input != null && input.contains(",")) {
-            return Arrays.stream(input.split(","))
+    public static List<String> patternAsList(List<String> input) {
+        if (Objects.nonNull(input) && !input.isEmpty()) {
+            return input.stream()
                     .map(String::trim)
                     .filter(s -> !s.isEmpty())
                     .map(String::toLowerCase)

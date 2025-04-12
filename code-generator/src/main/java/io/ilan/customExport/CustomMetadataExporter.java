@@ -1,4 +1,4 @@
-package io.ilan.util;
+package io.ilan.customExport;
 
 import com.querydsl.codegen.BeanSerializer;
 import com.querydsl.codegen.CodegenModule;
@@ -35,6 +35,7 @@ import com.querydsl.sql.codegen.support.PrimaryKeyData;
 import com.querydsl.sql.codegen.support.RenameMapping;
 import com.querydsl.sql.codegen.support.SizeImpl;
 import com.querydsl.sql.codegen.support.TypeMapping;
+import io.ilan.util.FilterSqlGeneratorUtil;
 import jakarta.annotation.Nullable;
 
 import java.io.File;
@@ -84,13 +85,13 @@ public class CustomMetadataExporter {
 
     private KeyDataFactory keyDataFactory;
 
-    private final MetadataExporterConfig config;
+    private final CustomMetadataExporterConfig config;
 
     private Serializer beanSerializer;
 
     private TypeMappings typeMappings;
 
-    public CustomMetadataExporter(MetadataExporterConfig config) {
+    public CustomMetadataExporter(CustomMetadataExporterConfig config) {
         this.config = config;
     }
 
@@ -466,8 +467,8 @@ public class CustomMetadataExporter {
         var schemaName = normalize(tables.getString("TABLE_SCHEM"));
         var tableName = normalize(tables.getString("TABLE_NAME"));
 
-        if (FilterSqlGeneratorUtil.codeGenerateFor(FilterSqlGeneratorUtil.patternAsList(config.getSchemaPattern()),
-                FilterSqlGeneratorUtil.patternAsList(config.getTableNamePattern()), schemaName, tableName)) {
+        if (FilterSqlGeneratorUtil.codeGenerateFor(FilterSqlGeneratorUtil.patternAsList(config.getSchemasIncluded()),
+                FilterSqlGeneratorUtil.patternAsList(config.getTablesIncluded()), schemaName, tableName)) {
             var normalizedSchemaName = namingStrategy.normalizeSchemaName(schemaName);
             var normalizedTableName = namingStrategy.normalizeTableName(tableName);
 

@@ -16,3 +16,7 @@ query:
     sql:
       package:
         directory: beta.querydsl.sql
+      schemas:
+        - OWNER_SCHEMA
+      tables:
+        - OWNER_DETAILS

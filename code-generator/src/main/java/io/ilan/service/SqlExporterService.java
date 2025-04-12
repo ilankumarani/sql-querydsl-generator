@@ -1,8 +1,8 @@
 package io.ilan.service;
 
-import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
-import io.ilan.config.MetadataExporterConfig;
-import io.ilan.util.CustomMetadataExporter;
+import io.ilan.config.MetadataExporterBuilder;
+import io.ilan.customExport.CustomMetadataExporter;
+import io.ilan.customExport.CustomMetadataExporterConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class SqlExporterService {
     private static final Logger log = LoggerFactory.getLogger(SqlExporterService.class);
 
     @Autowired
-    private MetadataExporterConfig metadataExporterConfig;
+    private MetadataExporterBuilder metadataExporterConfig;
 
     public void exporter(Connection connection) throws SQLException {
-        MetadataExporterConfigImpl var = metadataExporterConfig.getMetadataExporterConfig();
+        CustomMetadataExporterConfig var = metadataExporterConfig.getMetadataExporterConfig();
         CustomMetadataExporter exporter = new CustomMetadataExporter(var);
         exporter.export(connection.getMetaData());
         log.info("########### GENERATION COMPLETED ###########");

@@ -14,4 +14,10 @@ query:
       package:
         directory: alpha.querydsl.sql
       output:
-        directory:
+        directory: ALPHA
+      schemas:
+        - BLOG_SCHEMA
+      tables:
+        - BLOG_DETAILS
+
+
