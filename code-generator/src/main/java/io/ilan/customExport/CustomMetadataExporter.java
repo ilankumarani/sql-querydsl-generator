@@ -84,13 +84,13 @@ public class CustomMetadataExporter {
 
     private KeyDataFactory keyDataFactory;
 
-    private final CustomMetadataExporterConfig config;
+    private final CustomMetadataExporterConfigImpl config;
 
     private Serializer beanSerializer;
 
     private TypeMappings typeMappings;
 
-    public CustomMetadataExporter(CustomMetadataExporterConfig config) {
+    public CustomMetadataExporter(CustomMetadataExporterConfigImpl config) {
         this.config = config;
     }
 

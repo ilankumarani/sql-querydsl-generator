@@ -1,7 +1,7 @@
 package io.ilan.service;
 
 import io.ilan.config.MetaDataConfigProperties;
-import io.ilan.customExport.CustomMetadataExporterConfig;
+import io.ilan.customExport.CustomMetadataExporterConfigImpl;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +27,8 @@ public class MetadataExporterBuilder {
      *
      * @return MetadataExporterConfig
      */
-    public CustomMetadataExporterConfig getMetadataExporterConfig() {
-        CustomMetadataExporterConfig metadataExporterConfig = new CustomMetadataExporterConfig();
+    public CustomMetadataExporterConfigImpl getMetadataExporterConfig() {
+        CustomMetadataExporterConfigImpl metadataExporterConfig = new CustomMetadataExporterConfigImpl();
         metadataExporterConfig.setPackageName(metaDataConfigProperties.getPackageDirectory());
         metadataExporterConfig.setNamePrefix("S");
         metadataExporterConfig.setExportAll(Boolean.FALSE);
@@ -44,13 +44,13 @@ public class MetadataExporterBuilder {
         return metadataExporterConfig;
     }
 
-    private void setSchemasIncludes(CustomMetadataExporterConfig metadataExporterConfig) {
+    private void setSchemasIncludes(CustomMetadataExporterConfigImpl metadataExporterConfig) {
         if (Objects.nonNull(metaDataConfigProperties.getSchemas())) {
             metadataExporterConfig.setSchemasIncluded(metaDataConfigProperties.getSchemas());
         }
     }
 
-    private void setTablesIncludes(CustomMetadataExporterConfig metadataExporterConfig) {
+    private void setTablesIncludes(CustomMetadataExporterConfigImpl metadataExporterConfig) {
         if (Objects.nonNull(metaDataConfigProperties.getTables())) {
             metadataExporterConfig.setTablesIncluded(metaDataConfigProperties.getTables());
         }

@@ -1,7 +1,7 @@
 package io.ilan.service;
 
 import io.ilan.customExport.CustomMetadataExporter;
-import io.ilan.customExport.CustomMetadataExporterConfig;
+import io.ilan.customExport.CustomMetadataExporterConfigImpl;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class SqlExporterService {
     private final MetadataExporterBuilder metadataExporterConfig;
 
     public void exporter(Connection connection) throws SQLException {
-        CustomMetadataExporterConfig var = metadataExporterConfig.getMetadataExporterConfig();
+        CustomMetadataExporterConfigImpl var = metadataExporterConfig.getMetadataExporterConfig();
         CustomMetadataExporter exporter = new CustomMetadataExporter(var);
         exporter.export(connection.getMetaData());
         log.info("########### GENERATION COMPLETED ###########");

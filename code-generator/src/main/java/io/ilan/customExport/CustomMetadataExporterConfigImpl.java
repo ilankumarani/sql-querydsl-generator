@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CustomMetadataExporterConfig extends MetadataExporterConfigImpl implements MetadataExporterConfig {
+public class CustomMetadataExporterConfigImpl extends MetadataExporterConfigImpl implements MetadataExporterConfig {
 
     private List<String> schemasIncluded;
     private List<String> catalogsIncluded;

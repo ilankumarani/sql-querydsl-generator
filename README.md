@@ -72,9 +72,9 @@ ___
 ```
 #### 3. Constructor changes in CustomMetadataExporter
 ```java
-private final CustomMetadataExporterConfig config;
+private final CustomMetadataExporterConfigImpl config;
 
-public CustomMetadataExporter(CustomMetadataExporterConfig config) {
+public CustomMetadataExporter(CustomMetadataExporterConfigImpl config) {
     this.config = config;
 }
 ```
