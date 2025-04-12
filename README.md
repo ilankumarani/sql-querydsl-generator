@@ -46,3 +46,12 @@ query:
         - OWNER_DETAILS
 ```
 
+### To call a service layer in Spring boot
+```java
+@Bean
+public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
+    return args -> {
+            sqlExporterService.exporter(dataSource.getConnection());
+        };
+}
+```
