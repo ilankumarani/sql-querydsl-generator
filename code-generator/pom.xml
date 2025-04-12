@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>code-generator</artifactId>
-	<name>code-generator</name>
+    <name>code-generator</name>
     <description>Generate QueryDsl SQL from Entity</description>
 
     <properties>
