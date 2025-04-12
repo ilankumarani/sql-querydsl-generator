@@ -10,10 +10,6 @@ public final class FilterSqlGeneratorUtil {
     private FilterSqlGeneratorUtil() {
     }
 
-    /*List<String> catalogNames = patternAsList(config.getCatalogPattern());
-    List<String> schemaNames = patternAsList(config.getSchemaPattern());
-    List<String> tableNames = patternAsList(config.getTableNamePattern());*/
-
     public static Boolean codeGenerateFor(List<String> schemaNames, List<String> tableNames, String schemaName, String tableName) {
 
         Boolean defaultValue = Boolean.FALSE;
