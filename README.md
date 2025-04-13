@@ -51,7 +51,7 @@
 </plugin>
 ```
 
-### To call a service layer in Spring boot
+### To code generate via Spring boot
 
 ```java
 @Bean
