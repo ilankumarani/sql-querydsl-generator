@@ -35,10 +35,6 @@ spring:
         database-platform: org.hibernate.dialect.H2Dialect
         properties:
             hibernate:
-                jdbc:
-                    fetch_size: 10000
-                    batch_size: 10000
-                generate_statistics: true
                 enable_lazy_load_no_trans: true
                 format_sql: true # To beautify or pretty print the SQL
                 show-sql: true # To print Sql query in Log
