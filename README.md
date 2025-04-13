@@ -4,6 +4,7 @@
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
+    <!-- You can use the latest-->
     <version>3.5.0</version>
     <configuration>
         <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
@@ -31,17 +32,20 @@
         <dependency>
             <groupId>io.github.ilankumarani</groupId>
             <artifactId>code-generator-test</artifactId>
+            <!-- At this point in time 0.3.0 is the latest version-->
             <version>0.3.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+            <!-- You can use the latest-->
             <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${version-of-your-project}</version>
+            <!-- version of your Spring project-->
+            <version>3.4.2</version>
         </dependency>
     </dependencies>
 </plugin>
