@@ -53,9 +53,3 @@ spring:
             settings:
                 web-allow-others: true
                 trace: true
-
-
-
-jpa:
-    entities:
-        base-package: com.ilan.entity
