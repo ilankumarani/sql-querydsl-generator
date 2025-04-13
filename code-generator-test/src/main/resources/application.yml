@@ -24,6 +24,8 @@ logging:
 spring:
     main:
         allow-bean-definition-overriding: true
+    liquibase:
+        enabled: false
     datasource:
         driverClassName: org.h2.Driver
         username: sa
