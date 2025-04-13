@@ -1,3 +1,14 @@
+### To call a service layer in Spring boot
+
+```java
+@Bean
+public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
+    return args -> {
+            sqlExporterService.exporter(dataSource.getConnection());
+        };
+}
+```
+
 ### Output directory code has to generated
 
 > **_NOTE:_**  Default directory is **target** folder
@@ -29,9 +40,10 @@ query:
 query:
   dsl:
     sql:
-      schemas:
-        - OWNER_SCHEMA
-        - BLOG_SCHEMA
+      inclusive:
+        schemas:
+          - OWNER_SCHEMA
+          - BLOG_SCHEMA
 ```
 
 ### Tables to be generated
@@ -41,22 +53,11 @@ query:
 query:
   dsl:
     sql:
-      tables:
-        - Domains
-        - OWNER_DETAILS
+      inclusive:
+        tables:
+          - Domains
+          - OWNER_DETAILS
 ```
-
-### To call a service layer in Spring boot
-```java
-@Bean
-public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
-    return args -> {
-            sqlExporterService.exporter(dataSource.getConnection());
-        };
-}
-```
-
-
 
 ___
 

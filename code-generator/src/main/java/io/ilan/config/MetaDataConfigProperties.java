@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "query.dsl.sql")
+@ConfigurationProperties(prefix = "query.dsl.sql.inclusive")
 public class MetaDataConfigProperties {
 
     @Value("${query.dsl.sql.output.directory:#{null}}")

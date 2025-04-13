@@ -3,6 +3,7 @@ query:
     sql:
       package:
         directory: tables.querydsl.sql
-      tables:
-        - Domains
-        - OWNER_DETAILS
+      inclusive:
+        tables:
+          - Domains
+          - OWNER_DETAILS

@@ -3,5 +3,6 @@ query:
     sql:
       package:
         directory: table.querydsl.sql
-      tables:
-        - Domains
+      inclusive:
+        tables:
+          - Domains

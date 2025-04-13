@@ -3,5 +3,6 @@ query:
     sql:
       package:
         directory: ownerSchema.querydsl.sql
-      schemas:
-        - OWNER_SCHEMA
+      inclusive:
+        schemas:
+          - OWNER_SCHEMA
