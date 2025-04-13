@@ -1,3 +1,52 @@
+### To code Generate via plugin
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.5.0</version>
+    <configuration>
+        <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
+        <includePluginDependencies>true</includePluginDependencies>
+        <includeProjectDependencies>true</includeProjectDependencies>
+        <additionalClasspathElements>true</additionalClasspathElements>
+        <arguments>
+            <argument>--jpa.entities.base-package=com.ilan.entity,io.ilan.entity</argument>
+            <argument>--query.dsl.sql.output.directory=${basedir}/target/generated-sources</argument>
+            <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
+            <argument>--query.dsl.sql.inclusive.schemas=information_schema,OWNER_SCHEMA,BLOG_SCHEMA</argument>
+            <argument>--query.dsl.sql.inclusive.tables=Domains,OWNER_DETAILS</argument>
+        </arguments>
+    </configuration>
+    <executions>
+        <execution>
+            <id>sql-code-generator</id>
+            <phase>generate-sources</phase>
+            <goals>
+                <goal>java</goal>
+            </goals>
+        </execution>
+    </executions>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.ilankumarani</groupId>
+            <artifactId>code-generator-test</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${version-of-your-project}</version>
+        </dependency>
+    </dependencies>
+</plugin>
+```
+
 ### To call a service layer in Spring boot
 
 ```java
