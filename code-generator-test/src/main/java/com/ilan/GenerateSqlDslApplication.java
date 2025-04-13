@@ -4,7 +4,10 @@ import io.ilan.service.SqlExporterService;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
@@ -13,11 +16,13 @@ import javax.sql.DataSource;
 public class GenerateSqlDslApplication {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(GenerateSqlDslApplication.class);
-        app.setBannerMode(Banner.Mode.LOG);
-        app.run(args);
+        SpringApplication springApplication = new SpringApplicationBuilder(GenerateSqlDslApplication.class)
+                .web(WebApplicationType.NONE)
+                .bannerMode(Banner.Mode.LOG)
+                .build();
 
-        //System.exit(SpringApplication.exit(new SpringApplicationBuilder(GenerateSqlDslApplication.class).web(WebApplicationType.NONE).build().run(args), () -> 0));
+        ConfigurableApplicationContext applicationContext = springApplication.run(args);
+        System.exit(SpringApplication.exit(applicationContext , () -> 0));
     }
 
 

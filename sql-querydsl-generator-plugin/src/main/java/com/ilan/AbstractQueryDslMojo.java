@@ -1,6 +1,7 @@
 package com.ilan;
 
 
+import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -9,7 +10,12 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.aether.RepositorySystem;
 import org.eclipse.aether.RepositorySystemSession;
+import org.eclipse.aether.artifact.ArtifactTypeRegistry;
+import org.eclipse.aether.artifact.DefaultArtifact;
 import org.eclipse.aether.repository.RemoteRepository;
+import org.eclipse.aether.resolution.ArtifactRequest;
+import org.eclipse.aether.resolution.ArtifactResolutionException;
+import org.eclipse.aether.resolution.ArtifactResult;
 
 import javax.tools.JavaCompiler;
 import javax.tools.StandardJavaFileManager;
@@ -20,6 +26,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.List;
+import java.util.Optional;
+
+import static java.lang.String.format;
+import static java.util.Optional.ofNullable;
 
 public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
@@ -167,7 +177,7 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
         }
     }
 
-    /*private void processProjectArtifacts() {
+    private void processProjectArtifacts() {
         final java.util.Set<Artifact> depArtifacts = this.project.getDependencyArtifacts();
         if (depArtifacts != null) {
 
@@ -206,7 +216,6 @@ public abstract class AbstractQueryDslMojo extends AbstractMojo {
 
         return ofNullable(RepositoryUtils.toArtifact(result.getArtifact()));
     }
-*/
 
     protected abstract File getOutputClassDirectory();
 
