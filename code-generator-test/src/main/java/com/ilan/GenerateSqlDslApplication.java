@@ -20,8 +20,8 @@ public class GenerateSqlDslApplication {
                 .web(WebApplicationType.NONE)
                 .bannerMode(Banner.Mode.LOG)
                 .build();
-
         ConfigurableApplicationContext applicationContext = springApplication.run(args);
+
         System.exit(SpringApplication.exit(applicationContext , () -> 0));
     }
 

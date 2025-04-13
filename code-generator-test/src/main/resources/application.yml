@@ -20,9 +20,10 @@ logging:
                         JdbcTemplate: DEBUG
                         StatementCreatorUtils: TRACE
 
+
 spring:
-    liquibase:
-        enabled: false
+    main:
+        allow-bean-definition-overriding: true
     datasource:
         driverClassName: org.h2.Driver
         username: sa

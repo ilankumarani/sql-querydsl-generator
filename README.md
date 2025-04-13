@@ -1,5 +1,7 @@
 ### To code Generate via plugin
 
+> **_NOTE:_**  Entities of the project should be part of the JAR.
+
 ```xml
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
