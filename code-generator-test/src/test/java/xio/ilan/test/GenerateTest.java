@@ -1,16 +1,15 @@
 package xio.ilan.test;
 
 
-import com.ilan.GenerateSqlDslApplication;
+import com.ilan.QueryDslSqlApplication;
 import com.ilan.config.DbConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {GenerateSqlDslApplication.class})
+        classes = {QueryDslSqlApplication.class})
 @Import({DbConfig.class})
 @DisplayName("Generate for all Schema")
 public class GenerateTest {

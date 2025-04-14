@@ -52,3 +52,12 @@ spring:
             settings:
                 web-allow-others: true
                 trace: true
+
+
+
+
+query:
+    dsl:
+        sql:
+            generation:
+                enabled:

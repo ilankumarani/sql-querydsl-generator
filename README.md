@@ -9,7 +9,7 @@
     <!-- You can use the latest-->
     <version>3.5.0</version>
     <configuration>
-        <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
+        <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
         <includePluginDependencies>true</includePluginDependencies>
         <includeProjectDependencies>true</includeProjectDependencies>
         <additionalClasspathElements>true</additionalClasspathElements>
@@ -53,15 +53,24 @@
 </plugin>
 ```
 
-### To code generate via Spring boot
+### To code generate via Spring boot add the below dependency
 
-```java
-@Bean
-public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
-    return args -> {
-            sqlExporterService.exporter(dataSource.getConnection());
-        };
-}
+```xml
+<dependency>
+    <groupId>io.github.ilankumarani</groupId>
+    <artifactId>code-generator-test</artifactId>
+    <!-- At this point in time 0.3.0 is the latest version-->
+    <version>0.3.0</version>
+</dependency>
+```
+> **_NOTE:_**  To disable functionality by property
+
+```yaml
+query:
+  dsl:
+    sql:
+      generation:
+        enabled: false
 ```
 
 ### Output directory code has to generated

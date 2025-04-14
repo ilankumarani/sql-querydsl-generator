@@ -1,6 +1,6 @@
 package xio.ilan.test;
 
-import com.ilan.GenerateSqlDslApplication;
+import com.ilan.QueryDslSqlApplication;
 import com.ilan.config.DbConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {GenerateSqlDslApplication.class})
+        classes = {QueryDslSqlApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("schema")
 @DisplayName("Generate for OWNER_SCHEMA")
