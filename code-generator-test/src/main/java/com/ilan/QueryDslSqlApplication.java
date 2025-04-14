@@ -18,7 +18,7 @@ public class QueryDslSqlApplication {
                 .bannerMode(Banner.Mode.LOG)
                 .build();
         ConfigurableApplicationContext applicationContext = springApplication.run(args);
-        Boolean isExit = Boolean.parseBoolean(System.getProperty("system.exit"));
+        Boolean isExit = Boolean.parseBoolean(System.getProperty("kill.system.exit"));
         if (isExit) {
             log.info("JVM is System.exit(0)");
             System.exit(SpringApplication.exit(applicationContext, () -> 0));

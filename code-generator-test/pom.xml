@@ -65,32 +65,32 @@
                 <configuration>
                     <forkCount>1</forkCount>
                     <reuseForks>false</reuseForks>
-                    <argLine>-Dsystem.exit=false -Xmx512m</argLine>
+                    <argLine>-Dkill.system.exit=false -Xmx512m</argLine>
                 </configuration>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>3.4.1</version>
                 <executions>
                     <execution>
+                        <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
                         </goals>
                         <configuration>
-                            <excludeDefaultDirectories>true</excludeDefaultDirectories>
                             <filesets>
                                 <fileset>
-                                    <directory>${basedir}/ALPHA</directory>
-                                    <includes>
-                                        <include>**/*</include>
-                                    </includes>
+                                    <directory>${project.basedir}/ALPHA</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${project.basedir}/target</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
