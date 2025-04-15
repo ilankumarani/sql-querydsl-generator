@@ -11,8 +11,8 @@ import javax.sql.DataSource;
 @Configuration
 public class QueryDslSqlGeneratorService {
 
-    @ConditionalOnProperty(name = "query.dsl.sql.generation.enabled", havingValue = "false", matchIfMissing = true)
     @Bean
+    @ConditionalOnProperty(name = "query.dsl.sql.generation.enabled", havingValue = "false", matchIfMissing = true)
     public CommandLineRunner queryDslSqlGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
         return args -> {
             sqlExporterService.exporter(dataSource.getConnection());
