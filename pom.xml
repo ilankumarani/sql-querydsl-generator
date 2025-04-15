@@ -204,7 +204,7 @@
     <scm>
         <connection>scm:git:git://github.com/ilankumarani/sql-querydsl-generator.git</connection>
         <developerConnection>scm:git:git@github.com:ilankumarani/sql-querydsl-generator.git</developerConnection>
-        <url>https://github.com/ilankumarani/sql-querydsl-generator</url>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main</url>
         <tag>main</tag>
     </scm>
 
