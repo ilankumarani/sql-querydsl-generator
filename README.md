@@ -39,7 +39,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.ilankumarani</groupId>
-            <artifactId>code-generator-test</artifactId>
+            <artifactId>code-generator-app</artifactId>
             <!-- At this point in time 0.3.0 is the latest version-->
             <version>0.3.0</version>
         </dependency>
@@ -58,11 +58,12 @@
 ```xml
 <dependency>
     <groupId>io.github.ilankumarani</groupId>
-    <artifactId>code-generator-test</artifactId>
+    <artifactId>code-generator</artifactId>
     <!-- At this point in time 0.3.0 is the latest version-->
     <version>0.3.0</version>
 </dependency>
 ```
+
 > **_NOTE:_**  To disable generation by property
 
 ```yaml

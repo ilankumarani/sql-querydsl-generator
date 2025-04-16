@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>code-generator-test</artifactId>
+    <artifactId>code-generator-app</artifactId>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>

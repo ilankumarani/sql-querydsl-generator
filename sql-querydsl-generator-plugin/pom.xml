@@ -45,7 +45,7 @@
 
         <dependency>
             <groupId>io.github.ilankumarani</groupId>
-            <artifactId>code-generator-test</artifactId>
+            <artifactId>code-generator-app</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
