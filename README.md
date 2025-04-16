@@ -1,6 +1,10 @@
 ### To code Generate via plugin
 
-> **_NOTE:_**  Bundle the entities as a JAR.
+> **_NOTE:_**  
+> * Bundle the entities as a JAR, then pass the base package of entities to plugin as in below example.
+  </br> --jpa.entities.base-packages=com.ilan.entity,io.ilan.entity
+> * You can have the repository layer also part of the JAR, then pass the base package of repositories to plugin as in below example.
+  </br> --jpa.repositories.base-packages=com.ilan.repo,io.ilan.repo
 
 ```xml
 <plugin>
@@ -15,7 +19,8 @@
         <includeProjectDependencies>true</includeProjectDependencies>
         <additionalClasspathElements>true</additionalClasspathElements>
         <arguments>
-            <argument>--jpa.entities.base-package=com.ilan.entity,io.ilan.entity</argument>
+            <argument>--jpa.entities.base-packages=com.ilan.entity,io.ilan.entity</argument>
+            <argument>--jpa.repositories.base-packages=com.ilan.repo,io.ilan.repo</argument>
             <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
             <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
             <argument>--query.dsl.sql.inclusive.schemas=information_schema,OWNER_SCHEMA,BLOG_SCHEMA</argument>

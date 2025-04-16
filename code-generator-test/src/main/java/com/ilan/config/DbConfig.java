@@ -17,7 +17,7 @@ public class DbConfig {
     private static final Logger log = LoggerFactory.getLogger(DbConfig.class);
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Value("${jpa.entities.base-package:}") String[] entityBasePackages, EntityManagerFactoryBuilder builder, DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Value("${jpa.entities.base-packages:}") String[] entityBasePackages, EntityManagerFactoryBuilder builder, DataSource dataSource) {
         String[] packagesToScan = Arrays.stream(entityBasePackages).map(String::trim).toArray(String[]::new);
         Arrays.stream(packagesToScan).forEach(entityBasePackage->{
             log.info("Entity package to scan :: {}", entityBasePackage.toString());
