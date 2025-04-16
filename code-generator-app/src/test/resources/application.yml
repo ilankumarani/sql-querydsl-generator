@@ -56,7 +56,11 @@ spring:
                 web-allow-others: true
                 trace: true
 
-
+query:
+    dsl:
+        sql:
+            generation:
+                enabled: true
 
 jpa:
     entities:

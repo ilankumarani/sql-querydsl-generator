@@ -32,7 +32,7 @@ public class QueryDslSqlApplication {
 
     }
 
-    @DependsOn({"queryDslSqlGenerator"})
+    @DependsOn({"queryDslSqlGeneratorService"})
     @Bean
     public CommandLineRunner shutdown(ShutdownEndpoint shutdownEndpoint) {
         return args -> {
