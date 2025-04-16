@@ -71,7 +71,7 @@ query:
   dsl:
     sql:
       generation:
-        enabled: false
+        enabled: true
 ```
 
 ### Output directory code has to generated
