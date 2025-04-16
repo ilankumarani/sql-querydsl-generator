@@ -10,6 +10,7 @@
     <version>3.5.0</version>
     <configuration>
         <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
+        <cleanupDaemonThreads>false</cleanupDaemonThreads>
         <includePluginDependencies>true</includePluginDependencies>
         <includeProjectDependencies>true</includeProjectDependencies>
         <additionalClasspathElements>true</additionalClasspathElements>
@@ -36,12 +37,6 @@
             <artifactId>code-generator-test</artifactId>
             <!-- At this point in time 0.3.0 is the latest version-->
             <version>0.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <!-- You can use the latest-->
-            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

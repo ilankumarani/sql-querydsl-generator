@@ -34,7 +34,6 @@ public class QueryDslSqlApplication {
 
     @DependsOn({"queryDslSqlGenerator"})
     @Bean
-    @ConditionalOnProperty(name = "query.dsl.sql.kill.enabled", havingValue = "true")
     public CommandLineRunner shutdown(ShutdownEndpoint shutdownEndpoint) {
         return args -> {
             ShutdownEndpoint.ShutdownDescriptor shutdownDescriptor = shutdownEndpoint.shutdown();
