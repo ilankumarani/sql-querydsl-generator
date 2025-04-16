@@ -6,7 +6,7 @@
 >     
 > 
 > * Repository layer can also be part of the JAR, then pass the base package of repositories to plugin as in below example.
-  </br> **--jpa.repositories.base-packages=com.ilan.repo,io.ilan.repo**
+  </br> **--jpa.repositories.base-packages=com.ilan.repository,io.ilan.repository**
 
 ```xml
 <plugin>
