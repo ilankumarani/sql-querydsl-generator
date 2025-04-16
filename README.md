@@ -16,7 +16,7 @@
         <additionalClasspathElements>true</additionalClasspathElements>
         <arguments>
             <argument>--jpa.entities.base-package=com.ilan.entity,io.ilan.entity</argument>
-            <argument>--query.dsl.sql.output.directory=${basedir}/target/generated-sources</argument>
+            <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
             <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
             <argument>--query.dsl.sql.inclusive.schemas=information_schema,OWNER_SCHEMA,BLOG_SCHEMA</argument>
             <argument>--query.dsl.sql.inclusive.tables=Domains,OWNER_DETAILS</argument>
