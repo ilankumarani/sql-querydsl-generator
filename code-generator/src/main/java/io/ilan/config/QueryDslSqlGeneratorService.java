@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 public class QueryDslSqlGeneratorService {
 
     @Bean
-    @ConditionalOnProperty(name = "query.dsl.sql.generation.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "query.dsl.sql.generation.enabled", havingValue = "true", matchIfMissing = true)
     public CommandLineRunner queryDslSqlGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
         return args -> {
             sqlExporterService.exporter(dataSource.getConnection());

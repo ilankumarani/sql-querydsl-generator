@@ -56,12 +56,6 @@ spring:
                 web-allow-others: true
                 trace: true
 
-query:
-    dsl:
-        sql:
-            generation:
-                enabled: true
-
 jpa:
     entities:
         base-packages: com.entity,com.ilan.entity, org.ilan.entity
