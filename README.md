@@ -1,6 +1,6 @@
 ### To code Generate via plugin
 
-> **_NOTE:_**  Entities of the project should be part of the JAR.
+> **_NOTE:_**  Bundle the entities as a JAR.
 
 ```xml
 <plugin>
@@ -58,7 +58,7 @@
     <version>0.3.0</version>
 </dependency>
 ```
-> **_NOTE:_**  To disable functionality by property
+> **_NOTE:_**  To disable generation by property
 
 ```yaml
 query:
