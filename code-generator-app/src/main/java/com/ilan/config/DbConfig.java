@@ -1,6 +1,7 @@
 package com.ilan.config;
 
 
+import org.ilan.annotation.AbdEnableJpaRepositories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import javax.sql.DataSource;
 import java.util.Arrays;
 
+
+@AbdEnableJpaRepositories(basePackages = "${jpa.repositories.base-packages}")
 @Configuration
 public class DbConfig {
     private static final Logger log = LoggerFactory.getLogger(DbConfig.class);

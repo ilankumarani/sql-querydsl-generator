@@ -46,6 +46,7 @@
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
+        <custom-enable-jpa-repositories.version>0.1.0</custom-enable-jpa-repositories.version>
     </properties>
 
     <dependencies>
