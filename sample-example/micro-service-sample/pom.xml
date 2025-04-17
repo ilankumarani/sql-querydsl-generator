@@ -36,6 +36,20 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-sql</artifactId>
+            <version>${openfeign.querydsl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-sql-spring</artifactId>
+            <version>${openfeign.querydsl.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -55,12 +69,16 @@
                             <additionalClasspathElements>true</additionalClasspathElements>
                             <arguments>
                                 <!-- Mandatory args we need to provide the packages for entity-scan -->
-                                <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity</argument>
-                                <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
+                                <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity
+                                </argument>
+                                <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources
+                                </argument>
                                 <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
-                                <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA,FORUM_SCHEMA</argument>
-                                <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS</argument>
-<!--                                <argument>&#45;&#45;spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy</argument>-->
+                                <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA,FORUM_SCHEMA
+                                </argument>
+                                <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS
+                                </argument>
+                                <!--                                <argument>&#45;&#45;spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy</argument>-->
                             </arguments>
                         </configuration>
                         <id>sql-code-generator</id>

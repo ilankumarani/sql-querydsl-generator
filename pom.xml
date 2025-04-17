@@ -31,18 +31,11 @@
         <maven-install-plugin.phase>clean</maven-install-plugin.phase>
         <naming-strategy-resolver.version>0.1.1</naming-strategy-resolver.version>
         <mapstruct-processor>1.6.2</mapstruct-processor>
-        <openfeign.querydsl.version>6.9</openfeign.querydsl.version>
+        <openfeign.querydsl.version>6.11</openfeign.querydsl.version>
         <maven.release.version>3.1.1</maven.release.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.11.1</maven-javadoc-plugin.version>
-        <maven-source-plugin.version>${maven-resources-plugin.version}</maven-source-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <maven-plugin-annotations.version>${maven-plugin-plugin.version}</maven-plugin-annotations.version>
-        <maven-plugin-api.version>${maven-core.version}</maven-plugin-api.version>
-        <maven-core.version>3.9.9</maven-core.version>
-        <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
-        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.2.0</custom-enable-jpa-repositories.version>
