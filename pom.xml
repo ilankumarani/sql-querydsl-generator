@@ -17,7 +17,7 @@
     <url/>
 
     <modules>
-        <module>tool-lib</module>
+        <module>library-app</module>
         <module>sample-example</module>
         <!--        <module>sql-querydsl-generator-plugin</module>-->
     </modules>

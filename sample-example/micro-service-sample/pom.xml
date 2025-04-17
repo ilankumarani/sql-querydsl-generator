@@ -53,7 +53,7 @@
                     <additionalClasspathElements>true</additionalClasspathElements>
                     <arguments>
                         <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity</argument>
-                        <argument>--jpa.repositories.base-packages=com.ilan.repo,org.ilan.repo</argument>
+<!--                        <argument>&#45;&#45;jpa.repositories.base-packages=com.ilan.repo,org.ilan.repo</argument>-->
                         <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
                         <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
                         <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA</argument>
