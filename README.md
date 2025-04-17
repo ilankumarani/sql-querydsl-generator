@@ -10,54 +10,67 @@
 
 ```xml
 <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <!-- You can use the latest-->
-    <version>3.5.0</version>
-    <configuration>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <!-- You can use the latest-->
+  <version>3.5.0</version>
+  <executions>
+    <execution>
+      <configuration>
         <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
         <cleanupDaemonThreads>false</cleanupDaemonThreads>
         <includePluginDependencies>true</includePluginDependencies>
         <includeProjectDependencies>true</includeProjectDependencies>
         <additionalClasspathElements>true</additionalClasspathElements>
         <arguments>
-            <argument>--jpa.entities.base-packages=com.ilan.entity,io.ilan.entity</argument>
-            <argument>--jpa.repositories.base-packages=com.ilan.repo,io.ilan.repo</argument>
-            <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
-            <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
-            <argument>--query.dsl.sql.inclusive.schemas=information_schema,OWNER_SCHEMA,BLOG_SCHEMA</argument>
-            <argument>--query.dsl.sql.inclusive.tables=Domains,OWNER_DETAILS</argument>
+          <!-- Mandatory args we need to provide the packages for entity-scan -->
+          <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity
+          </argument>
+          <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources
+          </argument>
+          <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
+          <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA,FORUM_SCHEMA
+          </argument>
+          <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS
+          </argument>
+          <argument>
+            --spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy
+          </argument>
         </arguments>
-    </configuration>
-    <executions>
-        <execution>
-            <id>sql-code-generator</id>
-            <phase>generate-sources</phase>
-            <goals>
-                <goal>java</goal>
-            </goals>
-        </execution>
-    </executions>
-    <dependencies>
-        <dependency>
-            <groupId>io.github.ilankumarani</groupId>
-            <artifactId>code-generator-app</artifactId>
-            <!-- At this point in time 0.3.0 is the latest version-->
-            <version>0.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <!-- version of your Spring project-->
-            <version>3.4.2</version>
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-validation</artifactId>
-          <!-- version of your Spring project-->
-          <version>3.4.2</version>
-        </dependency>
-    </dependencies>
+      </configuration>
+      <id>sql-code-generator</id>
+      <phase>generate-sources</phase>
+      <goals>
+        <goal>java</goal>
+      </goals>
+    </execution>
+  </executions>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.ilankumarani</groupId>
+      <artifactId>code-generator-app</artifactId>
+      <!-- At this point in time 0.3.0 is the latest version-->
+      <version>${project.version}</version>
+    </dependency>
+    <!-- I have a naming-strategy in below dependency-->
+    <dependency>
+      <groupId>io.github.ilankumarani</groupId>
+      <artifactId>naming-strategy-resolver</artifactId>
+      <version>0.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <!-- version of your Spring project-->
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+      <!-- version of your Spring project-->
+      <version>3.0.0</version>
+    </dependency>
+  </dependencies>
 </plugin>
 ```
 

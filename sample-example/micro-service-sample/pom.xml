@@ -78,7 +78,9 @@
                                 </argument>
                                 <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS
                                 </argument>
-                                <!--                                <argument>&#45;&#45;spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy</argument>-->
+                                <argument>
+                                    --spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy
+                                </argument>
                             </arguments>
                         </configuration>
                         <id>sql-code-generator</id>
