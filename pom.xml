@@ -45,7 +45,7 @@
         <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
-        <custom-enable-jpa-repositories.version>0.1.0</custom-enable-jpa-repositories.version>
+        <custom-enable-jpa-repositories.version>0.2.0</custom-enable-jpa-repositories.version>
         <skip.publishing>true</skip.publishing>
     </properties>
 
