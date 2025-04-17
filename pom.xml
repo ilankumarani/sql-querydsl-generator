@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.6</version>
+        <version>3.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -45,6 +45,7 @@
         <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
         <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
+        <lombok.version>1.18.38</lombok.version>
     </properties>
 
     <dependencies>
