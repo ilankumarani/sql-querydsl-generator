@@ -31,18 +31,23 @@ spring:
         username: sa
         password: password
         url: jdbc:h2:mem:queryDslSql
-        #url: jdbc:h2:mem:;INIT=RUNSCRIPT FROM 'src/test/resources/create.sql' # for Test resource
     jpa:
         defer-datasource-initialization: false
         show-sql: true
         database-platform: org.hibernate.dialect.H2Dialect
         properties:
+            jakarta:
+                persistence:
+                    schema-generation:
+                        database:
+                            action: create
             hibernate:
                 enable_lazy_load_no_trans: true
                 format_sql: true # To beautify or pretty print the SQL
                 show-sql: true # To print Sql query in Log
                 hbm2ddl:
                     auto: create-drop
+                    create_namespaces: true
         hibernate:
             ddl-auto: create-drop
 

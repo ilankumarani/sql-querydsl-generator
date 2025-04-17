@@ -43,7 +43,6 @@
         <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
-        <jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.1.0</custom-enable-jpa-repositories.version>
