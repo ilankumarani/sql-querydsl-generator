@@ -1,8 +1,5 @@
 package xio.ilan.test;
 
-import com.ilan.QueryDslSqlApplication;
-import com.ilan.config.DbConfig;
-import com.ilan.shutdown.ShutdownEndpoint;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -11,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import xio.ilan.Application;
+import xio.ilan.config.DbConfig;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {QueryDslSqlApplication.class})
+        classes = {Application.class})
 @Import({DbConfig.class})
 @ActiveProfiles("schema")
 @DisplayName("Generate for OWNER_SCHEMA")
@@ -21,12 +20,10 @@ import org.springframework.test.context.ActiveProfiles;
 @Slf4j
 public class GenerateForSchemaTest {
 
-    private final ShutdownEndpoint shutdownEndpoint;
 
     @DisplayName("Generate SQL QueryDsl")
     @Test
     public void test() {
-        ShutdownEndpoint.ShutdownDescriptor shutdownDescriptor = shutdownEndpoint.shutdown();
-        log.info("Application killed :: {}", shutdownDescriptor.getMessage());
+
     }
 }
