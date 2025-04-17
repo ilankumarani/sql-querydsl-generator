@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.ilankumarani</groupId>
-        <artifactId>sql-querydsl-generator</artifactId>
-        <version>0.3.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <artifactId>sample-example</artifactId>
+        <version>0.4.0</version>
     </parent>
 
     <artifactId>micro-service-sample</artifactId>
@@ -94,7 +93,7 @@
                     <dependency>
                         <groupId>io.github.ilankumarani</groupId>
                         <artifactId>code-generator-app</artifactId>
-                        <!-- At this point in time 0.3.0 is the latest version-->
+                        <!-- At this point in time 0.4.0 is the latest version-->
                         <version>${project.version}</version>
                     </dependency>
                     <!-- I have a naming-strategy in below dependency-->
