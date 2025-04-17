@@ -17,9 +17,9 @@
     <url/>
 
     <modules>
-        <module>code-generator</module>
-        <module>code-generator-app</module>
-<!--        <module>sql-querydsl-generator-plugin</module>-->
+        <module>tool-lib</module>
+        <module>sample-example</module>
+        <!--        <module>sql-querydsl-generator-plugin</module>-->
     </modules>
 
     <properties>
