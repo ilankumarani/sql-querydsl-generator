@@ -51,6 +51,12 @@
             <!-- version of your Spring project-->
             <version>3.4.2</version>
         </dependency>
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-validation</artifactId>
+          <!-- version of your Spring project-->
+          <version>3.4.2</version>
+        </dependency>
     </dependencies>
 </plugin>
 ```
