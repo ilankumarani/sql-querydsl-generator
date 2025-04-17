@@ -36,6 +36,7 @@
           <argument>
             --spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy
           </argument>
+          <argLine>--spring.config.location=file:${project.basedir}/someFolder/application-external.yml</argLine>
         </arguments>
       </configuration>
       <id>sql-code-generator</id>
