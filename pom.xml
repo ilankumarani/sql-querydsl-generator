@@ -47,6 +47,7 @@
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.1.0</custom-enable-jpa-repositories.version>
+        <skip.publishing>true</skip.publishing>
     </properties>
 
     <dependencies>
@@ -153,6 +154,7 @@
                         <version>0.7.0</version>
                         <extensions>true</extensions>
                         <configuration>
+                            <skipPublishing>${skip.publishing}</skipPublishing>
                             <publishingServerId>central</publishingServerId>
                             <autoPublish>true</autoPublish>
                             <waitUntil>published</waitUntil>
