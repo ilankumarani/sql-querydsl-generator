@@ -7,15 +7,10 @@
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
         <version>0.3.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>sample-example</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>entity-repo-test-jar</module>
-        <module>micro-service-sample</module>
-    </modules>
+    <artifactId>micro-service-sample</artifactId>
 
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
