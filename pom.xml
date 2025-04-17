@@ -27,6 +27,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <spring.boot.version>3.0.0</spring.boot.version>
         <maven-install-plugin.phase>clean</maven-install-plugin.phase>
         <naming-strategy-resolver.version>0.1.1</naming-strategy-resolver.version>
         <mapstruct-processor>1.6.2</mapstruct-processor>
@@ -35,7 +36,6 @@
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.11.1</maven-javadoc-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.2.0</custom-enable-jpa-repositories.version>
         <skip.publishing>false</skip.publishing>
@@ -213,9 +213,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ilankumarani/sql-querydsl-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:ilankumarani/sql-querydsl-generator.git</developerConnection>
-        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main</url>
+        <connection>scm:git:git://github.com/ilankumarani/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:ilankumarani/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/${project.artifactId}</url>
         <tag>main</tag>
     </scm>
 

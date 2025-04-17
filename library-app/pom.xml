@@ -7,10 +7,13 @@
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
         <version>0.4.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>library-app</artifactId>
     <packaging>pom</packaging>
+    <description>Generate QueryDsl SQL from Entity</description>
+    <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/${project.artifactId}</url>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -24,4 +27,42 @@
         <module>code-generator-app</module>
     </modules>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <email>ilankumaran.i@gmail.com</email>
+            <name>Ilankumaran Ilangovan</name>
+            <url>https://www.linkedin.com/in/ilankumaran-ilangovan-7b125b49/</url>
+            <id>ilan</id>
+            <organization>JPMC</organization>
+            <roles>
+                <role>VP</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/ilankumarani/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:ilankumarani/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/${project.artifactId}</url>
+        <tag>main</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

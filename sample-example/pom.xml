@@ -7,6 +7,7 @@
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
         <version>0.4.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>sample-example</artifactId>

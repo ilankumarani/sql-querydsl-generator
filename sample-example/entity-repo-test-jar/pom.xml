@@ -7,6 +7,7 @@
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sample-example</artifactId>
         <version>0.4.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>entity-repo-test-jar</artifactId>
