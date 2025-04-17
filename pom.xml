@@ -19,7 +19,6 @@
     <modules>
         <module>library-app</module>
         <module>sample-example</module>
-        <!--        <module>sql-querydsl-generator-plugin</module>-->
     </modules>
 
     <properties>
@@ -39,7 +38,7 @@
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.2.0</custom-enable-jpa-repositories.version>
-        <skip.publishing>true</skip.publishing>
+        <skip.publishing>false</skip.publishing>
     </properties>
 
     <dependencies>
