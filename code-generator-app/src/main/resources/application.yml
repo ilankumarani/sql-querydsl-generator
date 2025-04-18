@@ -34,7 +34,7 @@ spring:
     jpa:
         defer-datasource-initialization: false
         show-sql: true
-        database-platform: org.hibernate.dialect.H2Dialect
+        database-platform: com.ilan.dialect.CustomH2Dialect
         properties:
             jakarta:
                 persistence:

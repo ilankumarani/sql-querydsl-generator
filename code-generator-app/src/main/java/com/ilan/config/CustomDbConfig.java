@@ -29,8 +29,8 @@ import java.util.Arrays;
 
 @AbdEnableJpaRepositories(basePackages = "${jpa.repositories.base-packages}")
 @Configuration
-public class DbConfig {
-    private static final Logger log = LoggerFactory.getLogger(DbConfig.class);
+public class CustomDbConfig {
+    private static final Logger log = LoggerFactory.getLogger(CustomDbConfig.class);
 
     @ConditionalOnMissingBean(JpaVendorAdapter.class)
     @Bean
