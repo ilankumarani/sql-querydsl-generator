@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sample-example</artifactId>
-        <version>0.9.0</version>
+        <version>0.10.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -118,7 +118,7 @@
                     <dependency>
                         <groupId>io.github.ilankumarani</groupId>
                         <artifactId>code-generator-app</artifactId>
-                        <!-- At this point in time 0.9.0 is the latest version-->
+                        <!-- At this point in time 0.10.0 is the latest version-->
                         <version>${project.version}</version>
                     </dependency>
                     <!-- I have a naming-strategy in below dependency-->

@@ -34,11 +34,12 @@ public class CustomH2Dialect extends H2Dialect {
             ddlTypeRegistry.addDescriptor(new DdlTypeImpl(2003, "array", this));
         }
 
-        ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3000, "uuid", this));
-        ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3200, "geometry", this));
-
-        if (this.getVersion().isSameOrAfter(1, 4, 198)) {
-            ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3100, "interval second($p,$s)", this));
+        if (this.getVersion().isSameOrAfter(1, 4, 197)) {
+            ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3000, "uuid", this));
+            ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3200, "geometry", this));
+            if (this.getVersion().isSameOrAfter(1, 4, 198)) {
+                ddlTypeRegistry.addDescriptor(new DdlTypeImpl(3100, "interval second($p,$s)", this));
+            }
         }
 
         if (this.getVersion().isSameOrAfter(1, 4, 200)) {

@@ -32,22 +32,23 @@ spring:
         password: password
         url: jdbc:h2:mem:queryDslSql
     jpa:
-        defer-datasource-initialization: false
+        defer-datasource-initialization: true
         show-sql: true
         database-platform: com.ilan.dialect.CustomH2Dialect
         properties:
-            jakarta:
-                persistence:
-                    schema-generation:
-                        database:
-                            action: create
+            jakarta.persistence:
+#                    schema-generation:
+#                        database:
+#                            action: create
+                    create-database-schemas: true
             hibernate:
                 enable_lazy_load_no_trans: true
                 format_sql: true # To beautify or pretty print the SQL
                 show-sql: true # To print Sql query in Log
                 hbm2ddl:
                     auto: create-drop
-                    create_namespaces: true
+#                    create_namespaces: true # To create Schema
+                dialect: com.ilan.dialect.CustomH2Dialect
         hibernate:
             ddl-auto: create-drop
 
