@@ -24,19 +24,19 @@
         <additionalClasspathElements>true</additionalClasspathElements>
         <arguments>
           <!-- Mandatory args we need to provide the packages for entity-scan -->
-          <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity
-          </argument>
-          <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources
-          </argument>
+          <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity</argument>
+          
+          <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
+          
           <argument>--query.dsl.sql.package.directory=alpha.querydsl.sql</argument>
-          <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA,FORUM_SCHEMA
-          </argument>
-          <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS
-          </argument>
-          <argument>
-            --spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy
-          </argument>
-          <argLine>--spring.config.location=file:${project.basedir}/someFolder/application-external.yml</argLine>
+          
+          <argument>--query.dsl.sql.inclusive.schemas=BLOG_SCHEMA,OWNER_SCHEMA,FORUM_SCHEMA</argument>
+          
+          <argument>--query.dsl.sql.inclusive.tables=BLOG_DETAILS,OWNER_DETAILS,FORUM_DETAILS</argument>
+          
+          <argument>--spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy</argument>
+          
+          <argument>--spring.config.additional-location=${project.basedir}/src/main/resources/application-external.yml</argument>
         </arguments>
       </configuration>
       <id>sql-code-generator</id>
