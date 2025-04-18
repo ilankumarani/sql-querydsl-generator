@@ -1,12 +1,14 @@
 package com.ilan.config;
 
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.dialect.H2Dialect;
 import org.ilan.annotation.AbdEnableJpaRepositories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -39,11 +41,18 @@ public class DbConfig {
 
     @Bean
     @Primary
+    @ConfigurationProperties("spring.datasource")
+    public DataSourceProperties dataSourceProperties() {
+        return new DataSourceProperties();
+    }
+
+    @Bean
+    @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource getDataSource() {
-        return DataSourceBuilder
-                .create()
-                .build();
+    public HikariDataSource dataSource() {
+        HikariDataSource dataSource = dataSourceProperties().initializeDataSourceBuilder()
+                .type(HikariDataSource.class).build();
+        return dataSource;
     }
 
     @Bean
