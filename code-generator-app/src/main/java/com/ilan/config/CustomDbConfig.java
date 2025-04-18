@@ -1,6 +1,7 @@
 package com.ilan.config;
 
 
+import com.ilan.dialect.CustomH2Dialect;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.dialect.H2Dialect;
 import org.ilan.annotation.AbdEnableJpaRepositories;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -34,11 +34,11 @@ public class CustomDbConfig {
 
     @ConditionalOnMissingBean(JpaVendorAdapter.class)
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setShowSql(Boolean.TRUE);
         hibernateJpaVendorAdapter.setDatabase(Database.H2);
-        hibernateJpaVendorAdapter.setDatabasePlatform(H2Dialect.class.getName());
+        hibernateJpaVendorAdapter.setDatabasePlatform(CustomH2Dialect.class.getName());
         return hibernateJpaVendorAdapter;
     }
 
@@ -52,7 +52,7 @@ public class CustomDbConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Value("${jpa.entities.base-packages:}") String[] entityBasePackages, EntityManagerFactoryBuilder builder, DataSource dataSource) {
         String[] packagesToScan = Arrays.stream(entityBasePackages).map(String::trim).toArray(String[]::new);
-        Arrays.stream(packagesToScan).forEach(entityBasePackage->{
+        Arrays.stream(packagesToScan).forEach(entityBasePackage -> {
             log.info("Entity package to scan :: {}", entityBasePackage.toString());
         });
         return builder
@@ -62,7 +62,7 @@ public class CustomDbConfig {
     }
 
     @Bean(name = "transactionManager")
-    public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory){
+    public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
 }

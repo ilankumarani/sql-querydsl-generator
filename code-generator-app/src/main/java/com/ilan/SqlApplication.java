@@ -13,6 +13,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 
+import static io.ilan.config.QueryDslSqlGeneratorService.BEAN_NAME;
+
 @Slf4j
 @SpringBootApplication
 public class SqlApplication {
@@ -32,7 +34,7 @@ public class SqlApplication {
 
     }
 
-    @DependsOn({"queryDslSqlGeneratorService"})
+    @DependsOn({BEAN_NAME})
     @Bean
     @ConditionalOnProperty(name = "query.dsl.sql.kill.enabled", havingValue = "true", matchIfMissing = true)
     public CommandLineRunner shutdown(ShutdownEndpoint shutdownEndpoint) {
