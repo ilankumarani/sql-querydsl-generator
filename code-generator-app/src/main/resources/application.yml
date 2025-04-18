@@ -13,11 +13,12 @@ spring:
         defer-datasource-initialization: true
         database-platform: com.ilan.dialect.CustomH2Dialect
         properties:
-            jakarta.persistence:
-#                    schema-generation:
-#                        database:
-#                            action: create
+            jakarta:
+                persistence:
                     create-database-schemas: true
+                    schema-generation:
+                        database:
+                            action: create
             hibernate:
                 enable_lazy_load_no_trans: true
                 hbm2ddl:

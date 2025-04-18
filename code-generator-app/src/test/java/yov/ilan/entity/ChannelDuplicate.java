@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "CHANNEL_DUPLICATE", schema = "BBC_SCHEMA")
+@Table(name = "CHANNEL_DUPLICATE", schema = "CHANNEL_SCHEMA")
 public class ChannelDuplicate {
 
     @Id

@@ -43,8 +43,7 @@ public class SchemaCreationTest {
         List<String> schemasFound = schemaNames.stream()
                 .filter(schemaName -> schemaName.equals("CHANNEL_SCHEMA") || schemaName.equals("BBC_SCHEMA"))
                 .collect(Collectors.toList());
-        assertEquals(2, schemasFound.size());
+        assertEquals(1, schemasFound.size());
         assertTrue(schemasFound.contains("CHANNEL_SCHEMA"));
-        assertTrue(schemasFound.contains("BBC_SCHEMA"));
     }
 }

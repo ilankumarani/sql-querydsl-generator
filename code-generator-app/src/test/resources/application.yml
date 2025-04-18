@@ -38,11 +38,13 @@ spring:
         show-sql: true
         database-platform: com.ilan.dialect.CustomH2Dialect
         properties:
-            jakarta.persistence:
+            jakarta:
+                persistence:
+                    create-database-schemas: true
                     schema-generation:
                         database:
                             action: create
-                    create-database-schemas: true
+
             hibernate:
                 format_sql: true # To beautify or pretty print the SQL
                 show-sql: true # To print Sql query in Log
