@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sample-example</artifactId>
-        <version>0.10.0</version>
+        <version>0.11.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -92,6 +92,7 @@
                             <additionalClasspathElements>true</additionalClasspathElements>
                             <arguments>
                                 <!-- Mandatory args we need to provide the packages for entity-scan -->
+                                <argument>--spring.profiles.active=default</argument>
                                 <argument>--jpa.entities.base-packages=com.ilan.entity,org.ilan.entity,xio.ilan.entity
                                 </argument>
                                 <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources
@@ -118,7 +119,7 @@
                     <dependency>
                         <groupId>io.github.ilankumarani</groupId>
                         <artifactId>code-generator-app</artifactId>
-                        <!-- At this point in time 0.10.0 is the latest version-->
+                        <!-- At this point in time 0.11.0 is the latest version-->
                         <version>${project.version}</version>
                     </dependency>
                     <!-- I have a naming-strategy in below dependency-->
