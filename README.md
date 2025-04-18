@@ -3,10 +3,7 @@
 > **_NOTE:_**  
 > * Bundle the entities as a JAR, then pass the base package of entities to plugin as in below example.
   </br> **--jpa.entities.base-packages=com.ilan.entity,io.ilan.entity**
->     
-> 
-> * Repository layer can also be part of the JAR, then pass the base package of repositories to plugin as in below example.
-  </br> **--jpa.repositories.base-packages=com.ilan.repository,io.ilan.repository**
+>
 
 ```xml
 <plugin>
@@ -17,7 +14,7 @@
   <executions>
     <execution>
       <configuration>
-        <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
+        <mainClass>com.ilan.SqlApplication</mainClass>
         <cleanupDaemonThreads>false</cleanupDaemonThreads>
         <includePluginDependencies>true</includePluginDependencies>
         <includeProjectDependencies>true</includeProjectDependencies>
@@ -50,7 +47,7 @@
     <dependency>
       <groupId>io.github.ilankumarani</groupId>
       <artifactId>code-generator-app</artifactId>
-      <!-- At this point in time 0.11.0 is the latest version-->
+      <!-- At this point in time 0.12.0 is the latest version-->
       <version>${project.version}</version>
     </dependency>
     <!-- I have a naming-strategy in below dependency-->
@@ -81,8 +78,8 @@
 <dependency>
     <groupId>io.github.ilankumarani</groupId>
     <artifactId>code-generator</artifactId>
-    <!-- At this point in time 0.11.0 is the latest version-->
-    <version>0.11.0</version>
+    <!-- At this point in time 0.12.0 is the latest version-->
+    <version>0.12.0</version>
 </dependency>
 ```
 

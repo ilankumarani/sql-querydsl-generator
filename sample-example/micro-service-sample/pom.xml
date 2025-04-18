@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sample-example</artifactId>
-        <version>0.11.0</version>
+        <version>0.12.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -64,7 +64,7 @@
 
                     <execution>
                         <configuration>
-                            <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
+                            <mainClass>com.ilan.SqlApplication</mainClass>
                             <cleanupDaemonThreads>false</cleanupDaemonThreads>
                             <includePluginDependencies>true</includePluginDependencies>
                             <includeProjectDependencies>true</includeProjectDependencies>
@@ -85,7 +85,7 @@
 
                     <execution>
                         <configuration>
-                            <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
+                            <mainClass>com.ilan.SqlApplication</mainClass>
                             <cleanupDaemonThreads>false</cleanupDaemonThreads>
                             <includePluginDependencies>true</includePluginDependencies>
                             <includeProjectDependencies>true</includeProjectDependencies>
@@ -119,7 +119,7 @@
                     <dependency>
                         <groupId>io.github.ilankumarani</groupId>
                         <artifactId>code-generator-app</artifactId>
-                        <!-- At this point in time 0.11.0 is the latest version-->
+                        <!-- At this point in time 0.12.0 is the latest version-->
                         <version>${project.version}</version>
                     </dependency>
                     <!-- I have a naming-strategy in below dependency-->
