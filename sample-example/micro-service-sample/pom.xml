@@ -59,7 +59,30 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <!-- You can use the latest-->
                 <version>3.5.0</version>
+
                 <executions>
+
+                    <execution>
+                        <configuration>
+                            <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
+                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                            <includePluginDependencies>true</includePluginDependencies>
+                            <includeProjectDependencies>true</includeProjectDependencies>
+                            <additionalClasspathElements>true</additionalClasspathElements>
+                            <arguments>
+                                <!-- Mandatory args we need to provide the packages for entity-scan -->
+                                <argument>--jpa.entities.base-packages=yov.ilan.entity</argument>
+                                <argument>--query.dsl.sql.output.directory=${project.basedir}/target/generated-sources</argument>
+                                <argument>--spring.config.location=file:${project.basedir}/src/main/resources/application-external.yml</argument>
+                            </arguments>
+                        </configuration>
+                        <id>simple-sql-code-generator</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+
                     <execution>
                         <configuration>
                             <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
