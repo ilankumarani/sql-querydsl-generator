@@ -1,6 +1,6 @@
 package yov.ilan;
 
-import com.ilan.QueryDslSqlApplication;
+import com.ilan.SqlApplication;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
-@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE, classes = {QueryDslSqlApplication.class})
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE, classes = {SqlApplication.class})
 public class SchemaCreationTest {
 
     private final DataSource dataSource;

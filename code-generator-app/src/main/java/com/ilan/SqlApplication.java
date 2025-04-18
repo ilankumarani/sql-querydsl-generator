@@ -15,10 +15,10 @@ import org.springframework.context.annotation.DependsOn;
 
 @Slf4j
 @SpringBootApplication
-public class QueryDslSqlApplication {
+public class SqlApplication {
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplicationBuilder(QueryDslSqlApplication.class)
+        SpringApplication springApplication = new SpringApplicationBuilder(SqlApplication.class)
                 .web(WebApplicationType.NONE)
                 .bannerMode(Banner.Mode.LOG)
                 .build();
