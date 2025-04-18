@@ -40,6 +40,7 @@
         <lombok.version>1.18.38</lombok.version>
         <custom-enable-jpa-repositories.version>0.2.0</custom-enable-jpa-repositories.version>
         <skip.publishing>false</skip.publishing>
+        <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
     </properties>
 
     <dependencies>

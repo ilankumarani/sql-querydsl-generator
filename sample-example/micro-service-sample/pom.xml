@@ -58,7 +58,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <!-- You can use the latest-->
-                <version>3.5.0</version>
+                <version>${exec-maven-plugin.version}</version>
 
                 <executions>
 
