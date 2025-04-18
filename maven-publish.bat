@@ -1,0 +1,1 @@
+mvn deploy -DskipTests -P central -pl !sample-example,!sample-example/entity-repo-test-jar,!sample-example/micro-service-sample
