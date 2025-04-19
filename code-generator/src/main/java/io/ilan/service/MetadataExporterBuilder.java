@@ -48,14 +48,14 @@ public class MetadataExporterBuilder {
     }
 
     private void setSchemasIncludes(CustomMetadataExporterConfigImpl metadataExporterConfig) {
-        if (Objects.nonNull(metaDataConfigProperties.getSchemas())) {
-            metadataExporterConfig.setSchemasIncluded(metaDataConfigProperties.getSchemas());
+        if (Objects.nonNull(metaDataConfigProperties.getInclusive().getSchemas())) {
+            metadataExporterConfig.setSchemasIncluded(metaDataConfigProperties.getInclusive().getSchemas());
         }
     }
 
     private void setTablesIncludes(CustomMetadataExporterConfigImpl metadataExporterConfig) {
-        if (Objects.nonNull(metaDataConfigProperties.getTables())) {
-            metadataExporterConfig.setTablesIncluded(metaDataConfigProperties.getTables());
+        if (Objects.nonNull(metaDataConfigProperties.getInclusive().getTables())) {
+            metadataExporterConfig.setTablesIncluded(metaDataConfigProperties.getInclusive().getTables());
         }
     }
 

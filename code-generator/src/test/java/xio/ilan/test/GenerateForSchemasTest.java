@@ -15,7 +15,7 @@ import xio.ilan.config.DbConfig;
         classes = {Application.class})
 @Import({DbConfig.class})
 @ActiveProfiles("schemas")
-@DisplayName("Generate for OWNER_SCHEMA")
+@DisplayName("Generate for BLOG,OWNER SCHEMA")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @Slf4j
 public class GenerateForSchemasTest {
