@@ -129,13 +129,8 @@
                 <configuration>
                     <skip>${javadoc.skip}</skip>
                     <excludePackageNames>
-                        io.ilan.customExport.*
+                        io.ilan.customExport
                     </excludePackageNames>
-                    <excludes>
-                        **/**/CustomMetadataExporter.java,
-                        **/code-generator/src/main/java/io/ilan/customExport/CustomMetadataExporter.java,
-                        **/io/ilan/customExport/CustomMetadataExporter.java
-                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
