@@ -36,8 +36,8 @@ public class CustomDbConfig {
     private static final Logger log = LoggerFactory.getLogger(CustomDbConfig.class);
 
     /**
-     * Jpa vendor bean of not found
-     * @return return the bean object
+     * JpaVendorAdapter when JpaVendorAdapter is missing
+     * @return return JpaVendorAdapter
      */
     @ConditionalOnMissingBean(JpaVendorAdapter.class)
     @Bean
@@ -81,9 +81,9 @@ public class CustomDbConfig {
     }
 
     /**
-     * transactionManager bean
-     * @param entityManagerFactory
-     * @return
+     * PlatformTransactionManager bean
+     * @param entityManagerFactory entityManagerFactory
+     * @return PlatformTransactionManager
      */
     @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {

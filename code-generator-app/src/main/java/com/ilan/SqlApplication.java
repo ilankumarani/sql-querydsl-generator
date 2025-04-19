@@ -15,10 +15,17 @@ import org.springframework.context.annotation.DependsOn;
 
 import static io.ilan.config.QueryDslSqlGeneratorService.BEAN_NAME;
 
+/**
+ * Main class
+ */
 @Slf4j
 @SpringBootApplication
 public class SqlApplication {
 
+    /**
+     * Main method of Java
+     * @param args for Main method
+     */
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplicationBuilder(SqlApplication.class)
                 .web(WebApplicationType.NONE)
@@ -33,6 +40,12 @@ public class SqlApplication {
         }*/
 
     }
+
+    /**
+     * Manual shutdown of IOC container
+     * @param shutdownEndpoint shutdownEndpoint
+     * @return CommandLineRunner
+     */
 
     @DependsOn({BEAN_NAME})
     @Bean

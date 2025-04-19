@@ -129,7 +129,7 @@
                 <configuration>
                     <skip>${javadoc.skip}</skip>
                     <excludePackageNames>
-                        io.ilan.customExport
+                        io.ilan.customExport,com.ilan.shutdown,com.ilan.dialect
                     </excludePackageNames>
                 </configuration>
                 <executions>
