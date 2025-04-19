@@ -3,7 +3,12 @@
 > **_NOTE:_**  
 > * Bundle the entities as a JAR, then pass the base package of entities to plugin as in below example.
   </br> **--jpa.entities.base-packages=com.ilan.entity,io.ilan.entity**
->
+> 
+> **Sample Example how to build the Entity in JAR bundle as follows :**
+> https://github.com/ilankumarani/sql-querydsl-generator/tree/main/sample-example
+> 
+> **Sample plugin definitions:**
+> https://github.com/ilankumarani/sql-querydsl-generator/blob/main/sample-example/micro-service-sample/pom.xml
 
 ```xml
 <plugin>
@@ -47,7 +52,7 @@
     <dependency>
       <groupId>io.github.ilankumarani</groupId>
       <artifactId>code-generator-app</artifactId>
-      <!-- At this point in time 0.12.0 is the latest version-->
+      <!-- At this point in time 1.1.0 is the latest version-->
       <version>${project.version}</version>
     </dependency>
     <!-- I have a naming-strategy in below dependency-->
@@ -78,8 +83,8 @@
 <dependency>
     <groupId>io.github.ilankumarani</groupId>
     <artifactId>code-generator</artifactId>
-    <!-- At this point in time 0.12.0 is the latest version-->
-    <version>0.12.0</version>
+    <!-- At this point in time 1.1.0 is the latest version-->
+    <version>1.1.0</version>
 </dependency>
 ```
 
