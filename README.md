@@ -8,7 +8,7 @@
 > https://github.com/ilankumarani/sql-querydsl-generator/tree/main/sample-example
 > 
 > **Sample plugin definitions:**
-> https://github.com/ilankumarani/sql-querydsl-generator/blob/main/sample-example/micro-service-sample/pom.xml
+> https://github.com/ilankumarani/sql-querydsl-generator/blob/main/sample-example/micro-service-sample/pom.xml#L57-L145
 
 ```xml
 <plugin>
