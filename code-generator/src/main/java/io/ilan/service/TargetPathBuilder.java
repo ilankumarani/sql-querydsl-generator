@@ -18,9 +18,9 @@ public class TargetPathBuilder {
     private final ResourceLoader resourceLoader;
 
     /**
-     * Get target path generated-test-source, this method is just for test case
+     * Get target path generated-source, this method is just for test case
      *
-     * @return
+     * @return the path
      */
     public Path getTargetPath() {
         log.info("Hey Ilan ResourceLoader bean found ? TRUE:FALSE :: {}", Objects.nonNull(resourceLoader));

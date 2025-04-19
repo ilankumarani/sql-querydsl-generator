@@ -23,6 +23,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip.publishing>true</skip.publishing>
+        <javadoc.skip>true</javadoc.skip>
+        <maven-gpg-signature>true</maven-gpg-signature>
     </properties>
 
 </project>
