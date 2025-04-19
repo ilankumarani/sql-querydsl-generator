@@ -23,7 +23,8 @@ public class QueryDslSqlGeneratorService {
 
     /**
      * Generate the QueryDsl from Entity CommandLine runner
-     * @param dataSource dataSource
+     *
+     * @param dataSource         dataSource
      * @param sqlExporterService SqlExporter Service
      * @return nothing just run the bean
      */

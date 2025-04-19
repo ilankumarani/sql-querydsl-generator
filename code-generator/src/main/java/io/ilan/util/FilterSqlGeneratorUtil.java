@@ -18,10 +18,11 @@ public final class FilterSqlGeneratorUtil {
 
     /**
      * Logic to Filter the generation to schema and table
+     *
      * @param schemaNames schemaNames
-     * @param tableNames tableNames
-     * @param schemaName schemaName
-     * @param tableName tableName
+     * @param tableNames  tableNames
+     * @param schemaName  schemaName
+     * @param tableName   tableName
      * @return the boolean if that needs to be generated or not
      */
     public static Boolean codeGenerateFor(List<String> schemaNames, List<String> tableNames, String schemaName, String tableName) {
@@ -43,6 +44,7 @@ public final class FilterSqlGeneratorUtil {
 
     /**
      * Lower case the list
+     *
      * @param input list as in input
      * @return lower case list or empty List
      */
