@@ -5,11 +5,25 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Filter the generation to schema and table
+ */
 public final class FilterSqlGeneratorUtil {
 
+    /**
+     * Default constructor
+     */
     private FilterSqlGeneratorUtil() {
     }
 
+    /**
+     * Logic to Filter the generation to schema and table
+     * @param schemaNames schemaNames
+     * @param tableNames tableNames
+     * @param schemaName schemaName
+     * @param tableName tableName
+     * @return the boolean if that needs to be generated or not
+     */
     public static Boolean codeGenerateFor(List<String> schemaNames, List<String> tableNames, String schemaName, String tableName) {
 
         Boolean defaultValue = Boolean.FALSE;
@@ -27,6 +41,11 @@ public final class FilterSqlGeneratorUtil {
         return defaultValue;
     }
 
+    /**
+     * Lower case the list
+     * @param input list as in input
+     * @return lower case list or empty List
+     */
     public static List<String> valuesToLowerCase(List<String> input) {
         if (Objects.nonNull(input) && !input.isEmpty()) {
             return input.stream()

@@ -27,11 +27,18 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 
+/**
+ * Db configuration
+ */
 @AbdEnableJpaRepositories(basePackages = "${jpa.repositories.base-packages}")
 @Configuration
 public class CustomDbConfig {
     private static final Logger log = LoggerFactory.getLogger(CustomDbConfig.class);
 
+    /**
+     * Jpa vendor bean of not found
+     * @return return the bean object
+     */
     @ConditionalOnMissingBean(JpaVendorAdapter.class)
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
@@ -42,6 +49,11 @@ public class CustomDbConfig {
         return hibernateJpaVendorAdapter;
     }
 
+
+    /**
+     * Load the spring.datasource properties
+     * @return DataSourceProperties
+     */
     @Bean
     @Primary
     @ConfigurationProperties("spring.datasource")
@@ -49,6 +61,13 @@ public class CustomDbConfig {
         return new DataSourceProperties();
     }
 
+    /**
+     * Custom entity scan, so custom entityManager
+     * @param entityBasePackages entity base-packages
+     * @param builder EntityManagerFactoryBuilder builder
+     * @param dataSource DataSource bean
+     * @return LocalContainerEntityManagerFactoryBean
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Value("${jpa.entities.base-packages:}") String[] entityBasePackages, EntityManagerFactoryBuilder builder, DataSource dataSource) {
         String[] packagesToScan = Arrays.stream(entityBasePackages).map(String::trim).toArray(String[]::new);
@@ -61,6 +80,11 @@ public class CustomDbConfig {
                 .build();
     }
 
+    /**
+     * transactionManager bean
+     * @param entityManagerFactory
+     * @return
+     */
     @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);

@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Inclusive the schema and table name
+ */
 @Data
 public class CustomMetadataExporterConfigImpl extends MetadataExporterConfigImpl implements MetadataExporterConfig {
 

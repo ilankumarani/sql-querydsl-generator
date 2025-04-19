@@ -10,6 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+/**
+ * Resolve the target path
+ */
 @RequiredArgsConstructor
 @Service
 @Slf4j
@@ -20,7 +23,7 @@ public class TargetPathBuilder {
     /**
      * Get target path generated-source, this method is just for test case
      *
-     * @return the path
+     * @return the target path
      */
     public Path getTargetPath() {
         log.info("Hey Ilan ResourceLoader bean found ? TRUE:FALSE :: {}", Objects.nonNull(resourceLoader));

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Scan the values that are required from plugin
+ */
 @Data
 @Component
 @ConfigurationProperties(prefix = "query.dsl.sql.inclusive")
