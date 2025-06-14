@@ -148,6 +148,103 @@ query:
           - OWNER_DETAILS
 ```
 
+### Custom property for Exporter
+
+> **_NOTE:_**  **https://querydsl.com/static/querydsl/latest/reference/html/ch02s03.html**
+```yaml
+query:
+  dsl:
+    sql:
+      output:
+        directory: classpath:/
+      package:
+        directory: schemas.querydsl.sql
+      inclusive:
+        schemas:
+          - OWNER_SCHEMA
+          - BLOG_SCHEMA
+        tables:
+          - Domains
+          - OWNER_DETAILS  - 
+      customTypes:
+        customType:
+          - com.querydsl.sql.types.InputStreamType
+      typeMappings:
+        typeMapping:
+          - table: BLOG_DETAILS
+            column: BLOG_DATE
+            type: java.util.Date
+
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_DATE
+            type: java.sql.Date
+
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_TIME
+            type: java.sql.Time
+
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_TIMESTAMP
+            type: java.sql.Timestamp
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_DATE
+            type: java.time.LocalDate
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_TIME
+            type: java.time.LocalTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_DATE_TIME
+            type: java.time.LocalDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_OFFSET_DATE_TIME
+            type: java.time.OffsetDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_ZONED_DATE_TIME
+            type: java.time.ZonedDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_INSTANT
+            type: java.time.Instant
+
+      #          - table: BLOG_DETAILS
+      #            column: BLOG_DURATION
+      #            type: java.time.Duration
+      #
+      #          - table: BLOG_DETAILS
+      #            column: BLOG_PERIOD
+      #            type: java.time.Period
+      renameMappings:
+        renameMapping:
+          - fromSchema: source_schema
+            fromTable: old_table
+            fromColumn: old_column
+            toSchema: target_schema
+            toTable: new_table
+            toColumn: new_column
+
+          - fromSchema: legacy_schema
+            fromTable: legacy_users
+            fromColumn: uname
+            toSchema: modern_schema
+            toTable: users
+            toColumn: username
+      numericMappings:
+        numericMapping:
+          - total: 1
+            decimal: 0
+            javaType: java.lang.Byte
+
+          - total: 5
+            decimal: 2
+            javaType: java.math.BigDecimal
+```
+
+
 ___
 
 ## Self index to re-gain my Knowledge
