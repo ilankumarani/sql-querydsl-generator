@@ -1,6 +1,9 @@
 package io.ilan.service;
 
 import com.querydsl.codegen.BeanSerializer;
+import com.querydsl.codegen.TypeMappings;
+import com.querydsl.sql.codegen.support.CustomType;
+import com.querydsl.sql.codegen.support.TypeMapping;
 import io.ilan.config.MetaDataConfigProperties;
 import io.ilan.customExport.CustomMetadataExporterConfigImpl;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -42,8 +47,10 @@ public class MetadataExporterBuilder {
         setSchemasIncludes(exporter);
         setTablesIncludes(exporter);
 
-        BeanSerializer beanSerializer = new BeanSerializer();
+        /*BeanSerializer beanSerializer = new BeanSerializer();
         beanSerializer.setAddFullConstructor(Boolean.TRUE);
+        beanSerializer.setPrintSupertype(Boolean.TRUE);
+        exporter.setBeanSerializerClass(BeanSerializer.class);*/
 
         exporter.setExportBeans(Boolean.TRUE);
         exporter.setBeanAddFullConstructor(Boolean.TRUE);

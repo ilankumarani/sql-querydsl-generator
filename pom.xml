@@ -11,15 +11,16 @@
 
     <groupId>io.github.ilankumarani</groupId>
     <artifactId>sql-querydsl-generator</artifactId>
-    <version>1.2.0</version>
+    <version>3.0.0</version>
     <packaging>pom</packaging>
+    <name>sql-querydsl-generator</name>
     <description>Generate QueryDsl SQL from Entity</description>
-    <url/>
+    <url>https://github.com/ilankumarani/sql-querydsl-generator</url>
 
     <modules>
         <module>code-generator</module>
         <module>code-generator-app</module>
-        <module>sample-example</module>
+        <!--<module>sample-example</module>-->
     </modules>
 
     <properties>
@@ -232,9 +233,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ilankumarani/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:ilankumarani/${project.artifactId}.git</developerConnection>
-        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/${project.artifactId}</url>
+        <connection>scm:git:git://github.com/ilankumarani/sql-querydsl-generator.git</connection>
+        <developerConnection>scm:git:git@github.com:ilankumarani/sql-querydsl-generator.git</developerConnection>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/sql-querydsl-generator</url>
         <tag>main</tag>
     </scm>
 

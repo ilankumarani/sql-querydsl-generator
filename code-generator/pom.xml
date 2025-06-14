@@ -5,12 +5,13 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
-        <version>1.2.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <artifactId>code-generator</artifactId>
     <name>code-generator</name>
     <description>Code generator from Table</description>
+    <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/code-generator</url>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -102,9 +103,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ilankumarani/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:ilankumarani/${project.artifactId}.git</developerConnection>
-        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/${project.parent.artifactId}/${project.artifactId}</url>
+        <connection>scm:git:git://github.com/ilankumarani/code-generator.git</connection>
+        <developerConnection>scm:git:git@github.com:ilankumarani/code-generator.git</developerConnection>
+        <url>https://github.com/ilankumarani/sql-querydsl-generator/tree/main/sql-querydsl-generator/code-generator</url>
         <tag>main</tag>
     </scm>
 

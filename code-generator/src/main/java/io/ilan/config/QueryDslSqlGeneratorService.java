@@ -29,7 +29,6 @@ public class QueryDslSqlGeneratorService {
      * @param sqlExporterService SqlExporter Service
      * @return nothing just run the bean
      */
-    @ConditionalOnSingleCandidate(DataSource.class)
     @Bean
     @ConditionalOnProperty(name = "query.dsl.sql.generation.enabled", havingValue = "true", matchIfMissing = true)
     public CommandLineRunner queryDslSqlGenerator(DataSource dataSource, SqlExporterService sqlExporterService) {
