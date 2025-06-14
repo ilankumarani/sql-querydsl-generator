@@ -7,3 +7,36 @@ query:
         schemas:
           - OWNER_SCHEMA
           - BLOG_SCHEMA
+      typeMappings:
+        typeMapping:
+          - table: IMAGE
+            column: CONTENTS
+            type: java.io.InputStream
+
+          - table: OTHER_TABLE
+            column: OTHER_COLUMN
+            type: some.other.Type
+      renameMappings:
+        renameMapping:
+          - fromSchema: source_schema
+            fromTable: old_table
+            fromColumn: old_column
+            toSchema: target_schema
+            toTable: new_table
+            toColumn: new_column
+
+          - fromSchema: legacy_schema
+            fromTable: legacy_users
+            fromColumn: uname
+            toSchema: modern_schema
+            toTable: users
+            toColumn: username
+      numericMappings:
+        numericMapping:
+          - total: 1
+            decimal: 0
+            javaType: java.lang.Byte
+
+          - total: 5
+            decimal: 2
+            javaType: java.math.BigDecimal
