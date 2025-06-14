@@ -1,5 +1,6 @@
 package xio.ilan.test;
 
+import com.querydsl.sql.SQLQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +21,7 @@ import xio.ilan.config.DbConfig;
 @Slf4j
 public class GenerateForSchemaTest {
 
+    private final SQLQueryFactory sqlQueryFactory;
 
     @DisplayName("Generate SQL QueryDsl")
     @Test

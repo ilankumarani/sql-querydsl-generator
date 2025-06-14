@@ -50,14 +50,7 @@ public class MetadataExporterBuilder {
         setSchemasIncludes(exporter);
         setTablesIncludes(exporter);
 
-        //The below configuration is for S Generation
         exporter.setPackageName(metaDataConfigProperties.getPackageDirectory());
-        exporter.setNamePrefix("S");
-        exporter.setExportAll(Boolean.FALSE);
-        exporter.setExportTables(Boolean.TRUE);
-        exporter.setSchemaToPackage(Boolean.TRUE);
-        exporter.setTargetFolder(new File(path.toUri()));
-
 
         //The below configuration is for B (Projection Bean) Generation
         exporter.setExportBeans(Boolean.TRUE);
@@ -65,8 +58,13 @@ public class MetadataExporterBuilder {
         exporter.setBeanAddToString(Boolean.TRUE);
         exporter.setBeanPrefix("B");
         exporter.setBeanPrintSupertype(Boolean.TRUE);
-        exporter.setBeanPackageName(metaDataConfigProperties.getPackageDirectory().concat("bean"));
-        exporter.setBeansTargetFolder(new File(path.toUri()));
+
+        //The below configuration is for S Generation
+        exporter.setNamePrefix("S");
+        exporter.setExportAll(Boolean.FALSE);
+        exporter.setExportTables(Boolean.TRUE);
+        exporter.setSchemaToPackage(Boolean.TRUE);
+        exporter.setTargetFolder(new File(path.toUri()));
 
         log.debug("Target OutputDirectory to be generated :: {}", path.toUri());
         return exporter;
@@ -85,13 +83,8 @@ public class MetadataExporterBuilder {
     }
 
     private Path getGenratedPath() {
-        Path path = null;
-        if (Objects.nonNull(metaDataConfigProperties.getTargetOutputDirectory())) {
-            path = Paths.get(metaDataConfigProperties.getTargetOutputDirectory());
-        } else {
-            path = targetPathBuilder.getTargetPath();
-        }
-        return path;
+        String targetOutputDirectory = metaDataConfigProperties.getTargetOutputDirectory();
+        return Objects.nonNull(targetOutputDirectory) ? Paths.get(targetOutputDirectory) : targetPathBuilder.getTargetPath();
     }
 
 }

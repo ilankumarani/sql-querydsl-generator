@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sql-querydsl-generator</artifactId>
-        <version>5.0.0</version>
+        <version>6.0.0</version>
     </parent>
 
     <artifactId>code-generator-app</artifactId>
@@ -44,8 +44,6 @@
             <artifactId>custom-enable-jpa-repositories</artifactId>
             <version>${custom-enable-jpa-repositories.version}</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>com.h2database</groupId>
