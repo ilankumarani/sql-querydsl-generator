@@ -1,5 +1,6 @@
 package io.ilan.config;
 
+import com.querydsl.sql.codegen.support.CustomType;
 import com.querydsl.sql.codegen.support.NumericMapping;
 import com.querydsl.sql.codegen.support.RenameMapping;
 import com.querydsl.sql.codegen.support.TypeMapping;
@@ -70,6 +71,14 @@ public class MetaDataConfigProperties {
     @Data
     public class RenameMappings {
         private List<RenameMapping> renameMapping = new ArrayList<>();
+    }
+
+    @NestedConfigurationProperty
+    private final CustomTypes customTypes = new CustomTypes();
+
+    @Data
+    public class CustomTypes {
+        private List<CustomType> customType = new ArrayList<>();
     }
 
 }

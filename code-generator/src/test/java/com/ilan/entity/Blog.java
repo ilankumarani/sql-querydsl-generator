@@ -7,6 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
+
 @Entity
 @Table(name = "BLOG_DETAILS", schema = "BLOG_SCHEMA")
 public class Blog {
@@ -24,4 +29,16 @@ public class Blog {
 
     @Column(name = "content")
     private String content;
+
+    @Column(name = "BLOG_DATE")
+    private Date blogDate;
+
+    @Column(name = "BLOG_LOCAL_DATE")
+    private LocalDate blogLocalDate;
+
+    @Column(name = "BLOG_LOCAL_TIME")
+    private LocalTime blogLocalTime;
+
+    @Column(name = "BLOG_LOCAL_DATE_TIME")
+    private LocalDateTime blogLocalDateTime;
 }
