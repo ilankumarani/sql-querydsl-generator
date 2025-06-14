@@ -40,6 +40,15 @@ public class MetadataExporterBuilder {
         Path path = getGenratedPath();
 
         CustomMetadataExporterConfigImpl exporter = new CustomMetadataExporterConfigImpl();
+
+        exporter.setTypeMappings(metaDataConfigProperties.getTypeMappings().getTypeMapping());
+        exporter.setNumericMappings(metaDataConfigProperties.getNumericMappings().getNumericMapping());
+        exporter.setRenameMappings(metaDataConfigProperties.getRenameMappings().getRenameMapping());
+
+        setSchemasIncludes(exporter);
+        setTablesIncludes(exporter);
+
+        //The below configuration is for S Generation
         exporter.setPackageName(metaDataConfigProperties.getPackageDirectory());
         exporter.setNamePrefix("S");
         exporter.setExportAll(Boolean.FALSE);
@@ -48,14 +57,7 @@ public class MetadataExporterBuilder {
         exporter.setTargetFolder(new File(path.toUri()));
 
 
-        setSchemasIncludes(exporter);
-        setTablesIncludes(exporter);
-
-        /*BeanSerializer beanSerializer = new BeanSerializer();
-        beanSerializer.setAddFullConstructor(Boolean.TRUE);
-        beanSerializer.setPrintSupertype(Boolean.TRUE);
-        exporter.setBeanSerializerClass(BeanSerializer.class);*/
-
+        //The below configuration is for B (Projection Bean) Generation
         exporter.setExportBeans(Boolean.TRUE);
         exporter.setBeanAddFullConstructor(Boolean.TRUE);
         exporter.setBeanAddToString(Boolean.TRUE);
