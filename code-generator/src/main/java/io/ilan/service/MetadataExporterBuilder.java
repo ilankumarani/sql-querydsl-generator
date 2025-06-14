@@ -1,5 +1,6 @@
 package io.ilan.service;
 
+import com.querydsl.codegen.BeanSerializer;
 import io.ilan.config.MetaDataConfigProperties;
 import io.ilan.customExport.CustomMetadataExporterConfigImpl;
 import lombok.RequiredArgsConstructor;
@@ -31,20 +32,29 @@ public class MetadataExporterBuilder {
      * @return MetadataExporterConfig
      */
     public CustomMetadataExporterConfigImpl getMetadataExporterConfig() {
-        CustomMetadataExporterConfigImpl metadataExporterConfig = new CustomMetadataExporterConfigImpl();
-        metadataExporterConfig.setPackageName(metaDataConfigProperties.getPackageDirectory());
-        metadataExporterConfig.setNamePrefix("S");
-        metadataExporterConfig.setExportAll(Boolean.FALSE);
-        metadataExporterConfig.setExportTables(Boolean.TRUE);
-        metadataExporterConfig.setSchemaToPackage(Boolean.TRUE);
+        CustomMetadataExporterConfigImpl exporter = new CustomMetadataExporterConfigImpl();
+        exporter.setPackageName(metaDataConfigProperties.getPackageDirectory());
+        exporter.setNamePrefix("S");
+        exporter.setExportAll(Boolean.FALSE);
+        exporter.setExportTables(Boolean.TRUE);
+        exporter.setSchemaToPackage(Boolean.TRUE);
 
-        setSchemasIncludes(metadataExporterConfig);
-        setTablesIncludes(metadataExporterConfig);
+        setSchemasIncludes(exporter);
+        setTablesIncludes(exporter);
+
+        BeanSerializer beanSerializer = new BeanSerializer();
+        beanSerializer.setAddFullConstructor(Boolean.TRUE);
+
+        exporter.setExportBeans(Boolean.TRUE);
+        exporter.setBeanAddFullConstructor(Boolean.TRUE);
+        exporter.setBeanAddToString(Boolean.TRUE);
+        exporter.setBeanPrefix("B");
+        exporter.setBeanPrintSupertype(Boolean.TRUE);
 
         Path path = getGenratedPath();
         log.debug("Target OutputDirectory to be generated :: {}", path.toUri());
-        metadataExporterConfig.setTargetFolder(new File(path.toUri()));
-        return metadataExporterConfig;
+        exporter.setTargetFolder(new File(path.toUri()));
+        return exporter;
     }
 
     private void setSchemasIncludes(CustomMetadataExporterConfigImpl metadataExporterConfig) {

@@ -106,6 +106,7 @@
                                 <argument>
                                     --spring.jpa.hibernate.naming.physical-strategy=org.ilan.namingStrategy.CustomPhysicalNamingStrategy
                                 </argument>
+                                <argument>--spring.autoconfigure.exclude=org.ilan.StrategyAutoConfig</argument>
                             </arguments>
                         </configuration>
                         <id>sql-code-generator</id>
