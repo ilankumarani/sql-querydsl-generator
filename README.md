@@ -165,7 +165,7 @@ query:
           - BLOG_SCHEMA
         tables:
           - Domains
-          - OWNER_DETAILS  - 
+          - OWNER_DETAILS
       customTypes:
         customType:
           - com.querydsl.sql.types.InputStreamType
