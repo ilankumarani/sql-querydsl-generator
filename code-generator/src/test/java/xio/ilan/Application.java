@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import javax.sql.DataSource;
 
@@ -57,7 +58,8 @@ public class Application {
 
     @Bean
     public SQLQueryFactory sqlQueryFactory(DataSource dataSource, com.querydsl.sql.Configuration configuration) {
-        var provider = new SpringConnectionProvider(dataSource);
-        return new SQLQueryFactory(querydslConfiguration(), provider);
+        SpringConnectionProvider provider = new SpringConnectionProvider(dataSource);
+        //return new SQLQueryFactory(configuration, provider);
+        return new SQLQueryFactory(configuration, new TransactionAwareDataSourceProxy(dataSource));
     }
 }
