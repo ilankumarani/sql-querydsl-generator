@@ -10,16 +10,57 @@ query:
       customTypes:
         customType:
           - com.querydsl.sql.types.InputStreamType
-          - com.querydsl.sql.types.EnumByNameType
+#          - com.querydsl.sql.types.InputStreamType
+#          - com.querydsl.sql.types.EnumByNameType
       typeMappings:
         typeMapping:
           - table: BLOG_DETAILS
-            column: CONTENT
-            type: java.io.InputStream
+            column: BLOG_DATE
+            type: java.util.Date
 
-          - table: OTHER_TABLE
-            column: OTHER_COLUMN
-            type: some.other.Type
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_DATE
+            type: java.sql.Date
+
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_TIME
+            type: java.sql.Time
+
+          - table: BLOG_DETAILS
+            column: BLOG_SQL_TIMESTAMP
+            type: java.sql.Timestamp
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_DATE
+            type: java.time.LocalDate
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_TIME
+            type: java.time.LocalTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_LOCAL_DATE_TIME
+            type: java.time.LocalDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_OFFSET_DATE_TIME
+            type: java.time.OffsetDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_ZONED_DATE_TIME
+            type: java.time.ZonedDateTime
+
+          - table: BLOG_DETAILS
+            column: BLOG_INSTANT
+            type: java.time.Instant
+
+          - table: BLOG_DETAILS
+            column: BLOG_DURATION
+            type: java.time.Duration
+
+          - table: BLOG_DETAILS
+            column: BLOG_PERIOD
+            type: com.querydsl.sql.types.InputStreamType
       renameMappings:
         renameMapping:
           - fromSchema: source_schema

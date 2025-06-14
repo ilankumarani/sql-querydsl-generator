@@ -16,6 +16,7 @@ import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -41,6 +42,7 @@ public class MetadataExporterBuilder {
 
         CustomMetadataExporterConfigImpl exporter = new CustomMetadataExporterConfigImpl();
 
+        exporter.setCustomTypes(metaDataConfigProperties.getCustomTypes().getCustomType());
         exporter.setTypeMappings(metaDataConfigProperties.getTypeMappings().getTypeMapping());
         exporter.setNumericMappings(metaDataConfigProperties.getNumericMappings().getNumericMapping());
         exporter.setRenameMappings(metaDataConfigProperties.getRenameMappings().getRenameMapping());
