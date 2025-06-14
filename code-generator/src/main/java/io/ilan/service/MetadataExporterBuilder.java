@@ -37,12 +37,16 @@ public class MetadataExporterBuilder {
      * @return MetadataExporterConfig
      */
     public CustomMetadataExporterConfigImpl getMetadataExporterConfig() {
+        Path path = getGenratedPath();
+
         CustomMetadataExporterConfigImpl exporter = new CustomMetadataExporterConfigImpl();
         exporter.setPackageName(metaDataConfigProperties.getPackageDirectory());
         exporter.setNamePrefix("S");
         exporter.setExportAll(Boolean.FALSE);
         exporter.setExportTables(Boolean.TRUE);
         exporter.setSchemaToPackage(Boolean.TRUE);
+        exporter.setTargetFolder(new File(path.toUri()));
+
 
         setSchemasIncludes(exporter);
         setTablesIncludes(exporter);
@@ -57,10 +61,10 @@ public class MetadataExporterBuilder {
         exporter.setBeanAddToString(Boolean.TRUE);
         exporter.setBeanPrefix("B");
         exporter.setBeanPrintSupertype(Boolean.TRUE);
+        exporter.setBeanPackageName(metaDataConfigProperties.getPackageDirectory().concat("bean"));
+        exporter.setBeansTargetFolder(new File(path.toUri()));
 
-        Path path = getGenratedPath();
         log.debug("Target OutputDirectory to be generated :: {}", path.toUri());
-        exporter.setTargetFolder(new File(path.toUri()));
         return exporter;
     }
 

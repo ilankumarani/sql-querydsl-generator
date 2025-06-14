@@ -33,6 +33,7 @@ build/
 .vscode/
 
 ***/ALPHA/zolo/query/dsl
+***/ALPHA/zolo/query/dslbean
 !***/ilam/query/dsl
 !***/alpha/querydsl/sql
 !***/beta/querydsl/sql
