@@ -8,8 +8,8 @@ query:
           - OWNER_SCHEMA
           - BLOG_SCHEMA
       query-class-prefix: A
-      bean-class-prefix: B
       query-class-suffix: X
+      bean-class-prefix: B
       bean-class-suffix: Y
       customTypes:
         customType:
