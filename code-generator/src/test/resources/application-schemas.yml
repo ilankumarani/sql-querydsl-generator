@@ -1,6 +1,14 @@
 query:
   dsl:
     sql:
+      config:
+        export:
+          all: true
+          views: true
+          primaryKeys: true
+          foreignKeys: true
+          directForeignKeys: true
+          inverseForeignKeys: true
       package:
         directory: schemas.querydsl.sql
       inclusive:

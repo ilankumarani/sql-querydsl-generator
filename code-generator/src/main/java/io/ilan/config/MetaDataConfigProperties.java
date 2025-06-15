@@ -88,5 +88,22 @@ public class MetaDataConfigProperties {
         private List<CustomType> customType = new ArrayList<>();
     }
 
+    private Config config = new Config();
+
+    @Data
+    public static class Config {
+        private Export export = new Export();
+    }
+
+    @Data
+    public static class Export {
+        private Boolean all = null;
+        private Boolean views = Boolean.FALSE;
+        private Boolean primaryKeys = Boolean.FALSE;
+        private Boolean foreignKeys = Boolean.FALSE;
+        private Boolean directForeignKeys = Boolean.FALSE;
+        private Boolean inverseForeignKeys = Boolean.FALSE;
+    }
+
 }
 

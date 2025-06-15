@@ -53,7 +53,7 @@
       <groupId>io.github.ilankumarani</groupId>
       <artifactId>code-generator-app</artifactId>
       <!-- At this point in time 6.1.0 is the latest version-->
-      <version>6.1.1</version>
+      <version>7.0.0-Beta</version>
     </dependency>
     <!-- I have a naming-strategy in below dependency-->
     <dependency>
@@ -169,6 +169,22 @@ query:
           - OWNER_DETAILS
 ```
 
+### Exporter more other than Tables
+```yaml
+query:
+  dsl:
+    sql:
+      config:
+        export:
+          all: true
+          views: true
+          primaryKeys: true
+          foreignKeys: true
+          directForeignKeys: true
+          inverseForeignKeys: true
+```
+
+
 ### Custom property for Exporter
 
 > **_NOTE:_**  **https://querydsl.com/static/querydsl/latest/reference/html/ch02s03.html**
@@ -176,6 +192,14 @@ query:
 query:
   dsl:
     sql:
+      config:
+        export:
+          all: true
+          views: true
+          primaryKeys: true
+          foreignKeys: true
+          directForeignKeys: true
+          inverseForeignKeys: true
       output:
         directory: classpath:/
       package:

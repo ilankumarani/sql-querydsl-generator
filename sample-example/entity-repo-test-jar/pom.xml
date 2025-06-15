@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.ilankumarani</groupId>
         <artifactId>sample-example</artifactId>
-        <version>6.1.1</version>
+        <version>7.0.0-Beta</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
