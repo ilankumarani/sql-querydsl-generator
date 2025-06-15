@@ -52,8 +52,8 @@
     <dependency>
       <groupId>io.github.ilankumarani</groupId>
       <artifactId>code-generator-app</artifactId>
-      <!-- At this point in time 1.1.0 is the latest version-->
-      <version>${project.version}</version>
+      <!-- At this point in time 6.1.0 is the latest version-->
+      <version>6.1.0</version>
     </dependency>
     <!-- I have a naming-strategy in below dependency-->
     <dependency>

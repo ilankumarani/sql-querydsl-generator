@@ -1,5 +1,7 @@
 package xio.ilan.sql.query.dsl;
 
+import lombok.Builder;
+
 import javax.annotation.processing.Generated;
 
 /**
@@ -7,20 +9,19 @@ import javax.annotation.processing.Generated;
  */
 @SuppressWarnings("this-escape")
 @Generated("com.querydsl.codegen.BeanSerializer")
+@Builder
 public class BBlogDetails {
 
     public BBlogDetails() {
     }
 
-    public BBlogDetails(java.util.Date blogDate, Object blogDuration, java.time.Instant blogInstant, java.time.LocalDate blogLocalDate, java.time.LocalDateTime blogLocalDateTime, java.time.LocalTime blogLocalTime, java.time.OffsetDateTime blogOffsetDateTime, byte[] blogPeriod, java.sql.Date blogSqlDate, java.sql.Time blogSqlTime, java.sql.Timestamp blogSqlTimestamp, java.time.ZonedDateTime blogZonedDateTime, String category, String content, Long id, String title) {
+    public BBlogDetails(java.util.Date blogDate, java.time.Instant blogInstant, java.time.LocalDate blogLocalDate, java.time.LocalDateTime blogLocalDateTime, java.time.LocalTime blogLocalTime, java.time.OffsetDateTime blogOffsetDateTime, java.sql.Date blogSqlDate, java.sql.Time blogSqlTime, java.sql.Timestamp blogSqlTimestamp, java.time.ZonedDateTime blogZonedDateTime, String category, String content, Long id, String title) {
         this.blogDate = blogDate;
-        this.blogDuration = blogDuration;
         this.blogInstant = blogInstant;
         this.blogLocalDate = blogLocalDate;
         this.blogLocalDateTime = blogLocalDateTime;
         this.blogLocalTime = blogLocalTime;
         this.blogOffsetDateTime = blogOffsetDateTime;
-        this.blogPeriod = blogPeriod;
         this.blogSqlDate = blogSqlDate;
         this.blogSqlTime = blogSqlTime;
         this.blogSqlTimestamp = blogSqlTimestamp;
@@ -33,8 +34,6 @@ public class BBlogDetails {
 
     private java.util.Date blogDate;
 
-    private Object blogDuration;
-
     private java.time.Instant blogInstant;
 
     private java.time.LocalDate blogLocalDate;
@@ -44,8 +43,6 @@ public class BBlogDetails {
     private java.time.LocalTime blogLocalTime;
 
     private java.time.OffsetDateTime blogOffsetDateTime;
-
-    private byte[] blogPeriod;
 
     private java.sql.Date blogSqlDate;
 
@@ -69,14 +66,6 @@ public class BBlogDetails {
 
     public void setBlogDate(java.util.Date blogDate) {
         this.blogDate = blogDate;
-    }
-
-    public Object getBlogDuration() {
-        return blogDuration;
-    }
-
-    public void setBlogDuration(Object blogDuration) {
-        this.blogDuration = blogDuration;
     }
 
     public java.time.Instant getBlogInstant() {
@@ -117,14 +106,6 @@ public class BBlogDetails {
 
     public void setBlogOffsetDateTime(java.time.OffsetDateTime blogOffsetDateTime) {
         this.blogOffsetDateTime = blogOffsetDateTime;
-    }
-
-    public byte[] getBlogPeriod() {
-        return blogPeriod;
-    }
-
-    public void setBlogPeriod(byte[] blogPeriod) {
-        this.blogPeriod = blogPeriod;
     }
 
     public java.sql.Date getBlogSqlDate() {
@@ -193,7 +174,7 @@ public class BBlogDetails {
 
     @Override
     public String toString() {
-         return "blogDate = " + blogDate + ", blogDuration = " + blogDuration + ", blogInstant = " + blogInstant + ", blogLocalDate = " + blogLocalDate + ", blogLocalDateTime = " + blogLocalDateTime + ", blogLocalTime = " + blogLocalTime + ", blogOffsetDateTime = " + blogOffsetDateTime + ", blogPeriod = " + blogPeriod + ", blogSqlDate = " + blogSqlDate + ", blogSqlTime = " + blogSqlTime + ", blogSqlTimestamp = " + blogSqlTimestamp + ", blogZonedDateTime = " + blogZonedDateTime + ", category = " + category + ", content = " + content + ", id = " + id + ", title = " + title;
+         return "blogDate = " + blogDate + ", blogInstant = " + blogInstant + ", blogLocalDate = " + blogLocalDate + ", blogLocalDateTime = " + blogLocalDateTime + ", blogLocalTime = " + blogLocalTime + ", blogOffsetDateTime = " + blogOffsetDateTime + ", blogSqlDate = " + blogSqlDate + ", blogSqlTime = " + blogSqlTime + ", blogSqlTimestamp = " + blogSqlTimestamp + ", blogZonedDateTime = " + blogZonedDateTime + ", category = " + category + ", content = " + content + ", id = " + id + ", title = " + title;
     }
 
 }

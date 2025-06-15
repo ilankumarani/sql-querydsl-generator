@@ -29,8 +29,6 @@ public class SBlogDetails extends com.querydsl.sql.RelationalPathBase<BBlogDetai
 
     public final DateTimePath<java.util.Date> blogDate = createDateTime("blogDate", java.util.Date.class);
 
-    public final SimplePath<Object> blogDuration = createSimple("blogDuration", Object.class);
-
     public final DateTimePath<java.time.Instant> blogInstant = createDateTime("blogInstant", java.time.Instant.class);
 
     public final DatePath<java.time.LocalDate> blogLocalDate = createDate("blogLocalDate", java.time.LocalDate.class);
@@ -40,8 +38,6 @@ public class SBlogDetails extends com.querydsl.sql.RelationalPathBase<BBlogDetai
     public final TimePath<java.time.LocalTime> blogLocalTime = createTime("blogLocalTime", java.time.LocalTime.class);
 
     public final DateTimePath<java.time.OffsetDateTime> blogOffsetDateTime = createDateTime("blogOffsetDateTime", java.time.OffsetDateTime.class);
-
-    public final SimplePath<byte[]> blogPeriod = createSimple("blogPeriod", byte[].class);
 
     public final DatePath<java.sql.Date> blogSqlDate = createDate("blogSqlDate", java.sql.Date.class);
 
@@ -88,13 +84,11 @@ public class SBlogDetails extends com.querydsl.sql.RelationalPathBase<BBlogDetai
 
     public void addMetadata() {
         addMetadata(blogDate, ColumnMetadata.named("BLOG_DATE").withIndex(2).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
-        addMetadata(blogDuration, ColumnMetadata.named("BLOG_DURATION").withIndex(3).ofType(Types.OTHER).withSize(18).withDigits(9));
         addMetadata(blogInstant, ColumnMetadata.named("BLOG_INSTANT").withIndex(4).ofType(Types.TIMESTAMP_WITH_TIMEZONE).withSize(32).withDigits(6));
         addMetadata(blogLocalDate, ColumnMetadata.named("BLOG_LOCAL_DATE").withIndex(5).ofType(Types.DATE).withSize(10));
         addMetadata(blogLocalDateTime, ColumnMetadata.named("BLOG_LOCAL_DATE_TIME").withIndex(6).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
         addMetadata(blogLocalTime, ColumnMetadata.named("BLOG_LOCAL_TIME").withIndex(7).ofType(Types.TIME).withSize(8));
         addMetadata(blogOffsetDateTime, ColumnMetadata.named("BLOG_OFFSET_DATE_TIME").withIndex(8).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
-        addMetadata(blogPeriod, ColumnMetadata.named("BLOG_PERIOD").withIndex(9).ofType(Types.VARBINARY).withSize(255));
         addMetadata(blogSqlDate, ColumnMetadata.named("BLOG_SQL_DATE").withIndex(10).ofType(Types.DATE).withSize(10));
         addMetadata(blogSqlTime, ColumnMetadata.named("BLOG_SQL_TIME").withIndex(11).ofType(Types.TIME).withSize(8));
         addMetadata(blogSqlTimestamp, ColumnMetadata.named("BLOG_SQL_TIMESTAMP").withIndex(12).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
