@@ -6,7 +6,7 @@ import java.time.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "${com.ilan.entity.student.table.name:STUDENT_DETAILS}", schema = "${com.ilan.entity.student.schema.name:STUDENT_SCHEMA}")
+@Table(name = "${com.ilan.entity.student.table.name:STUDENT_DETAILS}", schema = "${com.ilan.entity.student.schema.name:STUDENT_DETAILS_SCHEMA}")
 public class Student {
 
     @Id
@@ -53,11 +53,4 @@ public class Student {
 
     @Column(name = "BLOG_INSTANT")
     private Instant blogInstant;
-
-    // Optional: Duration and Period (usually not persisted directly)
-    @Column(name = "BLOG_DURATION")
-    private Duration blogDuration;
-
-    @Column(name = "BLOG_PERIOD")
-    private Period blogPeriod;
 }

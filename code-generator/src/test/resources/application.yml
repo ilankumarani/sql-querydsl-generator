@@ -71,6 +71,6 @@ com:
         entity:
             student:
                 schema:
-                    name: STUDENT_SCHEMA_ALPHA
+                    name: STUDENT_SCHEMA
                 table:
-                    name: STUDENT_TABLE_ALPHA
+                    name: STUDENT
