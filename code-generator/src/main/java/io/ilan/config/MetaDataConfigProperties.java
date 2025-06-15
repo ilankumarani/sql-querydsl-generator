@@ -27,6 +27,13 @@ public class MetaDataConfigProperties {
     @Value("${query.dsl.sql.package.directory:zolo.query.dsl}")
     private String packageDirectory;
 
+
+    private String queryClassPrefix = "S";
+    private String queryClassSuffix = null;
+
+    private String beanClassPrefix = "B";
+    private String beanClassSuffix = null;
+
     @NestedConfigurationProperty
     private final Inclusive inclusive = new Inclusive();
 

@@ -122,6 +122,27 @@ query:
         directory: alpha.querydsl.sql
 ```
 
+### Prefix & Suffix for Query class and Bean class 
+
+```yaml
+query:
+  dsl:
+    sql:
+      query-class-prefix: A
+      bean-class-prefix: B
+      query-class-suffix: X
+      bean-class-suffix: Y
+```
+
+> **_NOTE:_**  Default package is **zolo.query.dsl**
+```yaml
+query:
+  dsl:
+    sql:
+      package:
+        directory: alpha.querydsl.sql
+```
+
 ### Schemas to be generated
 
 > **_NOTE:_**  Default will be generated to all the **schemas**
@@ -166,6 +187,10 @@ query:
         tables:
           - Domains
           - OWNER_DETAILS
+      query-class-prefix: A
+      bean-class-prefix: B
+      query-class-suffix: X
+      bean-class-suffix: Y
       customTypes:
         customType:
           - com.querydsl.sql.types.InputStreamType

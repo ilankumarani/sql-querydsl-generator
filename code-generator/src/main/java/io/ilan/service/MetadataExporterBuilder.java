@@ -56,11 +56,19 @@ public class MetadataExporterBuilder {
         exporter.setExportBeans(Boolean.TRUE);
         exporter.setBeanAddFullConstructor(Boolean.TRUE);
         exporter.setBeanAddToString(Boolean.TRUE);
-        exporter.setBeanPrefix("B");
+        exporter.setBeanPrefix(metaDataConfigProperties.getBeanClassPrefix());
+        String beanClassSuffix = metaDataConfigProperties.getBeanClassSuffix();
+        if (Objects.nonNull(beanClassSuffix)) {
+            exporter.setBeanSuffix(beanClassSuffix);
+        }
         exporter.setBeanPrintSupertype(Boolean.TRUE);
 
         //The below configuration is for S Generation
-        exporter.setNamePrefix("S");
+        exporter.setNamePrefix(metaDataConfigProperties.getQueryClassPrefix());
+        String queryClassSuffix = metaDataConfigProperties.getQueryClassSuffix();
+        if (Objects.nonNull(queryClassSuffix)) {
+            exporter.setNameSuffix(queryClassSuffix);
+        }
         exporter.setExportAll(Boolean.FALSE);
         exporter.setExportTables(Boolean.TRUE);
         exporter.setSchemaToPackage(Boolean.TRUE);
