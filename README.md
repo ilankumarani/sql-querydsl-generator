@@ -129,8 +129,8 @@ query:
   dsl:
     sql:
       query-class-prefix: A
-      bean-class-prefix: B
       query-class-suffix: X
+      bean-class-prefix: B
       bean-class-suffix: Y
 ```
 
