@@ -15,10 +15,7 @@ query:
         schemas:
           - OWNER_SCHEMA
           - BLOG_SCHEMA
-      query-class-prefix: A
-      query-class-suffix: X
-      bean-class-prefix: B
-      bean-class-suffix: Y
+          - STUDENT_SCHEMA_ALPHA
       customTypes:
         customType:
           - com.querydsl.sql.types.InputStreamType

@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 
-@EnableJpaRepositories(basePackages = {"com.entity,com.ilan.entity", "org.ilan.entity"})
+@EnableJpaRepositories(basePackages = {"com.entity", "com.ilan.entity", "org.ilan.entity"})
 @Configuration
 public class DbConfig {
     private static final Logger log = LoggerFactory.getLogger(DbConfig.class);
@@ -30,7 +30,7 @@ public class DbConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Value("${jpa.entities.base-packages:}") String[] entityBasePackages, EntityManagerFactoryBuilder builder, DataSource dataSource) {
         String[] packagesToScan = Arrays.stream(entityBasePackages).map(String::trim).toArray(String[]::new);
-        Arrays.stream(packagesToScan).forEach(entityBasePackage->{
+        Arrays.stream(packagesToScan).forEach(entityBasePackage -> {
             log.info("Entity package to scan :: {}", entityBasePackage.toString());
         });
         return builder

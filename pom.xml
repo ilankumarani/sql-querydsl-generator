@@ -45,6 +45,7 @@
         <javadoc.skip>false</javadoc.skip>
         <maven-gpg-signature>false</maven-gpg-signature>
         <skip.publishing>false</skip.publishing>
+        <maven-processor-plugin.version>5.1</maven-processor-plugin.version>
     </properties>
 
     <dependencies>

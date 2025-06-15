@@ -63,4 +63,14 @@ spring:
 
 jpa:
     entities:
-        base-packages: com.entity,com.ilan.entity, org.ilan.entity
+        base-packages: com.entity,com.ilan.entity,org.ilan.entity
+
+
+com:
+    ilan:
+        entity:
+            student:
+                schema:
+                    name: STUDENT_SCHEMA_ALPHA
+                table:
+                    name: STUDENT_TABLE_ALPHA
