@@ -11,8 +11,7 @@ import com.querydsl.sql.dml.SQLInsertClause;
 import io.ilan.util.QueryDslUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -32,7 +31,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Generate for all Schema")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @Slf4j
-public class AdmireQueryDslSqlTest extends BaseTest {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class CustomQueryDslSqlTest extends BaseTest {
 
     private final SQLQueryFactory sqlQueryFactory;
 
@@ -48,18 +48,20 @@ public class AdmireQueryDslSqlTest extends BaseTest {
     // Query DSL SQL generated class
     //private final SStudent sstudent = new SStudent(aliasName);
 
+    @Order(1)
     @Test
     public void valueInsert() {
         SQLInsertClause sqlInsertClause = sqlQueryFactory.insert(sqlEntity);
         sqlInsertClause.set(dummyStudent.id, 101L)
-                        .set(dummyStudent.content, "have to improve");
+                .set(dummyStudent.content, "have to improve");
         assertEquals(sqlInsertClause.getSQL().size(), sqlInsertClause.execute());
         String expected = "insert into STUDENT_SCHEMA.STUDENT (ID, CONTENT) values (101, 'have to improve')";
         assertEquals(expected, sqlInsertClause.getSQL().get(0).getSQL());
     }
 
+    @Order(2)
     @Test
-    public void sampleTest() {
+    public void selectById() {
         String selectIdAndLimitOne = "select student.ID from STUDENT_SCHEMA.STUDENT student where student.ID = 101 limit 1";
         SQLQuery<Long> query = sqlQueryFactory.select(dummyStudent.id)
                 .from(sqlEntity)
@@ -69,6 +71,7 @@ public class AdmireQueryDslSqlTest extends BaseTest {
         assertEquals(selectIdAndLimitOne, query.getSQL().getSQL().toString());
     }
 
+    @Order(2)
     @DisplayName("selectFrom does not work is expected")
     @Test
     public void selectFrom() {
@@ -91,6 +94,9 @@ public class AdmireQueryDslSqlTest extends BaseTest {
     @Test
     public void projectionByBean() {
         List<BStudent> bStudents = sqlQueryFactory.select(Projections.bean(BStudent.class, dummyStudent.id))
-                .from(sqlEntity).fetch();
+                .from(sqlEntity)
+                .fetch();
+
+        assertEquals(101L, bStudents.get(0).getId());
     }
 }

@@ -64,4 +64,5 @@ when you are using SQLQueryFactory, then just call QueryDslUtils.asRelational to
 
 ![Code Snipet](./images/how_to_use.png)
 
-### [Click for Sample Code](../code-generator/src/test/java/xio/ilan/test/AdmireQueryDslSqlTest.java)
+### [Click for Sample Code 1](../code-generator/src/test/java/xio/ilan/test/BulkQueryDslSqlTest.java)
+### [Click for Sample Code 2](../code-generator/src/test/java/xio/ilan/test/CustomQueryDslSqlTest.java)
