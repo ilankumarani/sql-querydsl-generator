@@ -4,7 +4,6 @@ import static com.querydsl.core.types.PathMetadataFactory.*;
 
 import com.querydsl.core.types.dsl.*;
 
-import com.querydsl.core.types.dsl.StringTemplate;
 
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
@@ -17,15 +16,15 @@ import java.sql.Types;
 
 
 /**
- * SStudent is a Querydsl query type for BStudent
+ * SDummyStudent is a Querydsl query type for BDummyStudent
  */
 @SuppressWarnings("this-escape")
 @Generated("com.querydsl.sql.codegen.MetaDataSerializer")
-public class SStudent extends com.querydsl.sql.RelationalPathBase<BStudent> {
+public class SDummyStudent extends com.querydsl.sql.RelationalPathBase<BStudent> {
 
-    private static final long serialVersionUID = 851556901;
+    private static final long serialVersionUID = -645267012;
 
-    public static final SStudent student = new SStudent("STUDENT");
+    public static final SDummyStudent dummyStudent = new SDummyStudent("DUMMY_STUDENT");
 
     public final DateTimePath<java.sql.Timestamp> blogDate = createDateTime("blogDate", java.sql.Timestamp.class);
 
@@ -55,30 +54,30 @@ public class SStudent extends com.querydsl.sql.RelationalPathBase<BStudent> {
 
     public final StringPath title = createString("title");
 
-    public final com.querydsl.sql.PrimaryKey<BStudent> constraintB = createPrimaryKey(id);
+    public final com.querydsl.sql.PrimaryKey<BStudent> constraintF = createPrimaryKey(id);
 
-    public SStudent(String variable) {
-        super(BStudent.class, forVariable(variable), "STUDENT_SCHEMA", "STUDENT");
+    public SDummyStudent(String variable) {
+        super(BStudent.class, forVariable(variable), "DUMMY_SCHEMA", "DUMMY_STUDENT");
         addMetadata();
     }
 
-    public SStudent(String variable, String schema, String table) {
+    public SDummyStudent(String variable, String schema, String table) {
         super(BStudent.class, forVariable(variable), schema, table);
         addMetadata();
     }
 
-    public SStudent(String variable, String schema) {
-        super(BStudent.class, forVariable(variable), schema, "STUDENT");
+    public SDummyStudent(String variable, String schema) {
+        super(BStudent.class, forVariable(variable), schema, "DUMMY_STUDENT");
         addMetadata();
     }
 
-    public SStudent(Path<? extends BStudent> path) {
-        super(path.getType(), path.getMetadata(), "STUDENT_SCHEMA", "STUDENT");
+    public SDummyStudent(Path<? extends BStudent> path) {
+        super(path.getType(), path.getMetadata(), "DUMMY_SCHEMA", "DUMMY_STUDENT");
         addMetadata();
     }
 
-    public SStudent(PathMetadata metadata) {
-        super(BStudent.class, metadata, "STUDENT_SCHEMA", "STUDENT");
+    public SDummyStudent(PathMetadata metadata) {
+        super(BStudent.class, metadata, "DUMMY_SCHEMA", "DUMMY_STUDENT");
         addMetadata();
     }
 

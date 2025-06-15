@@ -1,21 +1,18 @@
 package xio.ilan.sql.query.dsl;
 
-import lombok.Builder;
-
 import javax.annotation.processing.Generated;
 
 /**
- * BStudent is a Querydsl bean type
+ * BDummyStudent is a Querydsl bean type
  */
 @SuppressWarnings("this-escape")
 @Generated("com.querydsl.codegen.BeanSerializer")
-@Builder
-public class BStudent {
+public class BDummyStudent {
 
-    public BStudent() {
+    public BDummyStudent() {
     }
 
-    public BStudent(java.sql.Timestamp blogDate, java.sql.Timestamp blogInstant, java.sql.Date blogLocalDate, java.sql.Timestamp blogLocalDateTime, java.sql.Time blogLocalTime, java.sql.Timestamp blogOffsetDateTime, java.sql.Date blogSqlDate, java.sql.Time blogSqlTime, java.sql.Timestamp blogSqlTimestamp, java.sql.Timestamp blogZonedDateTime, String category, String content, Long id, String title) {
+    public BDummyStudent(java.sql.Timestamp blogDate, java.sql.Timestamp blogInstant, java.sql.Date blogLocalDate, java.sql.Timestamp blogLocalDateTime, java.sql.Time blogLocalTime, java.sql.Timestamp blogOffsetDateTime, java.sql.Date blogSqlDate, java.sql.Time blogSqlTime, java.sql.Timestamp blogSqlTimestamp, java.sql.Timestamp blogZonedDateTime, String category, String content, Long id, String title) {
         this.blogDate = blogDate;
         this.blogInstant = blogInstant;
         this.blogLocalDate = blogLocalDate;

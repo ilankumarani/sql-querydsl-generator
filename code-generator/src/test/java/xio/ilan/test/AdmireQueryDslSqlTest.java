@@ -7,6 +7,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.sql.RelationalPath;
 import com.querydsl.sql.SQLQuery;
 import com.querydsl.sql.SQLQueryFactory;
+import com.querydsl.sql.dml.SQLInsertClause;
 import io.ilan.util.QueryDslUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,9 @@ import org.springframework.context.annotation.Import;
 import xio.ilan.Application;
 import xio.ilan.config.DbConfig;
 import xio.ilan.sql.query.dsl.BStudent;
-import xio.ilan.sql.query.dsl.SStudent;
+import xio.ilan.sql.query.dsl.SDummyStudent;
+
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,27 +32,46 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Generate for all Schema")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @Slf4j
-public class AdmireQueryDslSqlTest {
+public class AdmireQueryDslSqlTest extends BaseTest {
 
     private final SQLQueryFactory sqlQueryFactory;
-    // Query DSL JPA generated class
-    private final QStudent qStudent = QStudent.student;
 
-    // Query DSL SQL generated class
-    private final SStudent sstudent = SStudent.student;
+    private final String aliasName = "student";
+
+    // Query DSL JPA generated class
+    private final QStudent qStudent = new QStudent(aliasName);
 
     RelationalPath<Student> sqlEntity = QueryDslUtils.asRelational(qStudent);
 
+    private final SDummyStudent dummyStudent = new SDummyStudent(aliasName, sqlEntity.getSchemaName(), sqlEntity.getTableName());
+
+    // Query DSL SQL generated class
+    //private final SStudent sstudent = new SStudent(aliasName);
+
     @Test
-    public void testA(){
-        SQLQuery<Long> query = sqlQueryFactory.select(sstudent.id).from(sqlEntity);
-        query.fetch();
-        assertEquals("select STUDENT.ID from STUDENT_SCHEMA_ALPHA.STUDENT_TABLE_ALPHA student", query.getSQL().getSQL().toString());
+    public void valueInsert() {
+        SQLInsertClause sqlInsertClause = sqlQueryFactory.insert(sqlEntity);
+        sqlInsertClause.set(dummyStudent.id, 101L)
+                        .set(dummyStudent.content, "have to improve");
+        assertEquals(sqlInsertClause.getSQL().size(), sqlInsertClause.execute());
+        assertEquals("insert into STUDENT_SCHEMA.STUDENT values ()", sqlQueryFactory.insert(sqlEntity)
+                .populate(BaseTest.student).getSQL().get(0).getSQL().toString());
+    }
+
+    @Test
+    public void sampleTest() {
+        String selectIdAndLimitOne = "select student.ID from STUDENT_SCHEMA.STUDENT student where student.ID = 101 limit 1";
+        SQLQuery<Long> query = sqlQueryFactory.select(dummyStudent.id)
+                .from(sqlEntity)
+                .where(dummyStudent.id.eq(101L))
+                .limit(1);
+        assertEquals(101L, query.fetchFirst());
+        assertEquals(selectIdAndLimitOne, query.getSQL().getSQL().toString());
     }
 
     @DisplayName("selectFrom does not work is expected")
     @Test
-    public void selectFrom(){
+    public void selectFrom() {
         EntityPath<Student> myEntity = qStudent;
         RelationalPath<Student> sqlEntity = QueryDslUtils.asRelational(myEntity);
 
@@ -67,8 +89,8 @@ public class AdmireQueryDslSqlTest {
 
 
     @Test
-    public void projectionByBean(){
-        sqlQueryFactory.select(Projections.bean(BStudent.class, sstudent.id))
+    public void projectionByBean() {
+        List<BStudent> bStudents = sqlQueryFactory.select(Projections.bean(BStudent.class, dummyStudent.id))
                 .from(sqlEntity).fetch();
     }
 }
