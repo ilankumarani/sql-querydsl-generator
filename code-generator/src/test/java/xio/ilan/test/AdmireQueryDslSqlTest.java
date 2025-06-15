@@ -54,8 +54,8 @@ public class AdmireQueryDslSqlTest extends BaseTest {
         sqlInsertClause.set(dummyStudent.id, 101L)
                         .set(dummyStudent.content, "have to improve");
         assertEquals(sqlInsertClause.getSQL().size(), sqlInsertClause.execute());
-        assertEquals("insert into STUDENT_SCHEMA.STUDENT values ()", sqlQueryFactory.insert(sqlEntity)
-                .populate(BaseTest.student).getSQL().get(0).getSQL().toString());
+        String expected = "insert into STUDENT_SCHEMA.STUDENT (ID, CONTENT) values (101, 'have to improve')";
+        assertEquals(expected, sqlInsertClause.getSQL().get(0).getSQL());
     }
 
     @Test

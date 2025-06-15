@@ -53,7 +53,8 @@ public class BulkQueryDslSqlTest extends BaseTest {
         Long insertedCount = populate.execute();
         assertEquals(1, insertedCount);
 
-        assertEquals("insert into STUDENT_SCHEMA.STUDENT (BLOG_DATE, BLOG_INSTANT, BLOG_LOCAL_DATE, BLOG_LOCAL_DATE_TIME, BLOG_LOCAL_TIME, BLOG_OFFSET_DATE_TIME, BLOG_SQL_DATE, BLOG_SQL_TIME, BLOG_SQL_TIMESTAMP, BLOG_ZONED_DATE_TIME, CATEGORY, CONTENT, ID, TITLE) values ((timestamp '2025-06-16 00:00:36'), (timestamp '2025-06-16 00:00:36'), (date '2025-06-16'), (timestamp '2025-06-16 00:00:36'), (time '00:00:36'), (timestamp '2025-06-16 00:00:36'), (date '2025-06-15'), (time '12:34:56'), (timestamp '2025-06-15 12:34:56'), (timestamp '2025-06-15 15:30:00'), 'Education', 'This is a sample blog about SQL and Java time types.', 123, 'Understanding Java SQL Time APIs')", sqlInsertClause.getSQL().get(0).getSQL());
+        String expected = "insert into STUDENT_SCHEMA.STUDENT (BLOG_DATE, BLOG_INSTANT, BLOG_LOCAL_DATE, BLOG_LOCAL_DATE_TIME, BLOG_LOCAL_TIME, BLOG_OFFSET_DATE_TIME, BLOG_SQL_DATE, BLOG_SQL_TIME, BLOG_SQL_TIMESTAMP, BLOG_ZONED_DATE_TIME, CATEGORY, CONTENT, ID, TITLE) values ((timestamp '2025-06-15 12:34:56'), (timestamp '2025-06-15 12:34:56'), (date '2025-06-15'), (timestamp '2025-06-15 12:34:56'), (time '12:34:56'), (timestamp '2025-06-15 12:34:56'), (date '2025-06-15'), (time '12:34:56'), (timestamp '2025-06-15 12:34:56'), (timestamp '2025-06-15 12:34:56'), 'Education', 'This is a sample blog about SQL and Java time types.', 123, 'Understanding Java SQL Time APIs')";
+        assertEquals(expected, sqlInsertClause.getSQL().get(0).getSQL());
     }
 
 
@@ -62,8 +63,9 @@ public class BulkQueryDslSqlTest extends BaseTest {
     @Test
     public void selectFrom() {
         SQLQuery<BStudent> studentSQLQuery = sqlQueryFactory.selectFrom(dummyStudent);
-        assertEquals("select student.BLOG_DATE, student.BLOG_INSTANT, student.BLOG_LOCAL_DATE, student.BLOG_LOCAL_DATE_TIME, student.BLOG_LOCAL_TIME, student.BLOG_OFFSET_DATE_TIME, student.BLOG_SQL_DATE, student.BLOG_SQL_TIME, student.BLOG_SQL_TIMESTAMP, student.BLOG_ZONED_DATE_TIME, student.CATEGORY, student.CONTENT, student.ID, student.TITLE from STUDENT_SCHEMA.STUDENT student", studentSQLQuery.getSQL().getSQL().toString());
-        assertEquals(1, studentSQLQuery.fetch());
+        String expected = "select student.BLOG_DATE, student.BLOG_INSTANT, student.BLOG_LOCAL_DATE, student.BLOG_LOCAL_DATE_TIME, student.BLOG_LOCAL_TIME, student.BLOG_OFFSET_DATE_TIME, student.BLOG_SQL_DATE, student.BLOG_SQL_TIME, student.BLOG_SQL_TIMESTAMP, student.BLOG_ZONED_DATE_TIME, student.CATEGORY, student.CONTENT, student.ID, student.TITLE from STUDENT_SCHEMA.STUDENT student";
+        assertEquals(expected, studentSQLQuery.getSQL().getSQL().toString());
+        assertEquals(1, studentSQLQuery.fetch().size());
     }
 
 }
