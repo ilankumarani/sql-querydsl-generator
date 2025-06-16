@@ -66,10 +66,12 @@ public class QueryDslService {
     @SneakyThrows
     public void bulkInsertUsers(List<BUsers> users) {
         SQLInsertClause insert = sqlQueryFactory.insert(sUsers);
-
-        for (BUsers bUsers : users) {
-            insert.populate(bUsers)
-                    .addBatch();
+        System.out.println(">>>>>"+users);
+        for (BUsers tuser : users) {
+            System.out.println("test >>>"+tuser.toString());
+            SQLInsertClause populate = insert.populate(tuser);
+            System.out.printf(">>>>"+populate.getSQL().get(0).getSQL().toString());
+            populate.addBatch();
         }
         insert.execute();
     }

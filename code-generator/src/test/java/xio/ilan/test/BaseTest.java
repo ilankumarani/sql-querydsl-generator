@@ -59,24 +59,23 @@ public class BaseTest {
                 .collect(Collectors.toList());
     }
 
-    public static List<BUsers> generateUsers(int usersCount) {
-        List<BUsers> users = new ArrayList<>();
-        for (int i = 1; i <= usersCount; i++) {
-            BUsers user = BUsers.builder()
-                    .id((long) i)
-                    .username("user" + i)
-                    .fullname("User " + i)
-                    .email("user" + i + "@example.com")
-                    .password("pass" + i)
-                    .registeredat(Timestamp.from(Instant.now()))
-                    .active(true)
-                    .build();
-            users.add(user);
-        }
-        return users;
+    public List<BUsers> generateUsers(int usersCount) {
+        return IntStream.rangeClosed(1, usersCount)
+                .mapToObj(i ->
+                        BUsers.builder()
+                                .id((long) i)
+                                .username("user" + i)
+                                .fullname("User " + i)
+                                .email("user" + i + "@example.com")
+                                .password("pass" + i)
+                                .registeredat(Timestamp.from(Instant.now()))
+                                .active(true)
+                                .build()
+                )
+                .collect(Collectors.toList());
     }
 
-    public static List<BPosts> generatePosts(List<BUsers> users, int postsPerUser) {
+    public List<BPosts> generatePosts(List<BUsers> users, int postsPerUser) {
         List<BPosts> posts = new ArrayList<>();
         long postId = 1L;
         for (BUsers user : users) {
@@ -97,7 +96,7 @@ public class BaseTest {
         return posts;
     }
 
-    public static List<BComments> generateComments(List<BPosts> posts, int commentsPerPost) {
+    public List<BComments> generateComments(List<BPosts> posts, int commentsPerPost) {
         List<BComments> comments = new ArrayList<>();
         long commentId = 1L;
         for (BPosts post : posts) {

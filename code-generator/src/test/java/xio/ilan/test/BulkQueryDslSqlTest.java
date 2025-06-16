@@ -77,6 +77,7 @@ public class BulkQueryDslSqlTest extends BaseTest {
         }
         Long insertedCount = sqlInsertClause.execute();
         assertEquals(50, insertedCount);
+        assertEquals(50,sqlQueryFactory.select(dummyStudent.id.count()).from(dummyStudent).fetch().size());
     }
 
 }

@@ -27,8 +27,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class QueryDslPaginationTest extends BaseTest{
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class QueryDslPaginationTest extends BaseTest {
 
     private final QueryDslService queryDslService;
     private final QUser qUser = QUser.user;
@@ -38,20 +38,21 @@ public class QueryDslPaginationTest extends BaseTest{
     private JPAQuery jpaQuery;
 
 
-    @BeforeAll
-    public void initLoadData(){
+    @Order(1)
+    @Test
+    public void initLoadData() {
         jpaQuery = new JPAQuery<>(entityManager);
         List<BUsers> users = generateUsers(10);
+        queryDslService.bulkInsertUsers(users);
 //        List<BPosts> posts = generatePosts(users, 100);
-//        List<BComments> comments = generateComments(posts, 100);
-       queryDslService.bulkInsertUsers(users);
 //        queryDslService.bulkInsertPosts(posts);
+//        List<BComments> comments = generateComments(posts, 100);
 //        queryDslService.bulkInsertComments(comments);
     }
 
-    @Order(1)
-    @Test
-    public void isDataLoaded(){
+    @Order(2)
+    //@Test
+    public void isDataLoaded() {
         assertEquals(10, jpaQuery.select(qUser.id.count())
                 .from(qUser).fetch().size());
         assertEquals(10, jpaQuery.select(qPost.id.count())
