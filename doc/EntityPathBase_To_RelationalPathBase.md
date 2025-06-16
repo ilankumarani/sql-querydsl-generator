@@ -29,6 +29,12 @@ Even you want QueryDSL SQL features such as bulk insert, you are using queryDSL 
     </a>
   </div>
 
+  <p align="center">
+  <a href="https://stackoverflow.com/questions/53665853/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin" target="_blank">
+    <strong>🔗 Open Full Answer</strong>
+  </a>
+  </p>
+
 
 </div>
 
