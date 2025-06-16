@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Import;
 import xio.ilan.Application;
 import xio.ilan.config.DbConfig;
 import xio.ilan.sql.query.dsl.BStudent;
+import xio.ilan.sql.query.dsl.BUsers;
 import xio.ilan.sql.query.dsl.SDummyStudent;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -64,6 +65,18 @@ public class BulkQueryDslSqlTest extends BaseTest {
         String expected = "select student.BLOG_DATE, student.BLOG_INSTANT, student.BLOG_LOCAL_DATE, student.BLOG_LOCAL_DATE_TIME, student.BLOG_LOCAL_TIME, student.BLOG_OFFSET_DATE_TIME, student.BLOG_SQL_DATE, student.BLOG_SQL_TIME, student.BLOG_SQL_TIMESTAMP, student.BLOG_ZONED_DATE_TIME, student.CATEGORY, student.CONTENT, student.ID, student.TITLE from STUDENT_SCHEMA.STUDENT student";
         assertEquals(expected, studentSQLQuery.getSQL().getSQL().toString());
         assertEquals(1, studentSQLQuery.fetch().size());
+    }
+
+    @Order(2)
+    @Test
+    public void populateBulkInsert() {
+        SQLInsertClause sqlInsertClause = sqlQueryFactory.insert(dummyStudent);
+        for (BStudent bStudent : getStudents()) {
+            sqlInsertClause.populate(bStudent)
+                    .addBatch();
+        }
+        Long insertedCount = sqlInsertClause.execute();
+        assertEquals(50, insertedCount);
     }
 
 }
