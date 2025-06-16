@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
-import xio.ilan.H2Application;
+import xio.ilan.H2TestApplication;
 import xio.ilan.config.DbConfig;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {H2Application.class})
+        classes = {H2TestApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("packages")
 @DisplayName("Generate in package beta.querydsl.sql")

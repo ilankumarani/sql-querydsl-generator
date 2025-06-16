@@ -15,7 +15,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import xio.ilan.H2Application;
+import xio.ilan.H2TestApplication;
 import xio.ilan.config.DbConfig;
 import xio.ilan.sql.query.dsl.BStudent;
 import xio.ilan.sql.query.dsl.SDummyStudent;
@@ -26,7 +26,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {H2Application.class}, properties = {"query.dsl.sql.generation.enabled=false"})
+        classes = {H2TestApplication.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
 @DisplayName("Generate for all Schema")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))

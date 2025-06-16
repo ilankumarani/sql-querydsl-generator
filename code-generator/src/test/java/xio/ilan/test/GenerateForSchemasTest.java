@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
-import xio.ilan.H2Application;
+import xio.ilan.H2TestApplication;
 import xio.ilan.config.DbConfig;
 import xio.ilan.service.QueryDslService;
 import xio.ilan.sql.query.dsl.BBlogDetails;
@@ -26,7 +26,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {H2Application.class})
+        classes = {H2TestApplication.class})
 @Import({DbConfig.class})
 @ActiveProfiles("schemas")
 @DisplayName("Generate for BLOG,OWNER SCHEMA")
