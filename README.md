@@ -1,3 +1,5 @@
+EntityPathBase To RelationalPathBase [detailed README](./doc/EntityPathBase_To_RelationalPathBase.md) for more information.
+
 ### To code Generate via plugin
 
 > **_NOTE:_**  
