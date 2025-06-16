@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {H2TestApplication.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
-@DisplayName("Generate for all Schema")
+@DisplayName("Explore QueryDsl test")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
