@@ -59,20 +59,9 @@ public class BaseTest {
                 .collect(Collectors.toList());
     }
 
-    public void test() {
-        int usersCount = 10;
-        int postsPerUser = 100;
-        int commentsPerPost = 100;
-
+    public static List<BUsers> generateUsers(int usersCount) {
         List<BUsers> users = new ArrayList<>();
-        List<BPosts> posts = new ArrayList<>();
-        List<BComments> comments = new ArrayList<>();
-
-        long postId = 1;
-        long commentId = 1;
-
         for (int i = 1; i <= usersCount; i++) {
-            // Create User
             BUsers user = BUsers.builder()
                     .id((long) i)
                     .username("user" + i)
@@ -83,12 +72,18 @@ public class BaseTest {
                     .active(true)
                     .build();
             users.add(user);
+        }
+        return users;
+    }
 
+    public static List<BPosts> generatePosts(List<BUsers> users, int postsPerUser) {
+        List<BPosts> posts = new ArrayList<>();
+        long postId = 1L;
+        for (BUsers user : users) {
             for (int j = 1; j <= postsPerUser; j++) {
-                // Create Post
                 BPosts post = BPosts.builder()
-                        .id(postId)
-                        .title("Post " + j + " by user" + i)
+                        .id(postId++)
+                        .title("Post " + j + " by " + user.getUsername())
                         .content("Content of post " + j)
                         .category("Category " + (j % 5))
                         .createdat(Timestamp.from(Instant.now()))
@@ -97,24 +92,28 @@ public class BaseTest {
                         .userId(user.getId())
                         .build();
                 posts.add(post);
-
-                // Create Comments
-                for (int k = 1; k <= commentsPerPost; k++) {
-                    BComments comment = BComments.builder()
-                            .id(commentId++)
-                            .author("Commenter " + k)
-                            .email("commenter" + k + "@mail.com")
-                            .text("Comment " + k + " on post " + postId)
-                            .postedat(Timestamp.from(Instant.now()))
-                            .approved(k % 2 == 0)
-                            .postId(postId)
-                            .build();
-                    comments.add(comment);
-                }
-
-                postId++;
             }
         }
+        return posts;
+    }
 
+    public static List<BComments> generateComments(List<BPosts> posts, int commentsPerPost) {
+        List<BComments> comments = new ArrayList<>();
+        long commentId = 1L;
+        for (BPosts post : posts) {
+            for (int k = 1; k <= commentsPerPost; k++) {
+                BComments comment = BComments.builder()
+                        .id(commentId++)
+                        .author("Commenter " + k)
+                        .email("commenter" + k + "@mail.com")
+                        .text("Comment " + k + " on post " + post.getId())
+                        .postedat(Timestamp.from(Instant.now()))
+                        .approved(k % 2 == 0)
+                        .postId(post.getId())
+                        .build();
+                comments.add(comment);
+            }
+        }
+        return comments;
     }
 }

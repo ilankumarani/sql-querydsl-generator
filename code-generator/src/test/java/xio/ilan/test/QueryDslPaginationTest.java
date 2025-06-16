@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import xio.ilan.Application;
 import xio.ilan.config.DbConfig;
-import xio.ilan.sql.query.dsl.SComments;
-import xio.ilan.sql.query.dsl.SPosts;
-import xio.ilan.sql.query.dsl.SUsers;
+import xio.ilan.sql.query.dsl.*;
+
+import java.util.List;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {Application.class})
@@ -34,7 +34,9 @@ public class QueryDslPaginationTest extends BaseTest{
 
     @Order(1)
     public void loadData(){
-
+        List<BUsers> users = generateUsers(10);
+        List<BPosts> posts = generatePosts(users, 100);
+        List<BComments> comments = generateComments(posts, 100);
     }
 
 
