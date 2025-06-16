@@ -21,14 +21,6 @@ Even you want QueryDSL SQL features such as bulk insert, you are using queryDSL 
 <code>RelationalPathBase relationalPathBase= new RelationalPathBase(this.entityPath.getType(), this.entityPath.getMetadata(), "yourSchemaName","yourTableName");</code>
   </pre>
 
-  <div style="text-align: center; margin-top: 12px;">
-    <a href="https://stackoverflow.com/questions/33608023/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin/53675800#53675800"
-       target="_blank"
-       style="background-color: #f3f3f3; border: 1px solid #ccc; padding: 8px 16px; border-radius: 5px; text-decoration: none; color: #333; font-weight: bold; display: inline-block;">
-      Open Full Answer
-    </a>
-  </div>
-
   <p align="center">
   <a href="https://stackoverflow.com/questions/53665853/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin" target="_blank">
     <strong>🔗 Open Full Answer</strong>
