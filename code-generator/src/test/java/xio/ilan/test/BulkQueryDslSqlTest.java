@@ -22,7 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {Application.class})
+        classes = {Application.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
 @DisplayName("Generate for all Schema")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))

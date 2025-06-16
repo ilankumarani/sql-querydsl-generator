@@ -3,6 +3,7 @@ package xio.ilan.service;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.dml.SQLInsertClause;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,7 +63,8 @@ public class QueryDslService {
         return blogDetailsList;
     }
 
-    public void bulkInsertUsers(List<BUsers> users) throws Exception {
+    @SneakyThrows
+    public void bulkInsertUsers(List<BUsers> users) {
         SQLInsertClause insert = sqlQueryFactory.insert(sUsers);
 
         for (BUsers bUsers : users) {
@@ -73,7 +75,8 @@ public class QueryDslService {
     }
 
 
-    public void bulkInsertPosts(List<BPosts> posts) throws Exception {
+    @SneakyThrows
+    public void bulkInsertPosts(List<BPosts> posts) {
             SQLInsertClause insert = sqlQueryFactory.insert(sPosts);
 
             for (BPosts post : posts) {
@@ -84,7 +87,8 @@ public class QueryDslService {
         }
 
 
-    public void bulkInsertComments(List<BComments> comments) throws Exception {
+    @SneakyThrows
+    public void bulkInsertComments(List<BComments> comments) {
         SQLInsertClause insert = sqlQueryFactory.insert(sComments);
             for (BComments comment : comments) {
                 insert.populate(comment)
