@@ -6,8 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xio.ilan.sql.query.dsl.BBlogDetails;
-import xio.ilan.sql.query.dsl.SBlogDetails;
+import xio.ilan.sql.query.dsl.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -23,6 +22,9 @@ import java.util.stream.IntStream;
 public class QueryDslService {
 
     private final SQLQueryFactory sqlQueryFactory;
+    private final SUsers sUsers = SUsers.users;
+    private final SPosts sPosts = SPosts.posts;
+    private final SComments sComments = SComments.comments;
 
     public void loadData(){
         SBlogDetails sBlogDetails = SBlogDetails.blogDetails;
@@ -59,4 +61,36 @@ public class QueryDslService {
 
         return blogDetailsList;
     }
+
+    public void bulkInsertUsers(List<BUsers> users) throws Exception {
+        SQLInsertClause insert = sqlQueryFactory.insert(sUsers);
+
+        for (BUsers bUsers : users) {
+            insert.populate(bUsers)
+                    .addBatch();
+        }
+        insert.execute();
+    }
+
+
+    public void bulkInsertPosts(List<BPosts> posts) throws Exception {
+            SQLInsertClause insert = sqlQueryFactory.insert(sPosts);
+
+            for (BPosts post : posts) {
+                insert.populate(post)
+                        .addBatch();
+            }
+            insert.execute();
+        }
+
+
+    public void bulkInsertComments(List<BComments> comments) throws Exception {
+        SQLInsertClause insert = sqlQueryFactory.insert(sComments);
+            for (BComments comment : comments) {
+                insert.populate(comment)
+                        .addBatch();
+            }
+            insert.execute();
+        }
+
 }
