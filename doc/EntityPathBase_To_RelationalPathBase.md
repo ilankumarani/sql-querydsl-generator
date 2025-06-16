@@ -4,18 +4,36 @@
 Even you want QueryDSL SQL features such as bulk insert, you are using queryDSL JPA, unfortunately there is no way to generate  ```RelationalPath<T>``` from ```EntityPath<T>``` automatically.
 
 
-[How to generate RelationalPath Derived class using QueryDsl Maven plugin?](https://stackoverflow.com/questions/33608023/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin/53675800#53675800)
-```text
-As @timo Westkämper feedback You can't turn it into a RelationalPath automatically
+<div style="border: 1px solid #ddd; padding: 16px; border-radius: 8px; margin: 16px 0; box-shadow: 2px 2px 5px #eee;">
+  <div style="font-size: 14px; color: #555;">
+    <span style="background-color: #e0ecff; color: #0056d2; padding: 2px 6px; border-radius: 4px; font-weight: bold;">answer</span>
+    <a href="https://stackoverflow.com/questions/33608023/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin/53675800#53675800" style="margin-left: 8px; font-weight: bold; color: #0056d2; text-decoration: none;">
+      re: How to generate RelationalPath Derived class using QueryDsl Maven plugin?
+    </a>
+    <div style="color: #777; font-size: 12px; margin-top: 4px;">Dec 7 ‘18</div>
+  </div>
 
-but you can create RelationalPathBase using your entityPath
-```
+  <div style="margin-top: 12px; font-size: 14px; color: #333;">
+    As <strong>@timo</strong> Westkämper feedback You can't turn it into a RelationalPath automatically<br><br>
+    but you can create RelationalPathBase using your entityPath
+  </div>
 
-```java
-RelationalPathBase relationalPathBase= new RelationalPathBase(this.entityPath.getType(), this.entityPath.getMetadata(), "yourSchemaName","yourTableName");
-```
+  <pre style="background-color: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 13px; margin-top: 10px;">
+<code>RelationalPathBase relationalPathBase= new RelationalPathBase(this.entityPath.getType(), this.entityPath.getMetadata(), "yourSchemaName","yourTableName");</code>
+  </pre>
 
-[Full answer in StackOverflow](https://stackoverflow.com/questions/33608023/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin/53675800#53675800)
+  <div style="text-align: center; margin-top: 12px;">
+    <a href="https://stackoverflow.com/questions/33608023/how-to-generate-relationalpath-derived-class-using-querydsl-maven-plugin/53675800#53675800"
+       target="_blank"
+       style="background-color: #f3f3f3; border: 1px solid #ccc; padding: 8px 16px; border-radius: 5px; text-decoration: none; color: #333; font-weight: bold; display: inline-block;">
+      Open Full Answer
+    </a>
+  </div>
+
+
+</div>
+
+🔍 Notes:
 
 But there's a good news. you can wrap **```RelationalPath<T>```** from **```EntityPath<T>```** manually like this. so, I made util class that wrap RelationalPath<T> from EntityPath<T>.
 
