@@ -55,7 +55,7 @@ EntityPathBase To RelationalPathBase [detailed README](./doc/EntityPathBase_To_R
       <groupId>io.github.ilankumarani</groupId>
       <artifactId>code-generator-app</artifactId>
       <!-- At this point in time 6.1.0 is the latest version-->
-      <version>7.1.0-Beta</version>
+      <version>8.0.0</version>
     </dependency>
     <!-- I have a naming-strategy in below dependency-->
     <dependency>
