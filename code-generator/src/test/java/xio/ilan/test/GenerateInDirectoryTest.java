@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
-import xio.ilan.Application;
+import xio.ilan.H2Application;
 import xio.ilan.config.DbConfig;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {Application.class})
+        classes = {H2Application.class})
 @Import({DbConfig.class})
 @ActiveProfiles("directory")
 @DisplayName("Generate in ALPHA directory")

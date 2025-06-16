@@ -11,7 +11,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import xio.ilan.Application;
+import xio.ilan.H2Application;
 import xio.ilan.config.DbConfig;
 import xio.ilan.service.QueryDslService;
 import xio.ilan.sql.query.dsl.*;
@@ -21,7 +21,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-        classes = {Application.class}, properties = {"query.dsl.sql.generation.enabled=false"})
+        classes = {H2Application.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
 @DisplayName("QueryDsl pagination")
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
