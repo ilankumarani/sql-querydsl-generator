@@ -20,8 +20,8 @@ import xio.ilan.sql.query.dsl.SDummyStudent;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
-//        classes = {H2TestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = {"query.dsl.sql.generation.enabled=false", "server.port=8080"})
+/*@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
+        classes = {H2TestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = {"query.dsl.sql.generation.enabled=false", "server.port=8080"})*/
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {H2TestApplication.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
@@ -77,7 +77,7 @@ public class BulkQueryDslSqlTest extends BaseTest {
         }
         Long insertedCount = sqlInsertClause.execute();
         assertEquals(50, insertedCount);
-        assertEquals(51,sqlQueryFactory.select(dummyStudent.id.count()).from(dummyStudent).fetch().size());
+        assertEquals(51, sqlQueryFactory.select(dummyStudent.count()).from(dummyStudent).fetch().get(0));
     }
 
 }
