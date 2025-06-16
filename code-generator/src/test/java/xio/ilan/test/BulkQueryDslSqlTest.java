@@ -32,14 +32,12 @@ public class BulkQueryDslSqlTest extends BaseTest {
 
     private final SQLQueryFactory sqlQueryFactory;
 
-    private final String aliasName = "student";
-
     // Query DSL JPA generated class
-    private final QStudent qStudent = new QStudent(aliasName);
+    private final QStudent qStudent = QStudent.student;
 
     RelationalPath<Student> sqlEntity = QueryDslUtils.asRelational(qStudent);
 
-    private final SDummyStudent dummyStudent = new SDummyStudent(aliasName, sqlEntity.getSchemaName(), sqlEntity.getTableName());
+    private final SDummyStudent dummyStudent = new SDummyStudent(sqlEntity.getMetadata().getName(), sqlEntity.getSchemaName(), sqlEntity.getTableName());
 
     // Query DSL SQL generated class
     //private final SStudent sstudent = new SStudent(aliasName);
