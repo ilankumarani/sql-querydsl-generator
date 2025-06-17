@@ -3,7 +3,6 @@ package xio.ilan.service;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.dml.SQLInsertClause;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,14 +22,10 @@ import java.util.stream.IntStream;
 public class QueryDslService {
 
     private final SQLQueryFactory sqlQueryFactory;
-    private final SUsers sUsers = SUsers.users;
-    private final SPosts sPosts = SPosts.posts;
-    private final SComments sComments = SComments.comments;
 
-    public void loadData(){
+    public void loadData() {
         SBlogDetails sBlogDetails = SBlogDetails.blogDetails;
         SQLInsertClause insert = sqlQueryFactory.insert(sBlogDetails);
-
         log.info("############ Load Data ############");
         extracted(insert);
         insert.execute();
@@ -62,41 +57,4 @@ public class QueryDslService {
 
         return blogDetailsList;
     }
-
-    @SneakyThrows
-    public void bulkInsertUsers(List<BUsers> users) {
-        SQLInsertClause insert = sqlQueryFactory.insert(sUsers);
-        System.out.println(">>>>>"+users);
-        for (BUsers tuser : users) {
-            System.out.println("test >>>"+tuser.toString());
-            SQLInsertClause populate = insert.populate(tuser);
-            System.out.printf(">>>>"+populate.getSQL().get(0).getSQL().toString());
-            populate.addBatch();
-        }
-        insert.execute();
-    }
-
-
-    @SneakyThrows
-    public void bulkInsertPosts(List<BPosts> posts) {
-            SQLInsertClause insert = sqlQueryFactory.insert(sPosts);
-
-            for (BPosts post : posts) {
-                insert.populate(post)
-                        .addBatch();
-            }
-            insert.execute();
-        }
-
-
-    @SneakyThrows
-    public void bulkInsertComments(List<BComments> comments) {
-        SQLInsertClause insert = sqlQueryFactory.insert(sComments);
-            for (BComments comment : comments) {
-                insert.populate(comment)
-                        .addBatch();
-            }
-            insert.execute();
-        }
-
 }

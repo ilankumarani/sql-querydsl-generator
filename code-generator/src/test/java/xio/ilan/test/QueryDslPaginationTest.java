@@ -13,13 +13,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import xio.ilan.H2TestApplication;
 import xio.ilan.config.DbConfig;
-import xio.ilan.service.QueryDslService;
+import xio.ilan.service.QueryDslPaginationService;
 import xio.ilan.sql.query.dsl.*;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static xio.ilan.service.QueryDslPaginationService.POSTS_PER_USER;
+import static xio.ilan.service.QueryDslPaginationService.USERS_COUNT;
 
+/*
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
+        classes = {H2TestApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = {"query.dsl.sql.generation.enabled=false", "server.port=8080"})
+*/
+@Disabled
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE,
         classes = {H2TestApplication.class}, properties = {"query.dsl.sql.generation.enabled=false"})
 @Import({DbConfig.class})
@@ -30,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class QueryDslPaginationTest extends BaseTest {
 
-    private final QueryDslService queryDslService;
+    private final QueryDslPaginationService queryDslPaginationService;
     private final QUser qUser = QUser.user;
     private final QPost qPost = QPost.post;
     private final QComment qComment = QComment.comment;
@@ -38,27 +43,21 @@ public class QueryDslPaginationTest extends BaseTest {
     private JPAQuery jpaQuery;
 
 
-
     @BeforeAll
     public void initLoadData() {
         jpaQuery = new JPAQuery<>(entityManager);
-        List<BUsers> users = generateUsers(10);
-        queryDslService.bulkInsertUsers(users);
-        List<BPosts> posts = generatePosts(users, 100);
-        queryDslService.bulkInsertPosts(posts);
-        List<BComments> comments = generateComments(posts, 100);
-        queryDslService.bulkInsertComments(comments);
+        queryDslPaginationService.dataLoad();
     }
 
     @Order(1)
     @Test
     public void isDataLoaded() {
-        assertEquals(10, jpaQuery.select(qUser.id.count())
+        assertEquals(USERS_COUNT, jpaQuery.select(qUser.id.count())
                 .from(qUser).fetchCount());
-//        assertEquals(10, jpaQuery.select(qPost.id.count())
-//                .from(qPost).fetch().size());
-//        assertEquals(10, jpaQuery.select(qComment.id.count())
-//                .from(qComment).fetch().size());
+        assertEquals(USERS_COUNT * USERS_COUNT * POSTS_PER_USER, jpaQuery.select(qPost.id.count())
+                .from(qPost).fetchCount());
+        assertEquals(USERS_COUNT * USERS_COUNT * USERS_COUNT * POSTS_PER_USER * POSTS_PER_USER, jpaQuery.select(qComment.id.count())
+                .from(qComment).fetchCount());
     }
 
 }
