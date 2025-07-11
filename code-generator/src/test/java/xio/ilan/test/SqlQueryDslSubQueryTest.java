@@ -53,11 +53,10 @@ public class SqlQueryDslSubQueryTest {
         //Alias name for subQuery table
         final StringPath tableAliasName = stringPath("cms");
 
-        SQLQuery<Long>  commentsExpression = SQLExpressions.select(sComments.id)
-                .from(sComments);
-
         // Define subquery
-        SQLQuery<Tuple>  commentsSQLFactory = sqlQueryFactory.select(sComments.text.as(commentText), sComments.postId.as(postId))
+        SQLQuery<Tuple>  subQueryExpression = SQLExpressions.select(sComments.text.as(commentText), sComments.postId.as(postId))
+                .from(sComments);
+        SQLQuery<Tuple>  subQuery = sqlQueryFactory.select(sComments.text.as(commentText), sComments.postId.as(postId))
                 .from(sComments);
 
         // Access aliased columns from the subquery using Expressions
@@ -67,7 +66,7 @@ public class SqlQueryDslSubQueryTest {
         // Main query joining with subquery
         SQLQuery<Tuple> mainQuery = sqlQueryFactory.select(sPosts.id, commentTextPath)
                 .from(sPosts)
-                .leftJoin(commentsSQLFactory, tableAliasName)
+                .leftJoin(subQuery, tableAliasName)
                 .on(sPosts.id.eq(postIdPath));
 
         mainQuery.fetch();
